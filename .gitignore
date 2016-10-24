@@ -1,0 +1,9 @@
+build/
+.idea/
+.gradle/
+
+**/node_modules/
+**/typings/
+**/*.js
+**/*.js.map
+**/npm-debug.*
