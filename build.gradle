@@ -1,0 +1,60 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+def powerMockVersion ='1.6.5'
+
+buildscript {
+    def springbootVersion = '1.4.0.RELEASE'
+    repositories {
+        jcenter()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+    dependencies {
+        //加入这个可以达到统一管理springboot的版本的功能，类似maven中的dependence management
+        //The spring-boot-gradle-plugin is also available and provides tasks to create executable jars and run projects from source. It also provides dependency management that, among other capabilities, allows you to omit the version number for any dependencies that are managed by Spring Boot:
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springbootVersion}")
+    }
+}
+
+
+repositories {
+    jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+
+dependencies {
+    compile 'org.aspectj:aspectjrt:1.7.3'
+    compile 'org.aspectj:aspectjweaver:1.7.3'
+    compile 'mysql:mysql-connector-java:5.1.28'
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile 'com.google.zxing:core:3.2.0'
+    compile  'com.google.zxing:javase:3.2.0'
+    compile 'com.alibaba:druid:1.0.25'
+    compile 'com.alibaba:fastjson:1.2.17'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'commons-codec:commons-codec:1.10'
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+
+    compile 'com.google.guava:guava:19.0'
+
+//    compile 'org.springframework.security:spring-security-web:4.1.3.RELEASE'
+//    compile 'org.springframework.security:spring-security-config:4.1.3.RELEASE'
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile "org.powermock:powermock-api-mockito:${powerMockVersion}"
+    testCompile "org.powermock:powermock-module-junit4:${powerMockVersion}"
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+springBoot {
+    mainClass = "org.bumishi.techblog.Application"
+}
+
+bootRun {
+    addResources = true
+}
