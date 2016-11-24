@@ -1,12 +1,25 @@
 
 server:
   port: 8080
+  compression:
+    enabled: true
+  connection-timeout: 3000
+
+debug: false
+
+#logging:
+#  file: /var/log/admin-manager.log
+
+management:
+  context-path: /management
+  security:
+    enabled: false
 
 spring:
   application:
-    name: tech-blog-api
+    name: bumishi-blog
   datasource:
-    url: jdbc:mysql://localhost:3306/test
+    url: jdbc:mysql://localhost:3306/bumishi-blog?characterEncoding=utf-8
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
@@ -21,7 +34,12 @@ spring:
           test-while-idle: true
           test-on-borrow: false
           test-on-return: false
-debug: false
+  cache:
+    guava:
+      spec: maximumSize=500,expireAfterAccess=3600s
 
-#logging:
-#  file: /var/log/admin-manager.log
+ #spring-boot-admin config
+
+  thymeleaf:
+      prefix: classpath:/public/thymeleaf/
+      cache: false
