@@ -20,8 +20,8 @@ public class Blog implements Serializable{
 	/**分类*/
 	 private String catalog;
 
-	/**html content*/
-	 private String content;
+	/**展示内容*/
+	 private String display;
 
 	/**markdownd原内容*/
 	private String md;
@@ -31,11 +31,78 @@ public class Blog implements Serializable{
 
 	/**发布时间*/
 	 private Date publishTime;
-	 
-	 /**浏览次数*/
-	 private int views=0;
 
-	
+	/**封面图片，主要迎合微信公众号*/
+	private String img;
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getCatalog() {
+		return catalog;
+	}
+
+	public void setCatalog(String catalog) {
+		this.catalog = catalog;
+	}
+
+	public String getDisplay() {
+		return display;
+	}
+
+	public void setDisplay(String display) {
+		this.display = display;
+	}
+
+	public String getMd() {
+		return md;
+	}
+
+	public void setMd(String md) {
+		this.md = md;
+	}
+
+	public String getAuther() {
+		return auther;
+	}
+
+	public void setAuther(String auther) {
+		this.auther = auther;
+	}
+
+	public Date getPublishTime() {
+		return publishTime;
+	}
+
+	public void setPublishTime(Date publishTime) {
+		this.publishTime = publishTime;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	public static String convertCatalog(String catalog){
 		if(catalog.equals("java"))return "Java世界";
 		if(catalog.equals("web"))return "web前端";

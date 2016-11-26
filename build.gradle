@@ -27,6 +27,7 @@ repositories {
 }
 
 dependencies {
+    compile files('src/main/lib/bumishi-toolbox-1.0.jar')
     compile 'org.aspectj:aspectjrt:1.7.3'
     compile 'org.aspectj:aspectjweaver:1.7.3'
     compile 'mysql:mysql-connector-java:5.1.28'
@@ -34,7 +35,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-starter-cache")
-    compile 'org.springframework.boot:spring-boot-starter-security'
+  //  compile 'org.springframework.boot:spring-boot-starter-security'
     compile("org.springframework.boot:spring-boot-devtools")
     compile 'org.springframework.session:spring-session:1.2.2.RELEASE'
     compile 'com.hazelcast:hazelcast:3.7.2'
