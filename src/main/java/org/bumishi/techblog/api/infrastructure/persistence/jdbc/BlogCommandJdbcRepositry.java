@@ -1,10 +1,8 @@
 package org.bumishi.techblog.api.infrastructure.persistence.jdbc;
 
 import org.bumishi.techblog.api.domain.model.Blog;
-import org.bumishi.techblog.api.domain.repository.BlogRepositry;
-import org.bumishi.toolbox.model.PageModel;
+import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * Created by xieqiang on 2016/11/26.
  */
 @Repository
-public class BlogJdbcRepositry implements BlogRepositry {
+public class BlogCommandJdbcRepositry implements BlogCommandRepositry {
 
     @Autowired
     protected JdbcTemplate jdbcTemplate;
@@ -28,23 +26,11 @@ public class BlogJdbcRepositry implements BlogRepositry {
 
     }
 
-    @Override
-    public Blog get(String id) {
-        return jdbcTemplate.queryForObject("select * from blog where id=?", BeanPropertyRowMapper.newInstance(Blog.class),id);
-    }
 
     @Override
-    public void delete(String id) {
+    public void remove(String id) {
           jdbcTemplate.update("DELETE FROM blog WHERE id=?",id);
     }
 
-    @Override
-    public PageModel<Blog> queryByKeyword(String keyword) {
-        return null;
-    }
 
-    @Override
-    public PageModel<Blog> queryBycatalog(String catalog) {
-        return null;
-    }
 }
