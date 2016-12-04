@@ -20,7 +20,7 @@ public class BlogService {
 
 
     public void addBlog(Blog blog){
-
         blogCommandRepositry.save(blog);
+
     }
 }

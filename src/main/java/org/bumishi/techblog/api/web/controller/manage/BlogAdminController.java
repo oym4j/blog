@@ -1,15 +1,16 @@
 package org.bumishi.techblog.api.web.controller.manage;
 
 import org.bumishi.techblog.api.application.BlogService;
-import org.bumishi.techblog.api.domain.model.Blog;
-import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
-import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
+import org.bumishi.techblog.api.web.controller.manage.assembler.BlogAssember;
+import org.bumishi.techblog.api.web.controller.manage.command.AddBlogCommand;
 import org.bumishi.toolbox.model.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 /**
  * 提供admin管理接口
@@ -19,18 +20,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admin")
 public class BlogAdminController {
 
-    @Autowired
-    protected BlogQueryRepositry blogQueryRepositry;
-
-    @Autowired
-    protected BlogCommandRepositry blogCommandRepositry;
+//    @Autowired
+//    protected BlogQueryRepositry blogQueryRepositry;
+//
+//    @Autowired
+//    protected BlogCommandRepositry blogCommandRepositry;
 
     @Autowired
     protected BlogService blogService;
 
+    @Autowired
+    protected BlogAssember blogAssember;
+
     @PostMapping("/add")
-    public RestResponse addBlog(@RequestBody Blog blog){
-      blogService.addBlog();
+    public RestResponse addBlog(@RequestBody @Valid AddBlogCommand blog){
+      blogService.addBlog(blogAssember.addBlogCommandToBlog(blog));
         return RestResponse.ok();
     }
 }

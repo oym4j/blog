@@ -14,8 +14,12 @@ public class Blog implements Serializable{
 
 		/***/
 	 private String id;
-	 
+
+	/**标题*/
 	 private String title;
+
+	/**副标题*/
+	private String sencondTitle;
 
 	/**分类*/
 	 private String catalog;
@@ -101,6 +105,14 @@ public class Blog implements Serializable{
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public String getSencondTitle() {
+		return sencondTitle;
+	}
+
+	public void setSencondTitle(String sencondTitle) {
+		this.sencondTitle = sencondTitle;
 	}
 
 	public static String convertCatalog(String catalog){

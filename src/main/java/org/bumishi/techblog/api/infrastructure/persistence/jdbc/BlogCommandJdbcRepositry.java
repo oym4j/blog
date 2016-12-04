@@ -17,7 +17,7 @@ public class BlogCommandJdbcRepositry implements BlogCommandRepositry {
 
     @Override
     public void save(Blog blog) {
-        jdbcTemplate.update("INSERT blog (id,title,`catalog`,display,md,auther,publishTime,img) VALUE (?,?,?,?,?,?,?,?)",blog.getId(),blog.getTitle(),blog.getCatalog(),blog.getDisplay(),blog.getMd(),blog.getAuther(),blog.getPublishTime(),blog.getImg());
+        jdbcTemplate.update("INSERT blog (id,title,secondTitle,`catalog`,display,md,auther,publishTime,img) VALUE (?,?,?,?,?,?,?,?,?)",blog.getId(),blog.getTitle(),blog.getSencondTitle(),blog.getCatalog(),blog.getDisplay(),blog.getMd(),blog.getAuther(),blog.getPublishTime(),blog.getImg());
     }
 
     @Override
