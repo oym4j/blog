@@ -17,7 +17,7 @@ import javax.validation.Valid;
  * Created by xieqiang on 2016/11/27.
  */
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin/blog")
 public class BlogAdminController {
 
 //    @Autowired

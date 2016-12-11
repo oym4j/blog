@@ -28,7 +28,7 @@ public class BlogAssember {
         blog.setAuther("bumishi");//多用户博客程序情况下扩展字段
         blog.setPublishTime(new Date());
         blog.setId(blogId.id(blog));
-        blog.setDisplay(markDownToHtml.convert(blog.getMd()));
+        blog.setDisplay(markDownToHtml.convert(command));
         return blog;
     }
 }

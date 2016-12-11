@@ -19,7 +19,7 @@ public class Book implements Serializable{
 
     private Date publishTime;
 
-    private List<BookIndex> indexTree;//目录数
+    private List<BookIndex> indexTree;//目录
 
     public String getId() {
         return id;

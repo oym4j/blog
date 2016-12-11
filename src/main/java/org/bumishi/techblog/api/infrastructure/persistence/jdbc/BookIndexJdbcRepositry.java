@@ -16,7 +16,7 @@ import java.util.List;
  * Created by xieqiang on 2016/11/27.
  */
 @Repository
-public class BookIndexJdbcRepositry implements BookIndexRepositry {
+public class BookIndexJdbcRepositry  implements BookIndexRepositry {
     
     @Autowired
     protected JdbcTemplate jdbcTemplate;
@@ -29,12 +29,12 @@ public class BookIndexJdbcRepositry implements BookIndexRepositry {
 
     @Override
     public void add(BookIndex catalog) {
-        jdbcTemplate.update("INSERT book_index (id,label,path,`level`,`order`,`url`,`type`,`style`,`disabled`,`bid`) VALUES (?,?,?,?,?,?,?,?,?)", catalog.getId(), catalog.getLabel(), catalog.getPath(), catalog.getLevel(), catalog.getOrder(), catalog.getUrl(), catalog.getType(), catalog.getStyle(), catalog.isDisabled() ? 1 : 0,catalog.getBookId());
+        jdbcTemplate.update("INSERT book_index (id,label,path,`level`,`order`,`url`,`type`,`style`,`disabled`,`bokId`) VALUES (?,?,?,?,?,?,?,?,?)", catalog.getId(), catalog.getLabel(), catalog.getPath(), catalog.getLevel(), catalog.getOrder(), catalog.getUrl(), catalog.getType(), catalog.getStyle(), catalog.isDisabled() ? 1 : 0,catalog.getBookId());
     }
 
     @Override
     public void update(BookIndex catalog) {
-        jdbcTemplate.update("update book_index SET label=?,`order`=?,url=?,disabled=?,`type`=?,`style`=?,bid=? WHERE id=?", catalog.getLabel(), catalog.getOrder(), catalog.getUrl(), catalog.isDisabled() ? 1 : 0, catalog.getType(), catalog.getStyle(),catalog.getBookId(), catalog.getId());
+        jdbcTemplate.update("update book_index SET label=?,`order`=?,url=?,disabled=?,`type`=?,`style`=?,bookId=? WHERE id=?", catalog.getLabel(), catalog.getOrder(), catalog.getUrl(), catalog.isDisabled() ? 1 : 0, catalog.getType(), catalog.getStyle(),catalog.getBookId(), catalog.getId());
 
     }
 

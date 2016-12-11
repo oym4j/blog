@@ -51,7 +51,7 @@ public class BlogQueryJdbcRepositry implements BlogQueryRepositry {
     @Override
     public PageModel<Blog> queryByTime(int page, int size) {
         PageModel<Blog> pageModel=new PageModel<>(page, size);
-        List<Blog> blogs=jdbcTemplate.query("select * from blog ORDER BY publishTime DESC offset ?,limit ?",BeanPropertyRowMapper.newInstance(Blog.class),(page-1)*size,size);
+        List<Blog> blogs=jdbcTemplate.query("select * from blog ORDER BY publishTime DESC limit ? offset ?",BeanPropertyRowMapper.newInstance(Blog.class),size,(page-1)*size);
         if(!CollectionUtils.isEmpty(blogs)){
             pageModel.setList(blogs);
             if(blogs.size()>=size){

@@ -19,7 +19,7 @@ spring:
   application:
     name: bumishi-blog
   datasource:
-    url: jdbc:mysql://localhost:3306/bumishi-blog?characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/bumishi_blog?characterEncoding=utf-8
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
@@ -41,5 +41,4 @@ spring:
  #spring-boot-admin config
 
   thymeleaf:
-      prefix: classpath:/public/thymeleaf/
       cache: false

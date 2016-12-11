@@ -10,6 +10,6 @@ public class MenuJdbcRepositry extends AbstractNavigationNodeJdbcRepositry {
 
     @Override
     protected String getTable() {
-        return "`menu`";
+        return "`nav`";
     }
 }
