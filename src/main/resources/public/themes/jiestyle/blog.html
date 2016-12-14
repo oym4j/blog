@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title th:text="${blog.title}">标题</title>
+    <meta name="description"
+          content="现在提供写作服务的平台有很多，比如微信公众号、简书、知乎等都是大家首选的写作平台，所以很少有人再自己搭建独立博客了，但是我很早就有写作习惯，也一直有博客，所以如今也是多平台同步更新。"/>
+    <meta name="keywords" content="JieStyle,TangStyle,WordPress,WordPress主题,WordPress模板,响应式Web设计"/>
+    <link rel="shortcut icon" th:href="@{/themes/jiestyle/images/favicon.ico}" type="image/x-icon"/>
+    <link rel="stylesheet" th:href="@{/themes/jiestyle/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/themes/jiestyle/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{/themes/jiestyle/css/editormd.preview.min.css}"/>
+    <script type="text/javascript" th:src="@{/themes/jiestyle/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/themes/jiestyle/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/themes/jiestyle/style.css}"/>
+    <link rel='dns-prefetch' href='//s.w.org'/>
+
+</head>
+
+<body>
+<div th:replace="header"></div>
+<div id="main">
+    <article class="col-md-8 col-md-offset-2 view clearfix">
+        <h1 class="view-title">三套极简风格的WordPress主题模板</h1>
+        <div class="view-meta">
+            <span>作者: 唐杰</span>
+            <span>分类: <a href="http://tangjie.me/at/fenxiang" rel="category tag">一些分享</a></span>
+            <span>发布时间: 2016-11-20 12:12</span>
+            <span></span>
+        </div>
+        <div class="view-content">
+            <div class="editormd-preview">
+                <div th:utext="${blog.display}" class="markdown-body editormd-preview-container" previewcontainer="true"
+                     style="padding: 20px;">
+
+                </div>
+
+            </div>
+
+        </div>
+        <section class="view-tag">
+            <div class="pull-left"><i class="fa fa-tags"></i> <a href="http://tangjie.me/tag/jiestyle" rel="tag">JieStyle</a><a
+                    href="http://tangjie.me/tag/tangstyle" rel="tag">TangStyle</a><a
+                    href="http://tangjie.me/tag/wordpress" rel="tag">WordPress</a><a
+                    href="http://tangjie.me/tag/wordpress%e4%b8%bb%e9%a2%98" rel="tag">WordPress主题</a><a
+                    href="http://tangjie.me/tag/wordpress%e6%a8%a1%e6%9d%bf" rel="tag">WordPress模板</a><a
+                    href="http://tangjie.me/tag/%e5%93%8d%e5%ba%94%e5%bc%8fweb%e8%ae%be%e8%ae%a1" rel="tag">响应式Web设计</a>
+            </div>
+        </section>
+        <section class="support-author">
+            <p>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i
+                    class="fa fa-cny" aria-hidden="true"></i> 打赏支持
+            </button>
+        </section>
+
+    </article>
+    <section class="col-md-8 col-md-offset-2 clearfix">
+        <div class="read">
+            <div class="read-head"><i class="fa fa-book"></i> 更多阅读</div>
+            <div class="read-list row">
+                <div class="col-md-6">
+                    <ul>
+
+                        <li><a href="http://tangjie.me/blog/196.html" target="_blank">【博客改版】极简风格，全新JieStyle</a></li>
+                        <li><a href="http://tangjie.me/blog/199.html" target="_blank">有营养的5条知识观点分享</a></li>
+                        <li><a href="http://tangjie.me/blog/205.html" target="_blank">如何招聘产品经理</a></li>
+                        <li><a href="http://tangjie.me/blog/192.html" target="_blank">产品经理不能错过的一本书</a></li>
+                        <li><a href="http://tangjie.me/blog/195.html" target="_blank">产品经理的野蛮生长</a></li>
+                        <li><a href="http://tangjie.me/blog/202.html" target="_blank">做产品，创意不是最重要的</a></li>
+                        <li><a href="http://tangjie.me/blog/203.html" target="_blank">iMessage App Store体验观察与商业机会</a>
+                        </li>
+                        <li><a href="http://tangjie.me/blog/207.html" target="_blank">1024程序员节，写给年轻程序员的建议</a></li>
+                        <li><a href="http://tangjie.me/blog/210.html" target="_blank">杰出PM专班改版了，并且启动商业实战项目</a></li>
+                        <li><a href="http://tangjie.me/blog/193.html" target="_blank">轻松应对产品经理面试问题</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul>
+                        <li><a href="http://tangjie.me/blog/66.html" title="博客总结，文章汇总：产品经理的成长之路">博客总结，文章汇总：产品经理的成长之路</a>
+                        </li>
+                        <li><a href="http://tangjie.me/blog/22.html" title="从产品思维讲《iOS人机界面指导手册》读后感（跑题文章）">从产品思维讲《iOS人机界面指导手册》读后感（跑题文章）</a>
+                        </li>
+                        <li><a href="http://tangjie.me/blog/104.html" title="第三章：产品规划(1) &#8211; 产品规划介绍">第三章：产品规划(1)
+                            &#8211; 产品规划介绍</a></li>
+                        <li><a href="http://tangjie.me/blog/28.html" title="招聘产品经理，这三点真的不重要">招聘产品经理，这三点真的不重要</a></li>
+                        <li><a href="http://tangjie.me/blog/122.html" title="学员课后总结：产品唐杰之用户体验">学员课后总结：产品唐杰之用户体验</a></li>
+                        <li><a href="http://tangjie.me/blog/98.html" title="第一章：产品介绍(5) – 产品经理入门前的心理准备">第一章：产品介绍(5) –
+                            产品经理入门前的心理准备</a></li>
+                        <li><a href="http://tangjie.me/blog/163.html" title="产品经理如何更精准的细分人群">产品经理如何更精准的细分人群</a></li>
+                        <li><a href="http://tangjie.me/blog/180.html" title="1.2 产品团队和产品经理">1.2 产品团队和产品经理</a></li>
+                        <li><a href="http://tangjie.me/blog/27.html" title="《职场交谈，这样说就对了》读后感">《职场交谈，这样说就对了》读后感</a></li>
+                        <li><a href="http://tangjie.me/blog/46.html" title="如何提高工作效率？一些思考！">如何提高工作效率？一些思考！</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="read">
+            <div class="read-head"><i class="fa fa-tags"></i> 标签云</div>
+            <div class="read-list">
+                <a href='http://tangjie.me/tag/axure' class='tag-link-33 tag-link-position-1' title='9个话题'
+                   style="color:#f6ea08;font-size: 14.176470588235pt;;">Axure</a>
+                <a href='http://tangjie.me/tag/axure-rp' class='tag-link-217 tag-link-position-2' title='6个话题'
+                   style="color:#79a772;font-size: 11.088235294118pt;;">Axure RP</a>
+                <a href='http://tangjie.me/tag/mindmanager' class='tag-link-148 tag-link-position-3' title='9个话题'
+                   style="color:#4e09ad;font-size: 14.176470588235pt;;">MindManager</a>
+                <a href='http://tangjie.me/tag/prd' class='tag-link-17 tag-link-position-4' title='17个话题'
+                   style="color:#e72f98;font-size: 19.529411764706pt;;">PRD</a>
+                <a href='http://tangjie.me/tag/prd%e6%96%87%e6%a1%a3' class='tag-link-32 tag-link-position-5'
+                   title='17个话题' style="color:#4b3143;font-size: 19.529411764706pt;;">PRD文档</a>
+                <a href='http://tangjie.me/tag/tangstyle' class='tag-link-141 tag-link-position-6' title='5个话题'
+                   style="color:#d2ad79;font-size: 9.6470588235294pt;;">TangStyle</a>
+                <a href='http://tangjie.me/tag/wordpress' class='tag-link-61 tag-link-position-7' title='7个话题'
+                   style="color:#341141;font-size: 12.117647058824pt;;">WordPress</a>
+                <a href='http://tangjie.me/tag/%e4%b8%aa%e4%ba%ba%e7%ab%99%e9%95%bf'
+                   class='tag-link-6 tag-link-position-8' title='4个话题' style="color:#704c9b;font-size: 8pt;;">个人站长</a>
+                <a href='http://tangjie.me/tag/%e4%ba%92%e8%81%94%e7%bd%91%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86'
+                   class='tag-link-5 tag-link-position-9' title='11个话题'
+                   style="color:#d77de7;font-size: 15.823529411765pt;;">互联网产品经理</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%ad%96%e5%88%92'
+                   class='tag-link-199 tag-link-position-10' title='12个话题'
+                   style="color:#25d772;font-size: 16.441176470588pt;;">产品策划</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%ae%a1%e7%90%86'
+                   class='tag-link-49 tag-link-position-11' title='6个话题'
+                   style="color:#439e77;font-size: 11.088235294118pt;;">产品管理</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86'
+                   class='tag-link-3 tag-link-position-12' title='23个话题'
+                   style="color:#1c5827;font-size: 22pt;;">产品经理</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%85%a5%e9%97%a8%e6%8c%87%e5%8d%97'
+                   class='tag-link-279 tag-link-position-13' title='4个话题' style="color:#df02f6;font-size: 8pt;;">产品经理入门指南</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%9f%b9%e8%ae%ad'
+                   class='tag-link-150 tag-link-position-14' title='17个话题'
+                   style="color:#78dbfb;font-size: 19.529411764706pt;;">产品经理培训</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%9f%b9%e8%ae%ad%e8%af%be%e7%a8%8b'
+                   class='tag-link-207 tag-link-position-15' title='12个话题'
+                   style="color:#69a58;font-size: 16.441176470588pt;;">产品经理培训课程</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%ad%a6%e4%b9%a0'
+                   class='tag-link-165 tag-link-position-16' title='17个话题'
+                   style="color:#3d1821;font-size: 19.529411764706pt;;">产品经理学习</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%ad%a6%e4%b9%a0%e7%bd%91%e7%ab%99'
+                   class='tag-link-233 tag-link-position-17' title='13个话题'
+                   style="color:#c95b93;font-size: 17.264705882353pt;;">产品经理学习网站</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%b2%97%e4%bd%8d'
+                   class='tag-link-272 tag-link-position-18' title='4个话题'
+                   style="color:#1818d6;font-size: 8pt;;">产品经理岗位</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%b7%a5%e4%bd%9c'
+                   class='tag-link-273 tag-link-position-19' title='5个话题'
+                   style="color:#e82081;font-size: 9.6470588235294pt;;">产品经理工作</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%b7%a5%e4%bd%9c%e8%81%8c%e8%b4%a3'
+                   class='tag-link-73 tag-link-position-20' title='7个话题'
+                   style="color:#3ed731;font-size: 12.117647058824pt;;">产品经理工作职责</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7'
+                   class='tag-link-215 tag-link-position-21' title='5个话题'
+                   style="color:#16cbf;font-size: 9.6470588235294pt;;">产品经理常用工具</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%b8%b8%e7%94%a8%e6%96%87%e6%a1%a3'
+                   class='tag-link-216 tag-link-position-22' title='5个话题'
+                   style="color:#d8c1f1;font-size: 9.6470588235294pt;;">产品经理常用文档</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%b8%b8%e7%94%a8%e8%bd%af%e4%bb%b6'
+                   class='tag-link-214 tag-link-position-23' title='5个话题'
+                   style="color:#f7d303;font-size: 9.6470588235294pt;;">产品经理常用软件</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e6%8b%9b%e8%81%98'
+                   class='tag-link-68 tag-link-position-24' title='5个话题'
+                   style="color:#f04db5;font-size: 9.6470588235294pt;;">产品经理招聘</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e6%b7%b1%e5%85%a5%e6%b5%85%e5%87%ba'
+                   class='tag-link-280 tag-link-position-25' title='4个话题' style="color:#e62960;font-size: 8pt;;">产品经理深入浅出</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e8%81%8c%e8%b4%a3'
+                   class='tag-link-151 tag-link-position-26' title='9个话题'
+                   style="color:#75818e;font-size: 14.176470588235pt;;">产品经理职责</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e8%a7%84%e5%88%92'
+                   class='tag-link-116 tag-link-position-27' title='16个话题'
+                   style="color:#d3f204;font-size: 18.911764705882pt;;">产品规划</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e8%ae%be%e8%ae%a1'
+                   class='tag-link-53 tag-link-position-28' title='16个话题'
+                   style="color:#a2032;font-size: 18.911764705882pt;;">产品设计</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e8%ae%be%e8%ae%a1%e5%8e%9f%e5%88%99'
+                   class='tag-link-102 tag-link-position-29' title='5个话题'
+                   style="color:#4a0300;font-size: 9.6470588235294pt;;">产品设计原则</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e9%9c%80%e6%b1%82%e5%88%86%e6%9e%90'
+                   class='tag-link-90 tag-link-position-30' title='9个话题'
+                   style="color:#30f926;font-size: 14.176470588235pt;;">产品需求分析</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e9%9c%80%e6%b1%82%e6%96%87%e6%a1%a3'
+                   class='tag-link-31 tag-link-position-31' title='17个话题'
+                   style="color:#992f32;font-size: 19.529411764706pt;;">产品需求文档</a>
+                <a href='http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e9%9c%80%e6%b1%82%e7%ae%a1%e7%90%86'
+                   class='tag-link-204 tag-link-position-32' title='5个话题'
+                   style="color:#40ed09;font-size: 9.6470588235294pt;;">产品需求管理</a>
+                <a href='http://tangjie.me/tag/%e5%8e%9f%e5%9e%8b%e8%ae%be%e8%ae%a1'
+                   class='tag-link-19 tag-link-position-33' title='7个话题'
+                   style="color:#aaa098;font-size: 12.117647058824pt;;">原型设计</a>
+                <a href='http://tangjie.me/tag/%e5%9b%a2%e9%98%9f%e5%8d%8f%e5%90%8c'
+                   class='tag-link-269 tag-link-position-34' title='6个话题'
+                   style="color:#e738df;font-size: 11.088235294118pt;;">团队协同</a>
+                <a href='http://tangjie.me/tag/%e5%9b%a2%e9%98%9f%e5%90%88%e4%bd%9c'
+                   class='tag-link-91 tag-link-position-35' title='7个话题'
+                   style="color:#281ca1;font-size: 12.117647058824pt;;">团队合作</a>
+                <a href='http://tangjie.me/tag/%e5%9b%a2%e9%98%9f%e6%b2%9f%e9%80%9a'
+                   class='tag-link-268 tag-link-position-36' title='5个话题'
+                   style="color:#f5d1dc;font-size: 9.6470588235294pt;;">团队沟通</a>
+                <a href='http://tangjie.me/tag/%e5%b8%82%e5%9c%ba%e5%88%86%e6%9e%90'
+                   class='tag-link-339 tag-link-position-37' title='5个话题'
+                   style="color:#b9e658;font-size: 9.6470588235294pt;;">市场分析</a>
+                <a href='http://tangjie.me/tag/%e5%be%ae%e4%bf%a1' class='tag-link-191 tag-link-position-38'
+                   title='5个话题' style="color:#5c2de3;font-size: 9.6470588235294pt;;">微信</a>
+                <a href='http://tangjie.me/tag/%e6%89%8b%e6%8a%8a%e6%89%8b%e6%95%99%e4%bd%a0%e5%81%9a%e4%ba%a7%e5%93%81'
+                   class='tag-link-212 tag-link-position-39' title='7个话题'
+                   style="color:#661e77;font-size: 12.117647058824pt;;">手把手教你做产品</a>
+                <a href='http://tangjie.me/tag/%e6%9d%b0%e5%87%bapm%e5%ad%a6%e4%b9%a0%e7%8f%ad'
+                   class='tag-link-263 tag-link-position-40' title='4个话题'
+                   style="color:#91643f;font-size: 8pt;;">杰出PM学习班</a>
+                <a href='http://tangjie.me/tag/%e6%9d%b0%e5%87%ba%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e4%b9%a6'
+                   class='tag-link-275 tag-link-position-41' title='4个话题'
+                   style="color:#820556;font-size: 8pt;;">杰出产品经理书</a>
+                <a href='http://tangjie.me/tag/%e6%9d%b0%e5%87%ba%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e8%af%be'
+                   class='tag-link-211 tag-link-position-42' title='6个话题'
+                   style="color:#a9bcee;font-size: 11.088235294118pt;;">杰出产品经理课</a>
+                <a href='http://tangjie.me/tag/%e7%94%a8%e6%88%b7%e4%bd%93%e9%aa%8c'
+                   class='tag-link-89 tag-link-position-43' title='6个话题'
+                   style="color:#adbc67;font-size: 11.088235294118pt;;">用户体验</a>
+                <a href='http://tangjie.me/tag/%e7%ab%99%e9%95%bf' class='tag-link-7 tag-link-position-44' title='4个话题'
+                   style="color:#61084c;font-size: 8pt;;">站长</a>
+                <a href='http://tangjie.me/tag/%e9%9d%a2%e8%af%95' class='tag-link-10 tag-link-position-45' title='4个话题'
+                   style="color:#2298ea;font-size: 8pt;;">面试</a></div>
+        </div>
+    </section>
+</div>
+<!--modal-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-cny" aria-hidden="true"></i> 打赏支持</h4>
+            </div>
+            <div class="modal-body text-center">
+                <p><img border="0" src="http://tangjie.me/media/AliPay.png" alt="唐杰支付宝" width="180" height="180"
+                        style="margin: 0 8%;"/><img border="0" src="http://tangjie.me/media/WeixinPay.png" alt="唐杰微信钱包"
+                                                    width="180" height="180" style="margin: 0 8%;"/></p>
+                <p>扫描二维码，输入您要打赏的金额</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal-->
+
+<div th:replace="footer"></div>
+
+
+</body>
+</html>

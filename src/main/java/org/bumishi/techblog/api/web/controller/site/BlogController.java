@@ -21,6 +21,12 @@ public class BlogController {
     @Autowired
     protected BlogQueryRepositry blogQueryRepositry;
 
+    @GetMapping(value = {"/", "/index.html"})
+    public String index(Model model) {
+        model.addAttribute("list", blogQueryRepositry.queryByTime(1, PAGE_SIZE));
+        return "blog/list";
+    }
+
     @GetMapping("/{id}")
     public String get(@PathVariable("id")String id, Model model){
         Blog blog=blogQueryRepositry.get(id);
@@ -29,19 +35,19 @@ public class BlogController {
         }
         model.addAttribute("blog",blog);
 
-        return "blog/detail";
+        return "blog";
     }
 
     @GetMapping("/catalog/{catalog}")
     public String catalog(@PathVariable("catalog")String catalog, Model model){
         model.addAttribute("list",blogQueryRepositry.queryByCatalog(1,PAGE_SIZE,catalog));
-        return "blog/list";
+        return "catalog";
     }
 
-    @GetMapping({"/latest","/"})
+    @GetMapping({"/latest"})
     public String latest(Model model){
         model.addAttribute("list",blogQueryRepositry.queryByTime(1,PAGE_SIZE));
-        return "blog/list";
+        return "catalog";
     }
 
 
