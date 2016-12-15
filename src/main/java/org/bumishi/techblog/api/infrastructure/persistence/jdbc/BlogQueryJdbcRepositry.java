@@ -38,7 +38,7 @@ public class BlogQueryJdbcRepositry implements BlogQueryRepositry {
     @Override
     public PageModel<Blog> queryByCatalog(int page, int size, String catalog) {
         PageModel<Blog> pageModel=new PageModel<>(page, size);
-        List<Blog> blogs=jdbcTemplate.query("select * from blog where `catalog`=? offset ?,limit ?",BeanPropertyRowMapper.newInstance(Blog.class),catalog,(page-1)*size,size);
+        List<Blog> blogs = jdbcTemplate.query("select * from blog where `catalog`=? limit ? offset ?", BeanPropertyRowMapper.newInstance(Blog.class), catalog, size, (page - 1) * size);
         if(!CollectionUtils.isEmpty(blogs)){
             pageModel.setList(blogs);
             if(blogs.size()>=size){

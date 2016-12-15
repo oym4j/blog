@@ -2,7 +2,11 @@ package org.bumishi.techblog.api.web.controller;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.StringUtils;
+import org.bumishi.techblog.api.domain.repository.NavigationNodeRepositry;
 import org.bumishi.toolbox.model.RestResponse;
+import org.bumishi.toolbox.model.TreeModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,6 +22,11 @@ import java.io.IOException;
  */
 @ControllerAdvice
 public class PublicAdvice {
+
+    @Autowired
+    @Qualifier("menuJdbcRepositry")
+    protected NavigationNodeRepositry navigationNodeRepositry;
+
 
     @ExceptionHandler
     public void handleControllerException(HttpServletRequest request, HttpServletResponse response, Throwable ex) throws IOException {
@@ -36,7 +45,7 @@ public class PublicAdvice {
 
     @ModelAttribute
     public void addCommonModel(Model model, HttpServletRequest request) {
-
+        model.addAttribute("navs", new TreeModel(navigationNodeRepositry.list()).buildTree());
     }
 
 

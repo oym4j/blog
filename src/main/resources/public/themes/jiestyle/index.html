@@ -1,339 +1,47 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>互联网产品经理@唐杰</title>
-    <meta name="description" content="我叫唐杰，是一名互联网产品经理，关注各类互联网产品，偶尔会分享一些自己的见解。欢迎访问这个博客认识我，如果你觉得还不错，也欢迎和我成为朋友。"/>
-    <meta name="keywords" content="产品经理职责,产品经理学习,产品经理培训,产品经理学习网站,产品经理培训课程,产品经理简历,产品经理面试,产品经理招聘,杰出产品经理,人人都是产品经理"/>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="pingback" href="http://tangjie.me/xmlrpc.php"/>
-    <link rel='dns-prefetch' href='//s.w.org'/>
-    <link rel='https://api.w.org/' href='http://tangjie.me/wp-json/'/>
+
+    <title>不迷失-专注Java技术的研究，关注程序员的发展</title>
+    <meta name="description"
+          content="不迷失技术博客'"/>
+    <meta name="keywords" content="不迷失技术|不迷失博客"/>
+    <div th:replace="head"></div>
 </head>
 
 <body>
-<header id="header">
-    <div class="avatar"><img src="images/avatar.jpg" alt="唐杰头像" class="img-circle" width="50%"></div>
-    <h3 id="name">PM唐杰</h3>
-    <div class="sns">
-        <a href="http://tangjie.me/feed" target="_blank" rel="nofollow" title="RSS"><i class="fa fa-rss"
-                                                                                       aria-hidden="true"></i></a>
-        <a href="http://weibo.com/782622" target="_blank" rel="nofollow" title="Weibo"><i class="fa fa-weibo"
-                                                                                          aria-hidden="true"></i></a>
-        <a href="https://twitter.com/JieTangOK" target="_blank" rel="nofollow" title="Twitter"><i class="fa fa-twitter"
-                                                                                                  aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/jietangok" target="_blank" rel="nofollow" title="Facebook"><i
-                class="fa fa-facebook-square" aria-hidden="true"></i></i></a>
-    </div>
-    <div class="nav">
-        <ul>
-            <li><a href="http://tangjie.me">首页</a></li>
-            <li><a href="http://tangjie.me/about">博主介绍</a></li>
-            <li><a href="#">博客专题</a>
-                <ul>
-                    <li><a href="http://tangjie.me/zhinan">产品经理入门指南</a></li>
-                    <li><a href="http://tangjie.me/shu">杰出产品经理书 v1.0</a></li>
-                    <li><a href="http://tangjie.me/shu-2">杰出产品经理书 v2.0</a></li>
-                    <li style="border-bottom:2px solid #d1f1e9;"><a href="http://www.jiechupm.com/book/v3"
-                                                                    target="_blank">杰出产品经理书 v3.0</a></li>
-                    <li><a href="http://tangjie.me/jiestyle">JieStyle (WP主题)</a></li>
-                    <li style="border:none;"><a href="http://tangjie.me/tangstyle">TangStyle (WP主题)</a></li>
-                </ul>
-            </li>
-            <li><a href="#">唐杰出品</a>
-                <ul>
-                    <li><a href="http://www.jiechupm.com/book" target="_blank">杰出产品经理书</a></li>
-                    <li><a href="http://www.jiechupm.com/card" target="_blank">杰出产品经理卡</a></li>
-                    <li style="border:none;"><a href="http://www.jiechupm.com/lesson" target="_blank">杰出产品经理课</a></li>
-                </ul>
-            </li>
-            <li><a href="http://www.jiechupm.com" target="_blank" style="color:#FF0;">杰出PM</a></li>
-            <li><a href="http://tangjie.me/dashang"><i class="fa fa-gift" aria-hidden="true"></i> 打赏 <i
-                    class="fa fa-gift" aria-hidden="true"></i></a></li>
-        </ul>
-    </div>
-    <div class="weixin"><img src="http://tangjie.me/media/weixin.jpg" alt="唐杰微信" width="50%">
-        <p>唐杰微信</p>
-    </div>
-</header>
-<div id="main">
+<div th:replace="header"></div>
+<div id="main" style="min-height: 800px;">
     <div class="row box">
         <div class="col-md-8">
             <h2 class="uptop"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> <a
-                    href="http://tangjie.me/blog/197.html" target="_blank">不容错过的产品经理书籍推荐</a></h2>
-            <h2 class="uptop"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> <a
-                    href="http://tangjie.me/blog/151.html" target="_blank">产品经理QQ群（by 唐杰）</a></h2>
-            <h2 class="uptop"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> <a
-                    href="http://tangjie.me/blog/143.html" target="_blank">我不是为了输赢，我就是认真</a></h2>
-            <article class="article-list-1 clearfix">
-                <header class="clearfix">
-                    <h1 class="post-title"><a href="blog.html">三套极简风格的WordPress主题模板</a></h1>
-                    <div class="post-meta">
-                        <span class="meta-span"><i class="fa fa-calendar"></i> 11月20日</span>
-                        <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a
-                                href="http://tangjie.me/at/fenxiang" rel="category tag">一些分享</a></span>
-                        <span class="meta-span"><i class="fa fa-commenting-o"></i> <a
-                                href="http://tangjie.me/blog/211.html#comments">1条评论</a></span>
-                        <span class="meta-span hidden-xs"><i class="fa fa-tags" aria-hidden="true"></i> <a
-                                href="http://tangjie.me/tag/jiestyle" rel="tag">JieStyle</a>,<a
-                                href="http://tangjie.me/tag/tangstyle" rel="tag">TangStyle</a>,<a
-                                href="http://tangjie.me/tag/wordpress" rel="tag">WordPress</a>,<a
-                                href="http://tangjie.me/tag/wordpress%e4%b8%bb%e9%a2%98" rel="tag">WordPress主题</a>,<a
-                                href="http://tangjie.me/tag/wordpress%e6%a8%a1%e6%9d%bf" rel="tag">WordPress模板</a>,<a
-                                href="http://tangjie.me/tag/%e5%93%8d%e5%ba%94%e5%bc%8fweb%e8%ae%be%e8%ae%a1" rel="tag">响应式Web设计</a></span>
-                    </div>
-                </header>
-                <div class="post-content clearfix">
-                    <p>现在提供写作服务的平台有很多，比如微信公众号、简书、知乎等都是大家首选的写作平台，所以很少有人再自己搭建独立博客了，但是我很早就有写作习惯，也一直有博客，所以如今也是多平台同步更新。
+                    href="http://shang.qq.com/wpa/qunwpa?idkey=d1d7f068205e1ff5dbcc1ecda23d5195d2ce61254c0f7188741c758111e1c2f2"
+                    target="_blank">技术交流群</a></h2>
 
-                        我的博客是...</p>
-                </div>
-            </article>
-            <article class="article-list-1 clearfix">
+            <article class="article-list-1 clearfix" th:each="item:${pageModel.list}">
                 <header class="clearfix">
-                    <h1 class="post-title"><a href="http://tangjie.me/blog/210.html">杰出PM专班改版了，并且启动商业实战项目</a></h1>
-                    <div class="post-meta">
-                        <span class="meta-span"><i class="fa fa-calendar"></i> 11月02日</span>
-                        <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a
-                                href="http://tangjie.me/at/fenxiang" rel="category tag">一些分享</a></span>
-                        <span class="meta-span"><i class="fa fa-commenting-o"></i> <a
-                                href="http://tangjie.me/blog/210.html#comments">2条评论</a></span>
-                        <span class="meta-span hidden-xs"><i class="fa fa-tags" aria-hidden="true"></i> <a
-                                href="http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%9f%b9%e8%ae%ad"
-                                rel="tag">产品经理培训</a>,<a
-                                href="http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%9f%b9%e8%ae%ad%e8%af%be%e7%a8%8b"
-                                rel="tag">产品经理培训课程</a>,<a
-                                href="http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e5%ad%a6%e4%b9%a0"
-                                rel="tag">产品经理学习</a>,<a href="http://tangjie.me/tag/%e6%9d%b0%e5%87%bapm"
-                                                        rel="tag">杰出PM</a>,<a
-                                href="http://tangjie.me/tag/%e6%9d%b0%e5%87%bapm%e5%ad%a6%e4%b9%a0%e7%8f%ad" rel="tag">杰出PM学习班</a>,<a
-                                href="http://tangjie.me/tag/%e6%9d%b0%e5%87%ba%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e8%af%be"
-                                rel="tag">杰出产品经理课</a></span>
-                    </div>
-                </header>
-                <div class="post-content clearfix">
-                    <p>两年前因为一位读者的诉求和建议，我办了一次实训班，当时正好是 iPhone 6
-                        发布，所以就起名为“肾6学习班”，在那次实训中，我们策划了三个产品方案，在推演和试运营的过程中，最终保留了“杰出PM”这个产品，并于20...</p>
-                </div>
-            </article>
-            <article class="article-list-1 clearfix">
-                <header class="clearfix">
-                    <h1 class="post-title"><a href="http://tangjie.me/blog/209.html">我们的网络环境实际上很恶劣</a></h1>
-                    <div class="post-meta">
-                        <span class="meta-span"><i class="fa fa-calendar"></i> 10月27日</span>
-                        <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a href="http://tangjie.me/at/zakan"
-                                                                                       rel="category tag">天下杂侃</a></span>
-                        <span class="meta-span"><i class="fa fa-commenting-o"></i> <a
-                                href="http://tangjie.me/blog/209.html#respond">没有评论</a></span>
-                        <span class="meta-span hidden-xs"><i class="fa fa-tags" aria-hidden="true"></i> <a
-                                href="http://tangjie.me/tag/black-mirror" rel="tag">Black Mirror</a>,<a
-                                href="http://tangjie.me/tag/%e9%bb%91%e9%95%9c" rel="tag">黑镜</a></span>
-                    </div>
-                </header>
-                <div class="post-content clearfix">
-                    <p>上周五英剧《Black Mirror》推出了第三季，于是在昨天晚上一口气全部看完了。Black
-                        Mirror最吸引我的地方就是展望未来的黑科技，但是看完第三季之后，让我深深的感受到了人类生存最大的威胁来自人类自己，这也是...</p>
-                </div>
-            </article>
-            <article class="article-list-1 clearfix">
-                <header class="clearfix">
-                    <h1 class="post-title"><a href="http://tangjie.me/blog/208.html">一套分析牛逼产品为何牛逼的框架</a></h1>
-                    <div class="post-meta">
-                        <span class="meta-span"><i class="fa fa-calendar"></i> 10月27日</span>
-                        <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a href="http://tangjie.me/at/yuedu"
-                                                                                       rel="category tag">阅读笔记</a></span>
-                        <span class="meta-span"><i class="fa fa-commenting-o"></i> <a
-                                href="http://tangjie.me/blog/208.html#respond">没有评论</a></span>
-                        <span class="meta-span hidden-xs"><i class="fa fa-tags" aria-hidden="true"></i> <a
-                                href="http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e9%9c%80%e6%b1%82%e5%88%86%e6%9e%90"
-                                rel="tag">产品需求分析</a>,<a
-                                href="http://tangjie.me/tag/%e5%b8%82%e5%9c%ba%e5%88%86%e6%9e%90" rel="tag">市场分析</a>,<a
-                                href="http://tangjie.me/tag/%e5%b8%82%e5%9c%ba%e7%8e%af%e5%a2%83%e5%88%86%e6%9e%90"
-                                rel="tag">市场环境分析</a>,<a
-                                href="http://tangjie.me/tag/%e7%94%a8%e6%88%b7%e5%88%86%e6%9e%90"
-                                rel="tag">用户分析</a></span>
-                    </div>
-                </header>
-                <div class="post-content clearfix">
-                    <p>最近在“湾区日报”的推荐中读到了一个系列文章，文中提出了一套分析牛逼产品为何牛逼的框架：稀缺资源在某公司引入一层抽象后不再稀缺，但新的稀缺资源出现了，并被该公司掌控 +
-                        用户有很多或昂贵或杀鸡用牛刀的选...</p>
-                </div>
-            </article>
-            <article class="article-list-1 clearfix">
-                <header class="clearfix">
-                    <h1 class="post-title"><a href="http://tangjie.me/blog/207.html">1024程序员节，写给年轻程序员的建议</a></h1>
-                    <div class="post-meta">
-                        <span class="meta-span"><i class="fa fa-calendar"></i> 10月24日</span>
-                        <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a
-                                href="http://tangjie.me/at/zhichang" rel="category tag">职场人生</a></span>
-                        <span class="meta-span"><i class="fa fa-commenting-o"></i> <a
-                                href="http://tangjie.me/blog/207.html#comments">2条评论</a></span>
-                        <span class="meta-span hidden-xs"><i class="fa fa-tags" aria-hidden="true"></i> <a
-                                href="http://tangjie.me/tag/1024" rel="tag">1024</a>,<a
-                                href="http://tangjie.me/tag/%e5%b7%a5%e7%a8%8b%e5%b8%88" rel="tag">工程师</a>,<a
-                                href="http://tangjie.me/tag/%e5%b7%a5%e7%a8%8b%e5%b8%88%e6%96%87%e5%8c%96" rel="tag">工程师文化</a>,<a
-                                href="http://tangjie.me/tag/%e7%a8%8b%e5%ba%8f%e5%91%98" rel="tag">程序员</a>,<a
-                                href="http://tangjie.me/tag/%e7%a8%8b%e5%ba%8f%e5%91%98%e8%8a%82"
-                                rel="tag">程序员节</a></span>
-                    </div>
-                </header>
-                <div class="post-content clearfix">
-                    <p>
-                        今天是10月24日，是江湖中的“程序员节”，回想起我的职业发展，十年前我就是以程序员的身份进入互联网行业工作的。无论后来我是做运营还是产品经理的工作，我的性格是极具“工程师文化”特征的，我想这种性格应该是...</p>
-                </div>
-            </article>
-            <article class="article-list-1 clearfix">
-                <header class="clearfix">
-                    <h1 class="post-title"><a href="http://tangjie.me/blog/206.html">产品经理如何使用工具提高生产力</a></h1>
-                    <div class="post-meta">
-                        <span class="meta-span"><i class="fa fa-calendar"></i> 10月21日</span>
-                        <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a
-                                href="http://tangjie.me/at/fenxiang" rel="category tag">一些分享</a></span>
-                        <span class="meta-span"><i class="fa fa-commenting-o"></i> <a
-                                href="http://tangjie.me/blog/206.html#respond">没有评论</a></span>
-                        <span class="meta-span hidden-xs"><i class="fa fa-tags" aria-hidden="true"></i> <a
-                                href="http://tangjie.me/tag/axure" rel="tag">Axure</a>,<a
-                                href="http://tangjie.me/tag/axure-rp" rel="tag">Axure RP</a>,<a
-                                href="http://tangjie.me/tag/balsamiq-mockups" rel="tag">Balsamiq Mockups</a>,<a
-                                href="http://tangjie.me/tag/%e5%8e%9f%e5%9e%8b%e8%ae%be%e8%ae%a1" rel="tag">原型设计</a>,<a
-                                href="http://tangjie.me/tag/%e5%a2%a8%e5%88%80" rel="tag">墨刀</a>,<a
-                                href="http://tangjie.me/tag/%e5%b8%82%e5%9c%ba%e5%88%86%e6%9e%90" rel="tag">市场分析</a>,<a
-                                href="http://tangjie.me/tag/%e5%b8%82%e5%9c%ba%e7%8e%af%e5%a2%83%e5%88%86%e6%9e%90"
-                                rel="tag">市场环境分析</a>,<a
-                                href="http://tangjie.me/tag/%e6%80%9d%e7%bb%b4%e5%af%bc%e5%9b%be" rel="tag">思维导图</a>,<a
-                                href="http://tangjie.me/tag/%e6%95%b0%e6%8d%ae%e5%88%86%e6%9e%90" rel="tag">数据分析</a>,<a
-                                href="http://tangjie.me/tag/%e7%94%a8%e6%88%b7%e5%88%86%e6%9e%90" rel="tag">用户分析</a>,<a
-                                href="http://tangjie.me/tag/%e7%ab%9e%e5%93%81%e5%88%86%e6%9e%90"
-                                rel="tag">竞品分析</a></span>
-                    </div>
-                </header>
-                <div class="post-content clearfix">
-                    <p>人类在进化过程中最显著的变化是学会了使用工具，早期人类有石器，现在产品经理有软件。在工作中合理的使用软件工具不仅仅能提升生产力，还能提升成果的品质。
-
-                        在为团队或者个人选择提高生产力的工具前，我们...</p>
-                </div>
-            </article>
-            <article class="article-list-1 clearfix">
-                <header class="clearfix">
-                    <h1 class="post-title"><a href="http://tangjie.me/blog/205.html">如何招聘产品经理</a></h1>
-                    <div class="post-meta">
-                        <span class="meta-span"><i class="fa fa-calendar"></i> 10月12日</span>
-                        <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a
-                                href="http://tangjie.me/at/zhichang" rel="category tag">职场人生</a>,<a
-                                href="http://tangjie.me/at/yuedu" rel="category tag">阅读笔记</a></span>
-                        <span class="meta-span"><i class="fa fa-commenting-o"></i> <a
-                                href="http://tangjie.me/blog/205.html#comments">3条评论</a></span>
-                        <span class="meta-span hidden-xs"><i class="fa fa-tags" aria-hidden="true"></i> <a
-                                href="http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e6%8b%9b%e8%81%98"
-                                rel="tag">产品经理招聘</a>,<a
-                                href="http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e6%8b%9b%e8%81%98%e8%a6%81%e6%b1%82"
-                                rel="tag">产品经理招聘要求</a>,<a
-                                href="http://tangjie.me/tag/%e7%a7%bb%e5%8a%a8%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86%e6%8b%9b%e8%81%98"
-                                rel="tag">移动产品经理招聘</a></span>
-                    </div>
-                </header>
-                <div class="post-content clearfix">
-                    <p>
-                        由于产品经理的知识体系庞大，综合能力要求极高，并且任职人员还将直接影响产品的生命周期成长，所以在互联网众多岗位中，招聘产品经理是一件非常复杂的事情，不像设计、技术等人员那么清晰的可以聚焦到准确的职...</p>
-                </div>
-            </article>
-            <article class="article-list-1 clearfix">
-                <header class="clearfix">
-                    <h1 class="post-title"><a href="http://tangjie.me/blog/204.html">中小企业SaaS产品的价值</a></h1>
-                    <div class="post-meta">
-                        <span class="meta-span"><i class="fa fa-calendar"></i> 10月08日</span>
-                        <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a href="http://tangjie.me/at/idea"
-                                                                                       rel="category tag">奇思妙想</a></span>
-                        <span class="meta-span"><i class="fa fa-commenting-o"></i> <a
-                                href="http://tangjie.me/blog/204.html#comments">1条评论</a></span>
-                        <span class="meta-span hidden-xs"><i class="fa fa-tags" aria-hidden="true"></i> <a
-                                href="http://tangjie.me/tag/saas" rel="tag">SaaS</a>,<a href="http://tangjie.me/tag/sor"
-                                                                                        rel="tag">SoR</a>,<a
-                                href="http://tangjie.me/tag/%e4%b8%ad%e5%b0%8f%e4%bc%81%e4%b8%9a" rel="tag">中小企业</a>,<a
-                                href="http://tangjie.me/tag/%e4%bc%81%e4%b8%9a%e6%9c%8d%e5%8a%a1" rel="tag">企业服务</a>,<a
-                                href="http://tangjie.me/tag/%e9%98%bf%e9%87%8c%e8%bd%af%e4%bb%b6"
-                                rel="tag">阿里软件</a></span>
-                    </div>
-                </header>
-                <div class="post-content clearfix">
-                    <p>在2007年1月份的时候，SaaS（Software as a
-                        Service）项目的先烈“阿里软件”诞生，这是阿里巴巴旗下的第5家子公司，只可惜出生太早，成了先烈。但是被称为资本寒冬的2016年里，企业服务的人才需求却增长了12.8%，...</p>
-                </div>
-            </article>
-            <article class="article-list-1 clearfix">
-                <header class="clearfix">
-                    <h1 class="post-title"><a href="http://tangjie.me/blog/203.html">iMessage App Store体验观察与商业机会</a>
+                    <h1 class="post-title"><a th:href="@{/blog/{id}(id=${item.id})}" th:text="${item.title}">三套极简风格的WordPress主题模板</a>
                     </h1>
                     <div class="post-meta">
-                        <span class="meta-span"><i class="fa fa-calendar"></i> 09月17日</span>
-                        <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a href="http://tangjie.me/at/tiyan"
-                                                                                       rel="category tag">产品体验</a></span>
-                        <span class="meta-span"><i class="fa fa-commenting-o"></i> <a
-                                href="http://tangjie.me/blog/203.html#comments">2条评论</a></span>
-                        <span class="meta-span hidden-xs"><i class="fa fa-tags" aria-hidden="true"></i> <a
-                                href="http://tangjie.me/tag/app-store" rel="tag">App Store</a>,<a
-                                href="http://tangjie.me/tag/imessage" rel="tag">iMessage</a>,<a
-                                href="http://tangjie.me/tag/imessage-app-store" rel="tag">iMessage App Store</a>,<a
-                                href="http://tangjie.me/tag/imessage%e5%ba%94%e7%94%a8%e5%95%86%e5%ba%97" rel="tag">iMessage应用商店</a>,<a
-                                href="http://tangjie.me/tag/%e5%ba%94%e7%94%a8%e5%95%86%e5%ba%97"
-                                rel="tag">应用商店</a></span>
-                    </div>
-                </header>
-                <div class="post-content clearfix">
-                    <p>第一时间入手了iPhone 7 Plus，本以为大屏不方便，用了两天也习惯了。iOS
-                        10虽然很早就有测试版了，但是一直没有好好体验，这次随着新机就认真玩了玩，总体来说没有新鲜感，但是新的iMessage却是认真体验和思考了...</p>
-                </div>
-            </article>
-            <article class="article-list-1 clearfix">
-                <header class="clearfix">
-                    <h1 class="post-title"><a href="http://tangjie.me/blog/202.html">做产品，创意不是最重要的</a></h1>
-                    <div class="post-meta">
-                        <span class="meta-span"><i class="fa fa-calendar"></i> 09月13日</span>
-                        <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a href="http://tangjie.me/at/ganwu"
-                                                                                       rel="category tag">心得感悟</a></span>
-                        <span class="meta-span"><i class="fa fa-commenting-o"></i> <a
-                                href="http://tangjie.me/blog/202.html#comments">2条评论</a></span>
-                        <span class="meta-span hidden-xs"><i class="fa fa-tags" aria-hidden="true"></i> <a
-                                href="http://tangjie.me/tag/%e4%ba%a7%e5%93%81%e7%ad%96%e5%88%92" rel="tag">产品策划</a>,<a
-                                href="http://tangjie.me/tag/%e5%8a%9f%e8%83%bd%e5%9e%8b%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86"
-                                rel="tag">功能型产品经理</a>,<a
-                                href="http://tangjie.me/tag/%e8%bf%90%e8%90%a5%e5%9e%8b%e4%ba%a7%e5%93%81%e7%bb%8f%e7%90%86"
-                                rel="tag">运营型产品经理</a></span>
-                    </div>
-                </header>
-                <div class="post-content clearfix">
-                    <p>在一次杰出PM北京线下小沙龙的时候，有一位朋友问我，什么样的情况下我会启动一个项目，当时我的回复是，当我想好怎么运营的时候。
+                        <span class="meta-span"><i class="fa fa-calendar"></i> <span
+                                th:text="${#dates.format(item.publishTime,'yyyy/MM/dd')}"></span></span>
+                        <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a
+                                th:href="@{/blog/catalog/{catalog}(catalog=${item.catalog})}" rel="category tag"
+                                th:text="${item.catalog}">一些分享</a></span>
 
-                        看着我的回复好像有些疑惑吧，运营的事怎么是产品经理考虑的。实际上这就是...</p>
-                </div>
+                    </div>
+                </header>
+
             </article>
-            <nav style="float:right">
-                <ul class='pagination'>
-                    <li class='active'><a href='http://tangjie.me/'>1<span class='sr-only'>(current)</span></a></li>
-                    <li><a href='http://tangjie.me/page/2'>2</a></li>
-                    <li><a href='http://tangjie.me/page/3'>3</a></li>
-                    <li><a href='http://tangjie.me/page/4'>4</a></li>
-                    <li><a href='http://tangjie.me/page/5'>5</a></li>
-                    <li><a href='http://tangjie.me/page/6'>6</a></li>
-                    <li><a href='http://tangjie.me/page/2'><i class='fa fa-angle-right' aria-hidden='true'></i></a></li>
-                    <li><a href='http://tangjie.me/page/21'><i class='fa fa-angle-double-right' aria-hidden='true'></i></a>
-                    </li>
-                </ul>
-            </nav>
+
+
         </div>
         <div class="col-md-4 hidden-xs hidden-sm">
 
             <aside class="widget clearfix">
-                <form id="searchform" action="http://tangjie.me">
+                <form id="searchform" action="/blog/search">
                     <div class="input-group">
-                        <input type="search" class="form-control" placeholder="搜索…" value="" name="s">
+                        <input type="search" class="form-control" placeholder="搜索…" value="" name="keyword"/>
       <span class="input-group-btn">
       <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
       </span></div>
@@ -343,53 +51,21 @@
                 <h4 class="widget-title">文章分类</h4>
                 <div class="widget-cat">
                     <ul>
-                        <li class="cat-item cat-item-20"><a href="http://tangjie.me/at/fenxiang" title="若有好东西，岂能我独享。">一些分享</a>
-                            (26)
+
+                        <li class="cat-item cat-item-20" th:each="catalog:${catalogs}">
+                            <a th:href="@{/blog/catalog/{catalog}(catalog=${catalog.id})}"
+                               th:text="${catalog.label}">分类</a>
                         </li>
-                        <li class="cat-item cat-item-21"><a href="http://tangjie.me/at/tiyan"
-                                                            title="体验各产品，总结些体会。">产品体验</a> (7)
-                        </li>
-                        <li class="cat-item cat-item-22"><a href="http://tangjie.me/at/sheji"
-                                                            title="产品的心得，设计的技巧。">产品设计</a> (28)
-                        </li>
-                        <li class="cat-item cat-item-11"><a href="http://tangjie.me/at/zakan"
-                                                            title="工作之外事，也可调侃谈。">天下杂侃</a> (35)
-                        </li>
-                        <li class="cat-item cat-item-23"><a href="http://tangjie.me/at/idea"
-                                                            title="思维的火花，有趣的想法。">奇思妙想</a> (9)
-                        </li>
-                        <li class="cat-item cat-item-1"><a href="http://tangjie.me/at/ganwu"
-                                                           title="产品的心得，工作的感悟">心得感悟</a> (10)
-                        </li>
-                        <li class="cat-item cat-item-234"><a href="http://tangjie.me/at/shu" title="产品经理书籍">杰出产品经理书
-                            v1.0</a> (33)
-                        </li>
-                        <li class="cat-item cat-item-361"><a href="http://tangjie.me/at/shu-2" title="产品经理书籍">杰出产品经理书
-                            v2.0</a> (9)
-                        </li>
-                        <li class="cat-item cat-item-12"><a href="http://tangjie.me/at/zhichang" title="职场也人生，学习更上进。">职场人生</a>
-                            (46)
-                        </li>
-                        <li class="cat-item cat-item-2"><a href="http://tangjie.me/at/yuedu" title="阅读笔记和读后感">阅读笔记</a>
-                            (6)
-                        </li>
+
                     </ul>
                 </div>
             </aside>
             <aside class="widget clearfix">
-                <h4 class="widget-title">热门文章</h4>
+                <h4 class="widget-title">推荐阅读</h4>
                 <ul class="widget-hot">
 
-                    <li><a href="http://tangjie.me/blog/196.html" target="_blank">【博客改版】极简风格，全新JieStyle</a></li>
-                    <li><a href="http://tangjie.me/blog/199.html" target="_blank">有营养的5条知识观点分享</a></li>
-                    <li><a href="http://tangjie.me/blog/205.html" target="_blank">如何招聘产品经理</a></li>
-                    <li><a href="http://tangjie.me/blog/192.html" target="_blank">产品经理不能错过的一本书</a></li>
-                    <li><a href="http://tangjie.me/blog/195.html" target="_blank">产品经理的野蛮生长</a></li>
-                    <li><a href="http://tangjie.me/blog/202.html" target="_blank">做产品，创意不是最重要的</a></li>
-                    <li><a href="http://tangjie.me/blog/203.html" target="_blank">iMessage App Store体验观察与商业机会</a></li>
-                    <li><a href="http://tangjie.me/blog/207.html" target="_blank">1024程序员节，写给年轻程序员的建议</a></li>
-                    <li><a href="http://tangjie.me/blog/210.html" target="_blank">杰出PM专班改版了，并且启动商业实战项目</a></li>
-                    <li><a href="http://tangjie.me/blog/193.html" target="_blank">轻松应对产品经理面试问题</a></li>
+                    <!--<li><a href="http://tangjie.me/blog/196.html" target="_blank">【博客改版】极简风格，全新JieStyle</a></li>-->
+
                 </ul>
             </aside>
 
@@ -398,21 +74,7 @@
     </div>
 </div>
 
-<footer id="footer">
-    <div class="copyright">
-        <p><i class="fa fa-copyright" aria-hidden="true"></i> 2011-2016 <b>产品经理@唐杰</b></p>
-        <p>Powered by <b>WordPress</b>. Theme by <a href="http://tangjie.me/jiestyle" title="JieStyle"
-                                                    target="_blank"><b>JieStyle Two</b></a> | 苏ICP备15021382号-1</p>
-    </div>
-    <div style="display:none;">
-        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        document.write(unescape("%3Cspan id='cnzz_stat_icon_1256801056'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256801056' type='text/javascript'%3E%3C/script%3E"));</script>
-    </div>
-</footer>
-<script type="text/javascript" src="js/skel.min.js"></script>
-<script type="text/javascript" src="js/util.min.js"></script>
-<script type="text/javascript" src="js/nav.js"></script>
-
+<div th:replace="footer"></div>
 
 </body>
 </html>

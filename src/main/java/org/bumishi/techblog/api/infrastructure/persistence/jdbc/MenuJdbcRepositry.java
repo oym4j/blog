@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by xieqiang on 2016/11/27.
  */
-@Repository
+@Repository("menuJdbcRepositry")
 public class MenuJdbcRepositry extends AbstractNavigationNodeJdbcRepositry {
 
     @Override
