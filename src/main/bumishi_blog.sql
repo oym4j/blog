@@ -27,7 +27,7 @@ CREATE TABLE `blog` (
   `md` text NOT NULL,
   `display` text,
   `auther` varchar(30) DEFAULT NULL,
-  `publishTime` date DEFAULT NULL,
+  `publishTime` datetime DEFAULT NULL,
   `img` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
