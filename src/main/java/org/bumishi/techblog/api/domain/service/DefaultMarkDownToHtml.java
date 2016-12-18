@@ -1,7 +1,7 @@
 package org.bumishi.techblog.api.domain.service;
 
 import org.bumishi.techblog.api.domain.model.MarkDownToHtml;
-import org.bumishi.techblog.api.web.controller.manage.command.AddBlogCommand;
+import org.bumishi.techblog.api.interfaces.manage.facade.command.WriteBlogCommand;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class DefaultMarkDownToHtml implements MarkDownToHtml {
 
     @Override
-    public String convert(AddBlogCommand markdown) {
+    public String convert(WriteBlogCommand markdown) {
         return markdown.getDisplay();
     }
 }

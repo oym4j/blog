@@ -1,31 +1,19 @@
-package org.bumishi.techblog.api.web.controller.manage.command;
+package org.bumishi.techblog.api.interfaces.manage.facade.command;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * Created by xieqiang on 2016/10/30.
  */
-public class NavigationCreateCommand {
+public class NavigationUpdateCommond {
 
-    private String id;
-
+    @NotBlank
     private String label;
-
-    private String path = "0";  //父节点的路径与父节点的id路径，用","分开，0表示父节点是根节点
-
-    private int order = 1;  //排序
-
     private String url;
-
-    private int type = 1;//扩展字段。菜单类型，供不同业务区分
+    private int order;
+    private int type;//扩展字段。菜单类型，供不同业务区分
 
     private String style;//样式，方便ui展现
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getLabel() {
         return label;
@@ -33,14 +21,6 @@ public class NavigationCreateCommand {
 
     public void setLabel(String label) {
         this.label = label;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
     }
 
     public int getOrder() {

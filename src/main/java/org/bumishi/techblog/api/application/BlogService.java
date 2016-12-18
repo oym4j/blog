@@ -23,4 +23,9 @@ public class BlogService {
         blogCommandRepositry.save(blog);
 
     }
+
+    public void updateBlog(Blog blog){
+        blogCommandRepositry.update(blog);
+
+    }
 }

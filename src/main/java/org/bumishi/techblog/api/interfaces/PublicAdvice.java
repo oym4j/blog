@@ -1,4 +1,4 @@
-package org.bumishi.techblog.api.web.controller;
+package org.bumishi.techblog.api.interfaces;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.StringUtils;

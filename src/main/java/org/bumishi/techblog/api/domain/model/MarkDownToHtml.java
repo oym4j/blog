@@ -1,6 +1,6 @@
 package org.bumishi.techblog.api.domain.model;
 
-import org.bumishi.techblog.api.web.controller.manage.command.AddBlogCommand;
+import org.bumishi.techblog.api.interfaces.manage.facade.command.WriteBlogCommand;
 
 /**
  * markdown转html
@@ -8,5 +8,5 @@ import org.bumishi.techblog.api.web.controller.manage.command.AddBlogCommand;
  */
 public interface MarkDownToHtml {
 
-    String convert(AddBlogCommand addBlogCommand);
+    String convert(WriteBlogCommand addBlogCommand);
 }

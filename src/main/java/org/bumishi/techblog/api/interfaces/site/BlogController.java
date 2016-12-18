@@ -1,4 +1,4 @@
-package org.bumishi.techblog.api.web.controller.site;
+package org.bumishi.techblog.api.interfaces.site;
 
 import org.bumishi.techblog.api.domain.model.Blog;
 import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;

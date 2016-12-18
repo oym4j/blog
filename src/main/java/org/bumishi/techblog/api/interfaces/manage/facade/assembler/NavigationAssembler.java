@@ -1,7 +1,7 @@
-package org.bumishi.techblog.api.web.controller.manage.assembler;
+package org.bumishi.techblog.api.interfaces.manage.facade.assembler;
 
-import org.bumishi.techblog.api.web.controller.manage.command.NavigationCreateCommand;
-import org.bumishi.techblog.api.web.controller.manage.command.NavigationUpdateCommond;
+import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreateCommand;
+import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationUpdateCommond;
 import org.bumishi.toolbox.model.NavigationNode;
 import org.springframework.beans.BeanUtils;
 

@@ -1,4 +1,4 @@
-package org.bumishi.techblog.api.web.controller.manage.command;
+package org.bumishi.techblog.api.interfaces.manage.facade.command;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.NotBlank;
 /**
  * Created by xieqiang on 2016/12/4.
  */
-public class AddBlogCommand {
+public class WriteBlogCommand {
 
     /**主标题*/
     @NotBlank
@@ -14,11 +14,12 @@ public class AddBlogCommand {
     private String title;
 
     /**副标题*/
-    @Length(min = 5,max = 30)
+    @Length(max = 30)
     private String sencondTitle;
 
     /**分类*/
-    @Length(max = 20)
+    @NotBlank
+    @Length(max = 30)
     private String catalog;
 
     /**markdownd原内容*/
@@ -28,6 +29,7 @@ public class AddBlogCommand {
     /**
      * 展示内容
      * */
+    @NotBlank
     private String display;
 
 //    @NotBlank
