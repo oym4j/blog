@@ -1,10 +1,11 @@
 package org.bumishi.techblog.api.interfaces.manage.facade;
 
-import org.bumishi.techblog.api.domain.repository.NavigationNodeRepositry;
+
 import org.bumishi.techblog.api.interfaces.manage.facade.assembler.NavigationAssembler;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreateCommand;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationUpdateCommond;
 import org.bumishi.toolbox.model.NavigationNode;
+import org.bumishi.toolbox.model.repositry.NavigationNodeRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

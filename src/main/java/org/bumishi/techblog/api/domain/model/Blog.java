@@ -19,7 +19,7 @@ public class Blog implements Serializable{
 	 private String title;
 
 	/**副标题*/
-	private String sencondTitle;
+	private String secondTitle;
 
 	/**分类*/
 	 private String catalog;
@@ -107,12 +107,12 @@ public class Blog implements Serializable{
 		this.img = img;
 	}
 
-	public String getSencondTitle() {
-		return sencondTitle;
+	public String getSecondTitle() {
+		return secondTitle;
 	}
 
-	public void setSencondTitle(String sencondTitle) {
-		this.sencondTitle = sencondTitle;
+	public void setSecondTitle(String secondTitle) {
+		this.secondTitle = secondTitle;
 	}
 
 	public static String convertCatalog(String catalog){

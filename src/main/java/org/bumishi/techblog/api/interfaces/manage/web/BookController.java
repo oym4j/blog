@@ -12,7 +12,7 @@ import javax.validation.Valid;
  * 提供admin管理接口
  * Created by xieqiang on 2016/11/27.
  */
-@RestController
+@RestController("adminBookController")
 @RequestMapping("/admin/book")
 public class BookController {
 

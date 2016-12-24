@@ -2,7 +2,7 @@ package org.bumishi.techblog.api.interfaces.site;
 
 import org.bumishi.techblog.api.domain.model.Blog;
 import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
-import org.bumishi.techblog.api.domain.repository.NavigationNodeRepositry;
+import org.bumishi.toolbox.model.repositry.NavigationNodeRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

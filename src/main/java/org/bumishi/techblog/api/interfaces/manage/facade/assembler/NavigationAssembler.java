@@ -4,10 +4,12 @@ import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreat
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationUpdateCommond;
 import org.bumishi.toolbox.model.NavigationNode;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by xieqiang on 2016/10/30.
  */
+@Component
 public class NavigationAssembler {
 
     public static NavigationNode updateCommendToDomain(String id, NavigationUpdateCommond updateCommond) {

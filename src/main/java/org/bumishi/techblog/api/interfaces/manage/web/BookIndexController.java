@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @author qiang.xie
  * @date 2016/9/18
  */
-@RestController
+@RestController("adminBookIndexController")
 @RequestMapping("/admin/bookindex")
 public class BookIndexController {
 

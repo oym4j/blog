@@ -2,6 +2,7 @@ package org.bumishi.techblog.api.interfaces.manage.facade;
 
 import org.bumishi.techblog.api.application.BlogService;
 import org.bumishi.techblog.api.domain.model.Blog;
+import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
 import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
 import org.bumishi.techblog.api.interfaces.manage.facade.assembler.BlogAssember;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.WriteBlogCommand;
@@ -11,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by xieqiang on 2016/12/18.
@@ -28,6 +29,10 @@ public class BlogFacade {
 
     @Autowired
     private BlogQueryRepositry blogQueryRepositry;
+
+
+    @Autowired
+    private BlogCommandRepositry blogCommandRepositry;
 
     public void createBlog(WriteBlogCommand blogCommand){
         blogService.addBlog(blogAssember.addBlogCommandToDomain(blogCommand));
@@ -49,10 +54,7 @@ public class BlogFacade {
         pageModel.setPage(blogPageModel.getPage());
         pageModel.setSize(blogPageModel.getSize());
         if(!CollectionUtils.isEmpty(blogPageModel.getList())) {
-            List<BlogDto> blogDtos = new ArrayList<>();
-            for (Blog blog : blogPageModel.getList()) {
-                blogDtos.add(blogAssember.toDto(blog));
-            }
+            List<BlogDto> blogDtos = blogPageModel.getList().stream().map(blog -> blogAssember.toDto(blog)).collect(Collectors.toList());
             pageModel.setList(blogDtos);
         }
         return pageModel;

@@ -1,7 +1,7 @@
 package org.bumishi.techblog.api.infrastructure.persistence.jdbc;
 
-import org.bumishi.techblog.api.domain.model.SiteConfig;
-import org.bumishi.techblog.api.domain.repository.SiteConfigRepositry;
+import org.bumishi.toolbox.model.SiteConfig;
+import org.bumishi.toolbox.model.repositry.SiteConfigRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,6 +15,7 @@ public class SiteConfigJdbcRepositry implements SiteConfigRepositry {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
 
     @Override
     public void update(SiteConfig siteConfig) {

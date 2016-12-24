@@ -2,9 +2,9 @@ package org.bumishi.techblog.api.interfaces;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.StringUtils;
-import org.bumishi.techblog.api.domain.repository.NavigationNodeRepositry;
 import org.bumishi.toolbox.model.RestResponse;
 import org.bumishi.toolbox.model.TreeModel;
+import org.bumishi.toolbox.model.repositry.NavigationNodeRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;

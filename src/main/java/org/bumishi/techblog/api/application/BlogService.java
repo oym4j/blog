@@ -1,8 +1,8 @@
 package org.bumishi.techblog.api.application;
 
 import org.bumishi.techblog.api.domain.model.Blog;
-import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
 import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
+import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +28,10 @@ public class BlogService {
         blogCommandRepositry.update(blog);
 
     }
+
+    public void delete(String id) {
+        blogCommandRepositry.remove(id);
+    }
+
+
 }

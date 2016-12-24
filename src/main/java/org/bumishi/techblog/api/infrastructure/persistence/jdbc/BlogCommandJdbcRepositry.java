@@ -22,7 +22,7 @@ public class BlogCommandJdbcRepositry implements BlogCommandRepositry {
 
     @Override
     public void update(Blog blog) {
-        jdbcTemplate.update("update blog SET title=?,`catalog`=?,display=?,md=?,auther=?,publishTime=?,img=? WHERE IDENTITY =?",blog.getTitle(),blog.getCatalog(),blog.getDisplay(),blog.getMd(),blog.getAuther(),blog.getPublishTime(),blog.getImg(),blog.getId());
+        jdbcTemplate.update("update blog SET title=?,`catalog`=?,display=?,md=?,auther=?,publishTime=?,img=? WHERE id =?", blog.getTitle(), blog.getCatalog(), blog.getDisplay(), blog.getMd(), blog.getAuther(), blog.getPublishTime(), blog.getImg(), blog.getId());
 
     }
 
