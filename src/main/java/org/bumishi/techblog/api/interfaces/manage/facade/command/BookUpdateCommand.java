@@ -9,6 +9,8 @@ public class BookUpdateCommand {
 
     private String catalog;
 
+    private String img;//封面图片地址
+
     private String description;
 
     public String getName() {
@@ -33,5 +35,13 @@ public class BookUpdateCommand {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

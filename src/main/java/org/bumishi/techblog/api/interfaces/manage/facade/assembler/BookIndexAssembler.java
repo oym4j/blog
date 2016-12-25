@@ -1,8 +1,8 @@
 package org.bumishi.techblog.api.interfaces.manage.facade.assembler;
 
 import org.bumishi.techblog.api.domain.model.BookIndex;
-import org.bumishi.techblog.api.interfaces.manage.facade.command.BookIndexCreateCommand;
-import org.bumishi.techblog.api.interfaces.manage.facade.command.BookIndexUpdateCommand;
+import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreateCommand;
+import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationUpdateCommond;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -12,15 +12,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class BookIndexAssembler {
 
-    public BookIndex createCommandToDomain(BookIndexCreateCommand bookIndexCreateCommand){
+    public BookIndex createCommandToDomain(NavigationCreateCommand bookIndexCreateCommand,String bookId){
         BookIndex bookIndex=new BookIndex();
         BeanUtils.copyProperties(bookIndexCreateCommand,bookIndex);
+        bookIndex.setBookId(bookId);
         return bookIndex;
     }
 
-    public BookIndex updateCommandToDomain(String id,BookIndexUpdateCommand bookIndexCreateCommand){
+    public BookIndex updateCommandToDomain(String bookId,NavigationUpdateCommond bookIndexCreateCommand,String id){
         BookIndex bookIndex=new BookIndex();
         BeanUtils.copyProperties(bookIndexCreateCommand,bookIndex);
+        bookIndex.setBookId(bookId);
         bookIndex.setId(id);
         return bookIndex;
     }

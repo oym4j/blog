@@ -68,4 +68,8 @@ public class BookIndexJdbcRepositry  implements BookIndexRepositry {
         return (List<BookIndex>) new TreeModel(jdbcTemplate.query("select * from book_index where level=1",BeanPropertyRowMapper.newInstance(BookIndex.class))).buildTree();
     }
 
+    @Override
+    public List<BookIndex> getByBook(String bookId) {
+        return (List<BookIndex>) new TreeModel(jdbcTemplate.query("select * from book_index where bookId=?",BeanPropertyRowMapper.newInstance(BookIndex.class),bookId)).buildTree();
+    }
 }

@@ -2,11 +2,13 @@ package org.bumishi.techblog.api.interfaces.manage.web;
 
 import org.bumishi.techblog.api.domain.repository.BookIndexRepositry;
 import org.bumishi.techblog.api.interfaces.manage.facade.BookIndexFacade;
-import org.bumishi.techblog.api.interfaces.manage.facade.command.BookIndexCreateCommand;
-import org.bumishi.techblog.api.interfaces.manage.facade.command.BookIndexUpdateCommand;
+import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreateCommand;
+import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationUpdateCommond;
 import org.bumishi.toolbox.model.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author qiang.xie
@@ -22,22 +24,16 @@ public class BookIndexController {
     @Autowired
     protected BookIndexRepositry bookIndexRepositry;
 
-    @PostMapping(value = "/add")
-    public RestResponse create(BookIndexCreateCommand bookindex) {
-        bookIndexFacade.add(bookindex);
+    @PostMapping(value = "/{bookId}/add")
+    public RestResponse create(@PathVariable("bookId")String bookId,@RequestBody @Valid NavigationCreateCommand menu) {
+        bookIndexFacade.add(menu,bookId);
         return RestResponse.ok();
     }
 
 
-    @PostMapping(value = "/{id}/modify")
-    public RestResponse modify(@PathVariable("id") String id, BookIndexUpdateCommand bookindex) {
-        bookIndexFacade.update(id,bookindex);
-        return RestResponse.ok();
-    }
-
-    @PostMapping(value = "/{id}/status")
-    public RestResponse switchStatus(@PathVariable("id") String id, @RequestParam("disable") boolean disable) {
-       bookIndexFacade.switchStatus(id,disable);
+    @PostMapping(value = "/{bookId}/{id}/modify")
+    public RestResponse modify(@PathVariable("bookId")String bookId,@PathVariable("id") String id,@RequestBody @Valid NavigationUpdateCommond menu) {
+        bookIndexFacade.update(bookId,menu,id);
         return RestResponse.ok();
     }
 
@@ -53,10 +49,9 @@ public class BookIndexController {
         return RestResponse.ok(bookIndexRepositry.get(id));
     }
 
-    @GetMapping
-    public RestResponse list() {
-        return RestResponse.ok(bookIndexRepositry.list());
+    @GetMapping("/{bookId}")
+    public RestResponse list(@PathVariable("bookId")String bookId) {
+        return RestResponse.ok(bookIndexRepositry.getByBook(bookId));
     }
-
 
 }

@@ -15,6 +15,8 @@ public class Book implements Serializable{
 
     private String catalog;
 
+    private String img;//封面图片地址
+
     private String description;
 
     private Date publishTime;
@@ -43,6 +45,14 @@ public class Book implements Serializable{
 
     public void setCatalog(String catalog) {
         this.catalog = catalog;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getDescription() {
