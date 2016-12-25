@@ -1,5 +1,6 @@
 package org.bumishi.techblog.api.interfaces.manage.web;
 
+import org.bumishi.techblog.api.domain.repository.BookIndexRepositry;
 import org.bumishi.techblog.api.interfaces.manage.facade.BookIndexFacade;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.BookIndexCreateCommand;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.BookIndexUpdateCommand;
@@ -11,44 +12,50 @@ import org.springframework.web.bind.annotation.*;
  * @author qiang.xie
  * @date 2016/9/18
  */
-@RestController("adminBookIndexController")
+@RestController
 @RequestMapping("/admin/bookindex")
 public class BookIndexController {
 
     @Autowired
     protected BookIndexFacade bookIndexFacade;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/add")
+    @Autowired
+    protected BookIndexRepositry bookIndexRepositry;
+
+    @PostMapping(value = "/add")
     public RestResponse create(BookIndexCreateCommand bookindex) {
         bookIndexFacade.add(bookindex);
         return RestResponse.ok();
     }
 
 
-    @RequestMapping(value = "/{id}/modify", method = RequestMethod.POST)
+    @PostMapping(value = "/{id}/modify")
     public RestResponse modify(@PathVariable("id") String id, BookIndexUpdateCommand bookindex) {
         bookIndexFacade.update(id,bookindex);
         return RestResponse.ok();
     }
 
-    @RequestMapping(value = "/{id}/status", method = RequestMethod.PUT)
-    @ResponseBody
+    @PostMapping(value = "/{id}/status")
     public RestResponse switchStatus(@PathVariable("id") String id, @RequestParam("disable") boolean disable) {
        bookIndexFacade.switchStatus(id,disable);
         return RestResponse.ok();
     }
 
-    @RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
-    @ResponseBody
+    @PostMapping(value = "/{id}/delete")
     public RestResponse delete(@PathVariable("id") String id) {
-        bookIndexFacade.delete(id);
+        bookIndexRepositry.remove(id);
         return RestResponse.ok();
     }
 
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping("/{id}")
+    public RestResponse get(@PathVariable("id")String id){
+        return RestResponse.ok(bookIndexRepositry.get(id));
+    }
+
+    @GetMapping
     public RestResponse list() {
-        return RestResponse.ok(bookIndexFacade.list());
+        return RestResponse.ok(bookIndexRepositry.list());
     }
 
 

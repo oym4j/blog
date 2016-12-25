@@ -37,7 +37,7 @@ public class BookController {
             return RestResponse.ok(blogFacade.getBook(id));
     }
 
-    @GetMapping("/")
+    @GetMapping
     public RestResponse get(@RequestParam(value = "page",required = false,defaultValue = "1") int page){
         return RestResponse.ok(blogFacade.pageQuery(page,20));
     }

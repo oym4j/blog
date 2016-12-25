@@ -17,12 +17,12 @@ public class BlogCommandJdbcRepositry implements BlogCommandRepositry {
 
     @Override
     public void save(Blog blog) {
-        jdbcTemplate.update("INSERT blog (id,title,secondTitle,`catalog`,display,md,auther,publishTime,img) VALUE (?,?,?,?,?,?,?,?,?)",blog.getId(),blog.getTitle(),blog.getSencondTitle(),blog.getCatalog(),blog.getDisplay(),blog.getMd(),blog.getAuther(),blog.getPublishTime(),blog.getImg());
+        jdbcTemplate.update("INSERT blog (id,title,secondTitle,`catalog`,display,md,auther,publishTime,img) VALUE (?,?,?,?,?,?,?,?,?)",blog.getId(),blog.getTitle(),blog.getSecondTitle(),blog.getCatalog(),blog.getDisplay(),blog.getMd(),blog.getAuther(),blog.getPublishTime(),blog.getImg());
     }
 
     @Override
     public void update(Blog blog) {
-        jdbcTemplate.update("update blog SET title=?,`catalog`=?,display=?,md=?,auther=?,publishTime=?,img=? WHERE id =?", blog.getTitle(), blog.getCatalog(), blog.getDisplay(), blog.getMd(), blog.getAuther(), blog.getPublishTime(), blog.getImg(), blog.getId());
+        jdbcTemplate.update("update blog SET title=?,secondTitle=?,`catalog`=?,display=?,md=?,auther=?,publishTime=?,img=? WHERE id =?", blog.getTitle(),blog.getSecondTitle(), blog.getCatalog(), blog.getDisplay(), blog.getMd(), blog.getAuther(), blog.getPublishTime(), blog.getImg(), blog.getId());
 
     }
 

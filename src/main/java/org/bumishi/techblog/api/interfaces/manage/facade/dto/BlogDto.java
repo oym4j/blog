@@ -14,7 +14,7 @@ public class BlogDto {
     private String title;
 
     /**副标题*/
-    private String sencondTitle;
+    private String secondTitle;
 
     /**分类标识*/
     private String catalog;
@@ -62,12 +62,12 @@ public class BlogDto {
         this.title = title;
     }
 
-    public String getSencondTitle() {
-        return sencondTitle;
+    public String getSecondTitle() {
+        return secondTitle;
     }
 
-    public void setSencondTitle(String sencondTitle) {
-        this.sencondTitle = sencondTitle;
+    public void setSecondTitle(String secondTitle) {
+        this.secondTitle = secondTitle;
     }
 
     public String getCatalog() {

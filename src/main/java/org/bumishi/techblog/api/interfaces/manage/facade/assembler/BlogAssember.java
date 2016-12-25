@@ -46,7 +46,7 @@ public class BlogAssember {
     public BlogDto toDto(Blog blog){
         BlogDto blogDto=new BlogDto();
         BeanUtils.copyProperties(blog,blogDto);
-        blogDto.setCatalogDisplay(blog.getDisplay());           //todo
+        blogDto.setCatalogDisplay(blog.getCatalog());           //todo
         blogDto.setSummary("");
         blogDto.setLink("/blog/"+blog.getId());
         return blogDto;
