@@ -1,5 +1,6 @@
 package org.bumishi.techblog.api.interfaces.manage.web;
 
+import org.bumishi.techblog.api.application.NavService;
 import org.bumishi.techblog.api.interfaces.manage.facade.NavFacade;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreateCommand;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationUpdateCommond;
@@ -21,6 +22,9 @@ public class NavController {
 
     @Autowired
     protected NavFacade navFacade;
+
+    @Autowired
+    protected NavService navService;
 
     @Autowired
     @Qualifier("menuJdbcRepositry")
@@ -59,7 +63,7 @@ public class NavController {
 
     @GetMapping
     public RestResponse list() {
-        return RestResponse.ok(navigationNodeRepositry.list());
+        return RestResponse.ok(navService.listByOrder());
     }
 
 

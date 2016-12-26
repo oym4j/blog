@@ -31,9 +31,9 @@ public class BookIndexController {
     }
 
 
-    @PostMapping(value = "/{bookId}/{id}/modify")
-    public RestResponse modify(@PathVariable("bookId")String bookId,@PathVariable("id") String id,@RequestBody @Valid NavigationUpdateCommond menu) {
-        bookIndexFacade.update(bookId,menu,id);
+    @PostMapping(value = "/{id}/modify")
+    public RestResponse modify(@PathVariable("id") String id, @RequestBody @Valid NavigationUpdateCommond menu) {
+        bookIndexFacade.update(menu, id);
         return RestResponse.ok();
     }
 
@@ -43,15 +43,18 @@ public class BookIndexController {
         return RestResponse.ok();
     }
 
+    @PostMapping(value = "/{id}/status")
+    @ResponseBody
+    public RestResponse switchStatus(@PathVariable("id") String id, @RequestParam("disable") boolean disable) {
+        bookIndexFacade.switchStatus(id, disable);
+        return RestResponse.ok();
+    }
+
 
     @GetMapping("/{id}")
     public RestResponse get(@PathVariable("id")String id){
         return RestResponse.ok(bookIndexRepositry.get(id));
     }
 
-    @GetMapping("/{bookId}")
-    public RestResponse list(@PathVariable("bookId")String bookId) {
-        return RestResponse.ok(bookIndexRepositry.getByBook(bookId));
-    }
 
 }

@@ -1,6 +1,9 @@
 package org.bumishi.techblog.api.interfaces.manage.web;
 
+import org.bumishi.techblog.api.application.BookService;
+import org.bumishi.techblog.api.domain.repository.BookIndexRepositry;
 import org.bumishi.techblog.api.interfaces.manage.facade.BookFacade;
+import org.bumishi.techblog.api.interfaces.manage.facade.BookIndexFacade;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.BookUpdateCommand;
 import org.bumishi.toolbox.model.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,27 +21,49 @@ public class BookController {
 
 
     @Autowired
-    protected BookFacade blogFacade;
+    protected BookFacade bookFacade;
+
+    @Autowired
+    protected BookIndexFacade bookIndexFacade;
+
+
+    @Autowired
+    protected BookService bookService;
+
+    @Autowired
+    protected BookIndexRepositry bookIndexRepositry;
 
     @PostMapping("/add")
     public RestResponse addBook(@RequestBody @Valid BookUpdateCommand blog){
-        blogFacade.createBook(blog);
+        bookFacade.createBook(blog);
         return RestResponse.ok();
     }
 
     @PostMapping("/{id}/update")
     public RestResponse updateBook(@PathVariable("id")String id,@RequestBody @Valid BookUpdateCommand blog){
-        blogFacade.updateBook(id,blog);
+        bookFacade.updateBook(id, blog);
+        return RestResponse.ok();
+    }
+
+    @PostMapping(value = "/{id}/delete")
+    public RestResponse delete(@PathVariable("id") String id) {
+        bookFacade.delete(id);
         return RestResponse.ok();
     }
 
     @GetMapping("/{id}")
     public RestResponse get(@PathVariable("id")String id){
-            return RestResponse.ok(blogFacade.getBook(id));
+        return RestResponse.ok(bookFacade.getBook(id));
     }
 
     @GetMapping
     public RestResponse get(@RequestParam(value = "page",required = false,defaultValue = "1") int page){
-        return RestResponse.ok(blogFacade.pageQuery(page,20));
+        return RestResponse.ok(bookFacade.pageQuery(page, 20));
+    }
+
+
+    @GetMapping("/{bookId}/indexs")
+    public RestResponse list(@PathVariable("bookId") String bookId) {
+        return RestResponse.ok(bookService.listByBookId(bookId));
     }
 }

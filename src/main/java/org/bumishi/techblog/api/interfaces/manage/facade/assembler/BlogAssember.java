@@ -5,8 +5,10 @@ import org.bumishi.techblog.api.domain.model.BlogId;
 import org.bumishi.techblog.api.domain.model.MarkDownToHtml;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.WriteBlogCommand;
 import org.bumishi.techblog.api.interfaces.manage.facade.dto.BlogDto;
+import org.bumishi.toolbox.model.repositry.NavigationNodeRepositry;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -19,6 +21,10 @@ public class BlogAssember {
 
     @Autowired
     protected BlogId blogId;
+
+    @Autowired
+    @Qualifier("catalogJdbcRepositry")
+    protected NavigationNodeRepositry navigationNodeRepositry;
 
     @Autowired
     protected MarkDownToHtml markDownToHtml;
@@ -46,7 +52,7 @@ public class BlogAssember {
     public BlogDto toDto(Blog blog){
         BlogDto blogDto=new BlogDto();
         BeanUtils.copyProperties(blog,blogDto);
-        blogDto.setCatalogDisplay(blog.getCatalog());           //todo
+        blogDto.setCatalogDisplay(navigationNodeRepositry.get(blog.getCatalog()).getLabel());
         blogDto.setSummary("");
         blogDto.setLink("/blog/"+blog.getId());
         return blogDto;

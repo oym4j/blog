@@ -4,8 +4,13 @@ import org.bumishi.techblog.api.domain.model.Book;
 import org.bumishi.techblog.api.domain.repository.BookQueryRepositry;
 import org.bumishi.toolbox.model.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
+
+import java.util.List;
 
 /**
  * Created by xieqiang on 2016/11/27.
@@ -18,16 +23,36 @@ public class BookQueryJdbcRepositry implements BookQueryRepositry {
 
     @Override
     public Book get(String id) {
-        return null;
+        try {
+            return jdbcTemplate.queryForObject("select * from book where id=?", BeanPropertyRowMapper.newInstance(Book.class), id);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     @Override
     public PageModel<Book> queryByCatalog(int page, int size, String catalog) {
-        return null;
+        PageModel<Book> pageModel = new PageModel<>(page, size);
+        List<Book> blogs = jdbcTemplate.query("select * from book where `catalog`=? limit ? offset ?", BeanPropertyRowMapper.newInstance(Book.class), catalog, size, (page - 1) * size);
+        if (!CollectionUtils.isEmpty(blogs)) {
+            pageModel.setList(blogs);
+            if (blogs.size() >= size) {
+                pageModel.setHasNext(true);
+            }
+        }
+        return pageModel;
     }
 
     @Override
     public PageModel<Book> queryByTime(int page, int size) {
-        return null;
+        PageModel<Book> pageModel = new PageModel<>(page, size);
+        List<Book> blogs = jdbcTemplate.query("select * from book ORDER BY publishTime DESC limit ? offset ?", BeanPropertyRowMapper.newInstance(Book.class), size, (page - 1) * size);
+        if (!CollectionUtils.isEmpty(blogs)) {
+            pageModel.setList(blogs);
+            if (blogs.size() >= size) {
+                pageModel.setHasNext(true);
+            }
+        }
+        return pageModel;
     }
 }

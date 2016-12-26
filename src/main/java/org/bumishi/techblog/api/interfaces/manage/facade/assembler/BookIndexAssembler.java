@@ -19,10 +19,9 @@ public class BookIndexAssembler {
         return bookIndex;
     }
 
-    public BookIndex updateCommandToDomain(String bookId,NavigationUpdateCommond bookIndexCreateCommand,String id){
+    public BookIndex updateCommandToDomain(NavigationUpdateCommond bookIndexCreateCommand, String id) {
         BookIndex bookIndex=new BookIndex();
         BeanUtils.copyProperties(bookIndexCreateCommand,bookIndex);
-        bookIndex.setBookId(bookId);
         bookIndex.setId(id);
         return bookIndex;
     }

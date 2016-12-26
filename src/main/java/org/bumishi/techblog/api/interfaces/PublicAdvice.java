@@ -2,11 +2,10 @@ package org.bumishi.techblog.api.interfaces;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.StringUtils;
+import org.bumishi.techblog.api.application.CatalogService;
+import org.bumishi.techblog.api.application.NavService;
 import org.bumishi.toolbox.model.RestResponse;
-import org.bumishi.toolbox.model.TreeModel;
-import org.bumishi.toolbox.model.repositry.NavigationNodeRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,8 +23,10 @@ import java.io.IOException;
 public class PublicAdvice {
 
     @Autowired
-    @Qualifier("menuJdbcRepositry")
-    protected NavigationNodeRepositry navigationNodeRepositry;
+    private NavService navService;
+
+    @Autowired
+    private CatalogService catalogService;
 
 
     @ExceptionHandler
@@ -45,7 +46,8 @@ public class PublicAdvice {
 
     @ModelAttribute
     public void addCommonModel(Model model, HttpServletRequest request) {
-        model.addAttribute("navs", new TreeModel(navigationNodeRepositry.list()).buildTree());
+        model.addAttribute("navs", navService.listWithTree(false));
+        model.addAttribute("catalogs", catalogService.listWithTree(false));
     }
 
 

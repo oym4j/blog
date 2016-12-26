@@ -2,8 +2,15 @@ package org.bumishi.techblog.api.interfaces.manage.facade.assembler;
 
 import org.bumishi.techblog.api.domain.model.Book;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.BookUpdateCommand;
+import org.bumishi.techblog.api.interfaces.manage.facade.dto.BookDto;
+import org.bumishi.toolbox.model.repositry.NavigationNodeRepositry;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by xieqiang on 2016/12/18.
@@ -11,8 +18,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class BookAssembler {
 
+    @Autowired
+    @Qualifier("catalogJdbcRepositry")
+    protected NavigationNodeRepositry navigationNodeRepositry;
+
     public Book createComandToDomain(BookUpdateCommand bookUpdateCommand){
         Book book=new Book();
+        book.setId(UUID.randomUUID().toString());
+        book.setPublishTime(new Date());
         BeanUtils.copyProperties(bookUpdateCommand,book);
         return book;
     }
@@ -20,7 +33,15 @@ public class BookAssembler {
     public Book updateCommandToDomain(String id,BookUpdateCommand bookUpdateCommand){
         Book book=new Book();
         BeanUtils.copyProperties(bookUpdateCommand,book);
+        book.setPublishTime(new Date());
         book.setId(id);
         return book;
+    }
+
+    public BookDto toDto(Book book) {
+        BookDto bookDto = new BookDto();
+        BeanUtils.copyProperties(book, bookDto);
+        bookDto.setCatalogDisplay(navigationNodeRepositry.get(book.getCatalog()).getLabel());
+        return bookDto;
     }
 }

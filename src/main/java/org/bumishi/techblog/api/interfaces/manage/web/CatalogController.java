@@ -1,5 +1,6 @@
 package org.bumishi.techblog.api.interfaces.manage.web;
 
+import org.bumishi.techblog.api.application.CatalogService;
 import org.bumishi.techblog.api.interfaces.manage.facade.CatalogFacade;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreateCommand;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationUpdateCommond;
@@ -21,6 +22,9 @@ public class CatalogController {
 
     @Autowired
   private CatalogFacade catalogFacade;
+
+    @Autowired
+    private CatalogService catalogService;
 
     @Autowired
     @Qualifier("catalogJdbcRepositry")
@@ -62,7 +66,7 @@ public class CatalogController {
 
     @GetMapping
     public RestResponse list() {
-        return RestResponse.ok(navigationNodeRepositry.list());
+        return RestResponse.ok(catalogService.listByOrder());
     }
 
 

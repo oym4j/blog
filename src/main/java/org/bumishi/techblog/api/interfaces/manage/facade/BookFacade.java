@@ -1,13 +1,19 @@
 package org.bumishi.techblog.api.interfaces.manage.facade;
 
+import org.bumishi.techblog.api.application.BookService;
 import org.bumishi.techblog.api.domain.model.Book;
 import org.bumishi.techblog.api.domain.repository.BookCommandRepositry;
 import org.bumishi.techblog.api.domain.repository.BookQueryRepositry;
 import org.bumishi.techblog.api.interfaces.manage.facade.assembler.BookAssembler;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.BookUpdateCommand;
+import org.bumishi.techblog.api.interfaces.manage.facade.dto.BookDto;
 import org.bumishi.toolbox.model.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by xieqiang on 2016/12/18.
@@ -23,6 +29,9 @@ public class BookFacade {
 
     @Autowired
     private BookAssembler bookAssembler;
+
+    @Autowired
+    private BookService bookService;
     
 
     public void createBook(BookUpdateCommand bookCommand){
@@ -33,12 +42,25 @@ public class BookFacade {
         bookCommandRepositry.update(bookAssembler.updateCommandToDomain(id,bookCommand));
     }
 
-    public Book getBook(String id){
-       return bookQueryRepositry.get(id);
+    public BookDto getBook(String id) {
+        return bookAssembler.toDto(bookQueryRepositry.get(id));
     }
 
-    public PageModel<Book> pageQuery(int page,int size){
-     return bookQueryRepositry.queryByTime(page,size);
+    public void delete(String id) {
+        bookService.delete(id);
+    }
+
+    public PageModel<BookDto> pageQuery(int page, int size) {
+        PageModel<BookDto> pageModel = new PageModel();
+        PageModel<Book> blogPageModel = bookQueryRepositry.queryByTime(page, size);
+        pageModel.setHasNext(blogPageModel.isHasNext());
+        pageModel.setPage(blogPageModel.getPage());
+        pageModel.setSize(blogPageModel.getSize());
+        if (!CollectionUtils.isEmpty(blogPageModel.getList())) {
+            List<BookDto> blogDtos = blogPageModel.getList().stream().map(blog -> bookAssembler.toDto(blog)).collect(Collectors.toList());
+            pageModel.setList(blogDtos);
+        }
+        return pageModel;
     }
 
 }

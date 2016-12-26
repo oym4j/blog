@@ -16,17 +16,17 @@ public class BookCommandJdbcRepositry implements BookCommandRepositry{
     protected JdbcTemplate jdbcTemplate;
 
     @Override
-    public void save(Book book) {
-
+    public void save(Book catalog) {
+        jdbcTemplate.update("INSERT book (id,`name`,`catalog`,publishTime,`description`,`img`) VALUES (?,?,?,?,?,?)", catalog.getId(), catalog.getName(), catalog.getCatalog(), catalog.getPublishTime(), catalog.getDescription(), catalog.getImg());
     }
 
     @Override
-    public void update(Book book) {
-
+    public void update(Book catalog) {
+        jdbcTemplate.update("update book SET `name`=?,`catalog`=?,publishTime=?,`description`=?,`img`=? WHERE id=?", catalog.getName(), catalog.getCatalog(), catalog.getPublishTime(), catalog.getDescription(), catalog.getImg(), catalog.getId());
     }
 
     @Override
     public void remove(String id) {
-
+        jdbcTemplate.update("DELETE FROM book WHERE id=?", id);
     }
 }

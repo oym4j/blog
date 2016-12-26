@@ -13,4 +13,6 @@ import java.util.List;
 public interface BookIndexRepositry extends TreeNodeQueryRepositry<BookIndex>,TreeNodeCommandRepositry<BookIndex> {
 
     List<BookIndex> getByBook(String bookId);
+
+    void removeByBookId(String bookId);
 }
