@@ -1,6 +1,5 @@
 package org.bumishi.techblog.api.interfaces.manage.web;
 
-import org.bumishi.techblog.api.application.BlogService;
 import org.bumishi.techblog.api.interfaces.manage.facade.BlogFacade;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.WriteBlogCommand;
 import org.bumishi.toolbox.model.RestResponse;
@@ -15,14 +14,11 @@ import javax.validation.Valid;
  */
 @RestController("adminBlogController")
 @RequestMapping("/admin/blog")
-public class BlogController {
+public class BlogManageController {
 
 
     @Autowired
     private BlogFacade blogFacade;
-
-    @Autowired
-    private BlogService blogService;
 
 
     @PostMapping("/add")
@@ -39,7 +35,7 @@ public class BlogController {
 
     @PostMapping(value = "/{id}/delete")
     public RestResponse delete(@PathVariable("id") String id) {
-        blogService.delete(id);
+        blogFacade.delete(id);
         return RestResponse.ok();
     }
 

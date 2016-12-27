@@ -2,6 +2,7 @@ package org.bumishi.techblog.api.interfaces.manage.facade;
 
 import org.bumishi.techblog.api.application.BookService;
 import org.bumishi.techblog.api.domain.model.Book;
+import org.bumishi.techblog.api.domain.model.BookIndex;
 import org.bumishi.techblog.api.domain.repository.BookCommandRepositry;
 import org.bumishi.techblog.api.domain.repository.BookQueryRepositry;
 import org.bumishi.techblog.api.interfaces.manage.facade.assembler.BookAssembler;
@@ -61,6 +62,23 @@ public class BookFacade {
             pageModel.setList(blogDtos);
         }
         return pageModel;
+    }
+
+    public PageModel<BookDto> pageQueryByCatalog(int page, int size, String catalog) {
+        PageModel<BookDto> pageModel = new PageModel();
+        PageModel<Book> blogPageModel = bookQueryRepositry.queryByCatalog(page, size, catalog);
+        pageModel.setHasNext(blogPageModel.isHasNext());
+        pageModel.setPage(blogPageModel.getPage());
+        pageModel.setSize(blogPageModel.getSize());
+        if (!CollectionUtils.isEmpty(blogPageModel.getList())) {
+            List<BookDto> blogDtos = blogPageModel.getList().stream().map(blog -> bookAssembler.toDto(blog)).collect(Collectors.toList());
+            pageModel.setList(blogDtos);
+        }
+        return pageModel;
+    }
+
+    public List<BookIndex> listByBookId(String bookId) {
+        return bookService.listByBookId(bookId);
     }
 
 }

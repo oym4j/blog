@@ -1,6 +1,7 @@
 package org.bumishi.techblog.api.interfaces.manage.facade;
 
 import org.bumishi.techblog.api.application.BookService;
+import org.bumishi.techblog.api.domain.model.BookIndex;
 import org.bumishi.techblog.api.domain.repository.BookIndexRepositry;
 import org.bumishi.techblog.api.interfaces.manage.facade.assembler.BookIndexAssembler;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreateCommand;
@@ -40,5 +41,12 @@ public class BookIndexFacade {
         }
     }
 
+    public void delete(String id) {
+        bookIndexRepositry.remove(id);
+    }
+
+    public BookIndex get(String id) {
+        return bookIndexRepositry.get(id);
+    }
 
 }

@@ -2,7 +2,6 @@ package org.bumishi.techblog.api.interfaces.manage.facade;
 
 import org.bumishi.techblog.api.application.BlogService;
 import org.bumishi.techblog.api.domain.model.Blog;
-import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
 import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
 import org.bumishi.techblog.api.interfaces.manage.facade.assembler.BlogAssember;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.WriteBlogCommand;
@@ -31,9 +30,6 @@ public class BlogFacade {
     private BlogQueryRepositry blogQueryRepositry;
 
 
-    @Autowired
-    private BlogCommandRepositry blogCommandRepositry;
-
     public void createBlog(WriteBlogCommand blogCommand){
         blogService.addBlog(blogAssember.addBlogCommandToDomain(blogCommand));
     }
@@ -42,12 +38,21 @@ public class BlogFacade {
         blogService.updateBlog(blogAssember.updateBlogCommandToDomain(id,blogCommand));
     }
 
+
+    public void delete(String id) {
+        blogService.delete(id);
+    }
+
+
     public BlogDto getBlog(String id){
         Blog blog=blogQueryRepositry.get(id);
+        if (blog == null) {
+            return null;
+        }
         return blogAssember.toDto(blog);
     }
 
-    public PageModel<BlogDto> pageQuery(int page,int size){
+    public PageModel<BlogDto> pageQuery(int page, int size) {
         PageModel<BlogDto> pageModel=new PageModel();
         PageModel<Blog> blogPageModel=blogQueryRepositry.queryByTime(page,size);
         pageModel.setHasNext(blogPageModel.isHasNext());
@@ -59,5 +64,19 @@ public class BlogFacade {
         }
         return pageModel;
     }
+
+    public PageModel<BlogDto> queryByCatalog(int page, int size, String catalog) {
+        PageModel<BlogDto> pageModel = new PageModel();
+        PageModel<Blog> blogPageModel = blogQueryRepositry.queryByCatalog(page, size, catalog);
+        pageModel.setHasNext(blogPageModel.isHasNext());
+        pageModel.setPage(blogPageModel.getPage());
+        pageModel.setSize(blogPageModel.getSize());
+        if (!CollectionUtils.isEmpty(blogPageModel.getList())) {
+            List<BlogDto> blogDtos = blogPageModel.getList().stream().map(blog -> blogAssember.toDto(blog)).collect(Collectors.toList());
+            pageModel.setList(blogDtos);
+        }
+        return pageModel;
+    }
+
 
 }

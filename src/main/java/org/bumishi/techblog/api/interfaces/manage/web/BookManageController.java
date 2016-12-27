@@ -1,7 +1,5 @@
 package org.bumishi.techblog.api.interfaces.manage.web;
 
-import org.bumishi.techblog.api.application.BookService;
-import org.bumishi.techblog.api.domain.repository.BookIndexRepositry;
 import org.bumishi.techblog.api.interfaces.manage.facade.BookFacade;
 import org.bumishi.techblog.api.interfaces.manage.facade.BookIndexFacade;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.BookUpdateCommand;
@@ -17,7 +15,7 @@ import javax.validation.Valid;
  */
 @RestController("adminBookController")
 @RequestMapping("/admin/book")
-public class BookController {
+public class BookManageController {
 
 
     @Autowired
@@ -26,12 +24,6 @@ public class BookController {
     @Autowired
     protected BookIndexFacade bookIndexFacade;
 
-
-    @Autowired
-    protected BookService bookService;
-
-    @Autowired
-    protected BookIndexRepositry bookIndexRepositry;
 
     @PostMapping("/add")
     public RestResponse addBook(@RequestBody @Valid BookUpdateCommand blog){
@@ -64,6 +56,6 @@ public class BookController {
 
     @GetMapping("/{bookId}/indexs")
     public RestResponse list(@PathVariable("bookId") String bookId) {
-        return RestResponse.ok(bookService.listByBookId(bookId));
+        return RestResponse.ok(bookFacade.listByBookId(bookId));
     }
 }

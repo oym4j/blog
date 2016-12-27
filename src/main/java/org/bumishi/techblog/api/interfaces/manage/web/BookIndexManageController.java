@@ -1,6 +1,5 @@
 package org.bumishi.techblog.api.interfaces.manage.web;
 
-import org.bumishi.techblog.api.domain.repository.BookIndexRepositry;
 import org.bumishi.techblog.api.interfaces.manage.facade.BookIndexFacade;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreateCommand;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationUpdateCommond;
@@ -16,13 +15,11 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping("/admin/bookindex")
-public class BookIndexController {
+public class BookIndexManageController {
 
     @Autowired
     protected BookIndexFacade bookIndexFacade;
 
-    @Autowired
-    protected BookIndexRepositry bookIndexRepositry;
 
     @PostMapping(value = "/{bookId}/add")
     public RestResponse create(@PathVariable("bookId")String bookId,@RequestBody @Valid NavigationCreateCommand menu) {
@@ -39,7 +36,7 @@ public class BookIndexController {
 
     @PostMapping(value = "/{id}/delete")
     public RestResponse delete(@PathVariable("id") String id) {
-        bookIndexRepositry.remove(id);
+        bookIndexFacade.delete(id);
         return RestResponse.ok();
     }
 
@@ -53,7 +50,7 @@ public class BookIndexController {
 
     @GetMapping("/{id}")
     public RestResponse get(@PathVariable("id")String id){
-        return RestResponse.ok(bookIndexRepositry.get(id));
+        return RestResponse.ok(bookIndexFacade.get(id));
     }
 
 

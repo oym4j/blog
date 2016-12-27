@@ -1,37 +1,69 @@
-package org.bumishi.techblog.api.interfaces.manage.facade.dto;
+package org.bumishi.techblog.api.interfaces.site.facade.dto;
 
 import java.util.Date;
 
 /**
- * Created by xieqiang on 2016/12/18.
+ * @author qiang.xie
+ * @date 2016/12/27
  */
-public class BlogDto {
+public class SiteBlogDto {
 
-    /***/
     private String id;
 
-    /**标题*/
+    /**
+     * 标题
+     */
     private String title;
 
-    /**副标题*/
+    /**
+     * 副标题
+     */
     private String secondTitle;
 
-    /**分类标识*/
+    /**
+     * 分类id
+     */
     private String catalog;
 
-    /**分类展示文本*/
+    /**
+     * 分类展示文本
+     */
     private String catalogDisplay;
 
-    /**markdownd原内容*/
-    private String md;
+    /**
+     * 作者
+     */
+    private String auther;
 
-    /**发布时间*/
+    /**
+     * 发布时间
+     */
     private Date publishTime;
 
-    /**封面图片，主要迎合微信公众号*/
+    /**
+     * 封面图片，主要迎合微信公众号
+     */
     private String img;
 
-    /**阅读量*/
+
+    /**
+     * 内容
+     */
+    private String display;
+
+    /**
+     * 文章概要
+     */
+    private String summary;
+
+    /**
+     * 文章链接
+     */
+    private String link;
+
+    /**
+     * 阅读量
+     */
     private long views;
 
     public String getId() {
@@ -74,15 +106,13 @@ public class BlogDto {
         this.catalogDisplay = catalogDisplay;
     }
 
-
-    public String getMd() {
-        return md;
+    public String getAuther() {
+        return auther;
     }
 
-    public void setMd(String md) {
-        this.md = md;
+    public void setAuther(String auther) {
+        this.auther = auther;
     }
-
 
     public Date getPublishTime() {
         return publishTime;
@@ -100,6 +130,29 @@ public class BlogDto {
         this.img = img;
     }
 
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(String display) {
+        this.display = display;
+    }
 
     public long getViews() {
         return views;

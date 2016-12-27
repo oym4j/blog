@@ -1,13 +1,10 @@
 package org.bumishi.techblog.api.interfaces.manage.web;
 
-import org.bumishi.techblog.api.application.NavService;
 import org.bumishi.techblog.api.interfaces.manage.facade.NavFacade;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreateCommand;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationUpdateCommond;
 import org.bumishi.toolbox.model.RestResponse;
-import org.bumishi.toolbox.model.repositry.NavigationNodeRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,17 +15,11 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping("/admin/nav")
-public class NavController {
+public class NavManageController {
 
     @Autowired
     protected NavFacade navFacade;
 
-    @Autowired
-    protected NavService navService;
-
-    @Autowired
-    @Qualifier("menuJdbcRepositry")
-    protected NavigationNodeRepositry navigationNodeRepositry;
 
     @PostMapping(value = "/add")
     public RestResponse create(@RequestBody @Valid NavigationCreateCommand menu) {
@@ -51,19 +42,19 @@ public class NavController {
 
     @PostMapping(value = "/{id}/delete")
     public RestResponse delete(@PathVariable("id") String id) {
-        navigationNodeRepositry.remove(id);
+        navFacade.delete(id);
         return RestResponse.ok();
     }
 
 
     @GetMapping("/{id}")
     public RestResponse get(@PathVariable("id")String id){
-        return RestResponse.ok(navigationNodeRepositry.get(id));
+        return RestResponse.ok(navFacade.get(id));
     }
 
     @GetMapping
     public RestResponse list() {
-        return RestResponse.ok(navService.listByOrder());
+        return RestResponse.ok(navFacade.listByOrder());
     }
 
 

@@ -53,8 +53,6 @@ public class BlogAssember {
         BlogDto blogDto=new BlogDto();
         BeanUtils.copyProperties(blog,blogDto);
         blogDto.setCatalogDisplay(navigationNodeRepositry.get(blog.getCatalog()).getLabel());
-        blogDto.setSummary("");
-        blogDto.setLink("/blog/"+blog.getId());
         return blogDto;
     }
 }

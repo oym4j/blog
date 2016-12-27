@@ -33,7 +33,7 @@ public class BookQueryJdbcRepositry implements BookQueryRepositry {
     @Override
     public PageModel<Book> queryByCatalog(int page, int size, String catalog) {
         PageModel<Book> pageModel = new PageModel<>(page, size);
-        List<Book> blogs = jdbcTemplate.query("select * from book where `catalog`=? limit ? offset ?", BeanPropertyRowMapper.newInstance(Book.class), catalog, size, (page - 1) * size);
+        List<Book> blogs = jdbcTemplate.query("select * from book where `catalog`=? ORDER BY publishTime limit ? offset ?", BeanPropertyRowMapper.newInstance(Book.class), catalog, size, (page - 1) * size);
         if (!CollectionUtils.isEmpty(blogs)) {
             pageModel.setList(blogs);
             if (blogs.size() >= size) {

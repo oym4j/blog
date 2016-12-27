@@ -1,13 +1,17 @@
 package org.bumishi.techblog.api.interfaces.manage.facade;
 
 
+import org.bumishi.techblog.api.application.NavService;
 import org.bumishi.techblog.api.interfaces.manage.facade.assembler.NavigationAssembler;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreateCommand;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationUpdateCommond;
+import org.bumishi.toolbox.model.NavigationNode;
 import org.bumishi.toolbox.model.repositry.NavigationNodeRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by xieqiang on 2016/12/18.
@@ -18,6 +22,11 @@ public class NavFacade {
     @Autowired
     @Qualifier("menuJdbcRepositry")
     protected NavigationNodeRepositry navigationNodeRepositry;
+
+    @Autowired
+    protected NavService navService;
+
+
 
     public void add(NavigationCreateCommand createCommand){
         navigationNodeRepositry.add(NavigationAssembler.createCommendToDomain(createCommand));
@@ -34,5 +43,17 @@ public class NavFacade {
         }else {
             navigationNodeRepositry.enable(id);
         }
+    }
+
+    public void delete(String id) {
+        navigationNodeRepositry.remove(id);
+    }
+
+    public NavigationNode get(String id) {
+        return navigationNodeRepositry.get(id);
+    }
+
+    public List<NavigationNode> listByOrder() {
+        return navService.listByOrder();
     }
 }
