@@ -1,0 +1,235 @@
+{
+  "page": {
+    "title": "排除故障",
+    "level": "1.6",
+    "depth": 1,
+    "next": {
+      "title": "构建脚本基础",
+      "level": "1.7",
+      "depth": 1,
+      "path": "build_script_basics/README.md",
+      "ref": "build_script_basics/README.md",
+      "articles": [
+        {
+          "title": "Projects 和 tasks",
+          "level": "1.7.1",
+          "depth": 2,
+          "path": "build_script_basics/projects_and_tasks.md",
+          "ref": "build_script_basics/projects_and_tasks.md",
+          "articles": []
+        },
+        {
+          "title": "Hello world",
+          "level": "1.7.2",
+          "depth": 2,
+          "path": "build_script_basics/hello_world.md",
+          "ref": "build_script_basics/hello_world.md",
+          "articles": []
+        },
+        {
+          "title": "快捷的任务定义",
+          "level": "1.7.3",
+          "depth": 2,
+          "path": "build_script_basics/a_shortcut_task_definition.md",
+          "ref": "build_script_basics/a_shortcut_task_definition.md",
+          "articles": []
+        },
+        {
+          "title": "构建脚本代码",
+          "level": "1.7.4",
+          "depth": 2,
+          "path": "build_script_basics/build_scripts_are_code.md",
+          "ref": "build_script_basics/build_scripts_are_code.md",
+          "articles": []
+        },
+        {
+          "title": "任务依赖",
+          "level": "1.7.5",
+          "depth": 2,
+          "path": "build_script_basics/task_dependencies.md",
+          "ref": "build_script_basics/task_dependencies.md",
+          "articles": []
+        },
+        {
+          "title": "动态任务",
+          "level": "1.7.6",
+          "depth": 2,
+          "path": "build_script_basics/dynamic_tasks.md",
+          "ref": "build_script_basics/dynamic_tasks.md",
+          "articles": []
+        },
+        {
+          "title": "使用已经存在的任务",
+          "level": "1.7.7",
+          "depth": 2,
+          "path": "build_script_basics/manipulating_existing_tasks.md",
+          "ref": "build_script_basics/manipulating_existing_tasks.md",
+          "articles": []
+        },
+        {
+          "title": "短标记法",
+          "level": "1.7.8",
+          "depth": 2,
+          "path": "build_script_basics/shortcut_notations.md",
+          "ref": "build_script_basics/shortcut_notations.md",
+          "articles": []
+        },
+        {
+          "title": "自定义任务属性",
+          "level": "1.7.9",
+          "depth": 2,
+          "path": "build_script_basics/extra_task_properties.md",
+          "ref": "build_script_basics/extra_task_properties.md",
+          "articles": []
+        },
+        {
+          "title": "调用 Ant 任务",
+          "level": "1.7.10",
+          "depth": 2,
+          "path": "build_script_basics/using_ant_tasks.md",
+          "ref": "build_script_basics/using_ant_tasks.md",
+          "articles": []
+        },
+        {
+          "title": "使用方法",
+          "level": "1.7.11",
+          "depth": 2,
+          "path": "build_script_basics/using_methods.md",
+          "ref": "build_script_basics/using_methods.md",
+          "articles": []
+        },
+        {
+          "title": "默认任务",
+          "level": "1.7.12",
+          "depth": 2,
+          "path": "build_script_basics/default_tasks.md",
+          "ref": "build_script_basics/default_tasks.md",
+          "articles": []
+        },
+        {
+          "title": "通过 DAG 配置",
+          "level": "1.7.13",
+          "depth": 2,
+          "path": "build_script_basics/configure_by_dag.md",
+          "ref": "build_script_basics/configure_by_dag.md",
+          "articles": []
+        }
+      ]
+    },
+    "previous": {
+      "title": "JVM选项",
+      "level": "1.5.3",
+      "depth": 2,
+      "path": "installing_gradle/jvm_options.md",
+      "ref": "installing_gradle/jvm_options.md",
+      "articles": []
+    },
+    "dir": "ltr"
+  },
+  "config": {
+    "plugins": [
+      "disqus",
+      "comment"
+    ],
+    "styles": {
+      "website": "styles/website.css",
+      "pdf": "styles/pdf.css",
+      "epub": "styles/epub.css",
+      "mobi": "styles/mobi.css",
+      "ebook": "styles/ebook.css",
+      "print": "styles/print.css"
+    },
+    "pluginsConfig": {
+      "disqus": {
+        "useIdentifier": false,
+        "shortName": "gradleuserguide"
+      },
+      "comment": {
+        "highlightCommented": true
+      },
+      "highlight": {},
+      "search": {},
+      "lunr": {
+        "maxIndexSize": 1000000
+      },
+      "sharing": {
+        "facebook": true,
+        "twitter": true,
+        "google": false,
+        "weibo": false,
+        "instapaper": false,
+        "vk": false,
+        "all": [
+          "facebook",
+          "google",
+          "twitter",
+          "weibo",
+          "instapaper"
+        ]
+      },
+      "fontsettings": {
+        "theme": "white",
+        "family": "sans",
+        "size": 2
+      },
+      "theme-default": {
+        "styles": {
+          "website": "styles/website.css",
+          "pdf": "styles/pdf.css",
+          "epub": "styles/epub.css",
+          "mobi": "styles/mobi.css",
+          "ebook": "styles/ebook.css",
+          "print": "styles/print.css"
+        },
+        "showLevel": false
+      }
+    },
+    "github": "DONGChuan/GradleUserGuide",
+    "theme": "default",
+    "author": "DONG",
+    "pdf": {
+      "pageNumbers": true,
+      "fontSize": 16,
+      "fontFamily": "Arial",
+      "paperSize": "a4",
+      "chapterMark": "pagebreak",
+      "pageBreaksBefore": "/",
+      "margin": {
+        "right": 62,
+        "left": 62,
+        "top": 56,
+        "bottom": 56
+      }
+    },
+    "structure": {
+      "langs": "LANGS.md",
+      "readme": "README.md",
+      "glossary": "GLOSSARY.md",
+      "summary": "SUMMARY.md"
+    },
+    "variables": {},
+    "title": "Gradle User Guide 中文版",
+    "language": "zh",
+    "links": {
+      "sidebar": {
+        "Gradle User Guide 中文版": "https://www.gitbook.com/book/dongchuan/gradle-user-guide-"
+      },
+      "gitbook": true
+    },
+    "gitbook": "*",
+    "description": "Gradle User Guide 中文版"
+  },
+  "file": {
+    "path": "troubleshooting/README.md",
+    "mtime": "2016-08-26T08:04:50.000Z",
+    "type": "markdown"
+  },
+  "gitbook": {
+    "version": "3.1.1",
+    "time": "2016-08-26T08:02:46.951Z"
+  },
+  "basePath": "..",
+  "book": {
+    "language": ""
+  }
+}
