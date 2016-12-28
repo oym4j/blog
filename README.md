@@ -1,9 +1,14 @@
-#基于springboot技术和领域驱动设计思想的通用技术博客后台部分##
+#基于springboot技术和领域驱动设计思想的通用技术博客##
+
+##最新技术框架+现代化的架构，天然支持分布式，云计算##
 
 
-###整体技术思想:前后完全分离，后台提供rest api，前台根据api自由设计UI###
+###本地运行简介###
+1.依赖bumishi-toolbox项目，目前未上传到maven仓库，请自行构建并将jar放入项目的lib目录，目前lib中的jar可能不是最新。源码：https://git.oschina.net/mvc-easy/bumishi-toolbox.git
 
+2.基于admin-manage作为后台管理项目，同样依赖bumishi-toolbox项目
 
+3.admin-manage的配置中需要在application-default.yaml配置中需要配置七牛的相关配置以支持图片上传到七牛，需要配置本地博客程序的完整域名。admin-manage本身不维护博客的任何数据，需通过api调用博客程序
 
 ###交流群:245130488###
 
