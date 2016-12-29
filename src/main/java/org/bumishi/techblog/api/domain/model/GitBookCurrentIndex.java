@@ -96,7 +96,7 @@ public class GitBookCurrentIndex {
             JSONObject prevjson = new JSONObject();
             prevjson.put("title", prev.getLabel());
             BookIndex prevParent = getParent(prev);
-            prevjson.put("level", prevParent == null ? prev.getOrder() : prevParent.getOrder() + "." + prev.getOrder());
+            prevjson.put("level", prevParent == null ? prev.getOrder() + "." + prev.getOrder() : prevParent.getOrder() + "." + prevParent.getOrder() + "." + prev.getOrder());
             prevjson.put("depth", prev.getLevel());
             prevjson.put("path", prev.getUrl());
             prevjson.put("ref", prev.getUrl());
@@ -107,7 +107,7 @@ public class GitBookCurrentIndex {
                     JSONObject object = new JSONObject();
                     object.put("title", bookIndex.getLabel());
                     BookIndex bookIndexParent = getParent(bookIndex);
-                    object.put("level", bookIndexParent == null ? bookIndex.getOrder() : bookIndexParent.getOrder() + "." + bookIndex.getOrder());
+                    object.put("level", bookIndexParent == null ? bookIndex.getOrder() + "." + bookIndex.getOrder() : bookIndexParent.getOrder() + "." + bookIndexParent.getOrder() + "." + bookIndex.getOrder());
                     object.put("depth", bookIndex.getLevel());
                     object.put("path", bookIndex.getUrl());
                     object.put("ref", bookIndex.getUrl());

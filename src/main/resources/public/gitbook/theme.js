@@ -3205,8 +3205,9 @@
         }
 
         function u(e) {
-            var t = e.children("a"), n = t.attr("href").split("#")[1];
-            return n && (n = "#" + n), n ? n : ""
+            // var t = e.children("a"), n = t.attr("href").split("#")[1];
+            // return n && (n = "#" + n), n ? n : ""
+            return "";
         }
 
         function l() {
@@ -3299,9 +3300,9 @@
         }
 
         function y() {
-            w.ajaxSetup({cache: !1}), history.replaceState({path: window.location.href}, ""), window.onpopstate = function (e) {
-                if (null !== e.state)return c(e.state.path, !1)
-            }, w(document).on("click", ".navigation-prev", g), w(document).on("click", ".navigation-next", g), w(document).on("click", ".summary [data-path] a", g), w(document).on("click", ".page-inner a", g), w(window).resize(f), p(!1)
+            // w.ajaxSetup({cache: !1}), history.replaceState({path: window.location.href}, ""), window.onpopstate = function (e) {
+            //     if (null !== e.state)return c(e.state.path, !1)
+            // }, w(document).on("click", ".navigation-prev", g), w(document).on("click", ".navigation-next", g), w(document).on("click", ".summary [data-path] a", g), w(document).on("click", ".page-inner a", g), w(window).resize(f), p(!1)
         }
 
         var b, x, w = e("jquery"), C = e("url"), T = e("./loading"), k = e("./platform"), j = window.gitbook, E = "undefined" != typeof history.pushState, N = location.href;

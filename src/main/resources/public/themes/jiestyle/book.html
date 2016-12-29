@@ -12,7 +12,6 @@
 
     <link rel="stylesheet" th:href="@{/gitbook/gitbook-plugin-fontsettings/website.css}"/>
 
-    <link rel="stylesheet" th:href="@{/gitbook/gitbook-plugin-splitter/splitter.css}"/>
 
     <meta name="HandheldFriendly" content="true"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
@@ -20,9 +19,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <link rel="apple-touch-icon-precomposed" sizes="152x152"
           th:href="@{/gitbook/images/apple-touch-icon-precomposed-152.png}"/>
-    <link rel="shortcut icon" th:href="@{/gitbook/images/favicon.ico}" type="image/x-icon"/>
+    <!--<link rel="shortcut icon" th:href="@{/gitbook/images/favicon.ico}" type="image/x-icon"/>-->
     <link rel="stylesheet" th:href="@{/themes/jiestyle/css/editormd.preview.min.css}"/>
-    <!--<link rel="next" href="chapter1/"/>-->
+    <link rel="prev" th:if="${currentIndex.prev!=null}" th:href="@{${currentIndex.prev.url}}"/>
+
+
+    <link rel="next" th:if="${currentIndex.next!=null}" th:href="@{${currentIndex.next.url}}"/>
 
 </head>
 <body>
@@ -33,15 +35,20 @@
 
         <nav role="navigation">
 
-            <ul class="summary">
 
-                <li th:if="${not #lists.isEmpty(book.indexs)}" th:each="nav:${book.indexs}" class="chapter"
-                    th:data-level="${nav.order} +'.'+ ${nav.order}">
+            <ul class="summary">
+                <li>
+                    <a href="http://bumishi.cn" target="blank" class="gitbook-link">
+                        专注技术研究-@不迷失
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li th:if="${not #lists.isEmpty(book.indexs)}" th:each="nav:${book.indexs}">
                     <a th:href="@{${nav.url}?:'#'}" th:text="${nav.label}" th:target="${nav.type==2}?'_blank'">label</a>
 
-                    <ul class="articles">
-                        <li class="chapter " th:data-level="${nav.order}+'.'+${nav.order}+'.'+${second.order}"
-                            th:each="second:${nav.childNodes}">
+                    <ul>
+                        <li
+                                th:each="second:${nav.childNodes}">
                             <a th:href="@{${second.url}}" th:text="${second.label}"
                                                                   th:target="${second.type==2}?'_blank'">label</a></li>
                     </ul>
@@ -50,11 +57,17 @@
 
                 <li class="divider"></li>
 
-                <li>
-                    <a href="http://bumishi.cn" target="blank" class="gitbook-link">
-                        Published with GitBook
-                    </a>
+
+                <li th:if="${not #lists.isEmpty(navs)}" th:each="nav:${navs}">
+                    <a th:href="@{${nav.url}?:'#'}" th:text="${nav.label}" th:target="${nav.type==2}?'_blank'">label</a>
+
+                    <ul>
+                        <li th:each="second:${nav.childNodes}"><a th:href="@{${second.url}}" th:text="${second.label}"
+                                                                  th:target="${second.type==2}?'_blank'">label</a></li>
+                    </ul>
                 </li>
+
+
             </ul>
 
 
@@ -82,13 +95,16 @@
 
             <div class="page-wrapper" tabindex="-1" role="main">
                 <div class="page-inner">
-                    <!--<section class="normal markdown-section">-->
 
-                    <!--<h1 id="第二节">第二节</h1>-->
+                    <section class="normal markdown-section">
+                        <h1 th:text="${blog.title}">第二节</h1>
+                        <div style="margin: 20px 0;color: #999;font-size: 13px;">
+                            <span>作者: @不迷失</span>
+                            <span>阅读数: <span th:text="0"></span></span>
+            <span>分类: <a th:href="@{/blog/catalog/{catalog}(catalog=${blog.catalog})}" rel="category tag"
+                         th:text="${blog.catalogDisplay}">catalog</a></span>
 
-
-                    <!--</section>-->
-
+                        </div>
                     <div class="view-content">
                         <div class="editormd-preview">
                             <div th:utext="${blog.display}" class="markdown-body editormd-preview-container"
@@ -101,20 +117,59 @@
 
                     </div>
 
+                        <br/>
+
+
+                        <div id="SOHUCS" th:sid="${blog.id}"></div>
+                        <script type="text/javascript">
+                            (function () {
+                                var appid = 'cysLQndbF';
+                                var conf = 'prod_3079dbdfcaec407dfdfa5ba2341d5cba';
+                                var width = window.innerWidth || document.documentElement.clientWidth;
+                                if (width < 960) {
+                                    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+                                } else {
+                                    var loadJs = function (d, a) {
+                                        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                                        var b = document.createElement("script");
+                                        b.setAttribute("type", "text/javascript");
+                                        b.setAttribute("charset", "UTF-8");
+                                        b.setAttribute("src", d);
+                                        if (typeof a === "function") {
+                                            if (window.attachEvent) {
+                                                b.onreadystatechange = function () {
+                                                    var e = b.readyState;
+                                                    if (e === "loaded" || e === "complete") {
+                                                        b.onreadystatechange = null;
+                                                        a()
+                                                    }
+                                                }
+                                            } else {
+                                                b.onload = a
+                                            }
+                                        }
+                                        c.appendChild(b)
+                                    };
+                                    loadJs("http://changyan.sohu.com/upload/changyan.js", function () {
+                                        window.changyan.api.config({appid: appid, conf: conf})
+                                    });
+                                }
+                            })(); </script>
+
                 </div>
             </div>
 
         </div>
 
 
-        <a href="section1.html" th:if="${currentIndex.prev!=null}" th:href="@{${currentIndex.prev.url}}"
-           class="navigation navigation-prev " aria-label="Previous page: [[${currentIndex.prev.title}]]">
+        <a th:if="${currentIndex.prev!=null}" th:href="@{${currentIndex.prev.url}}"
+           class="navigation navigation-prev " th:aria-label="'Previous page:'+ ${currentIndex.prev.label}">
             <i class="fa fa-angle-left"></i>
         </a>
 
 
-        <a href="../chapter2/" th:if="${currentIndex.next!=null}" th:href="@{${currentIndex.next.url}}"
-           class="navigation navigation-next " aria-label="Next page:  [[${currentIndex.next.title}]]"
+        <a th:if="${currentIndex.next!=null}" th:href="@{${currentIndex.next.url}}"
+           class="navigation navigation-next " th:aria-label="'Next page:'+ ${currentIndex.next.label}"
            style="margin-right: 0px;">
             <i class="fa fa-angle-right"></i>
         </a>
@@ -129,7 +184,7 @@
                     {
                         "page": [(${currentIndex.bookJson})],
                         "config": {
-                            "plugins": ["-highlight", "-search", "-lunr", "-livereload", "splitter", "livereload"],
+                            "plugins": ["-highlight", "-search", "-lunr", "-livereload"],
                             "styles": {
                                 "website": "styles/website.css",
                                 "pdf": "styles/pdf.css",
@@ -148,7 +203,6 @@
                                     "vk": false,
                                     "all": ["facebook", "google", "twitter", "weibo", "instapaper"]
                                 },
-                                "splitter": {},
                                 "fontsettings": {"theme": "white", "family": "sans", "size": 2},
                                 "theme-default": {
                                     "styles": {
@@ -162,7 +216,7 @@
                                 }
                             },
                             "theme": "default",
-                            "author": "zhangjikai",
+                            "author": "bumishi",
                             "pdf": {
                                 "pageNumbers": true,
                                 "fontSize": 12,
@@ -179,7 +233,7 @@
                                 "summary": "SUMMARY.md"
                             },
                             "variables": {},
-                            "title": "Gibook Use",
+                            "title": "Gibook",
                             "language": "zh-hans",
                             "links": {"sidebar": {"Home": "http://bumishi.cn"}},
                             "gitbook": "3.2.2",
@@ -199,8 +253,6 @@
 
 <script th:src="@{/gitbook/gitbook.js}"></script>
 <script th:src="@{/gitbook/theme.js}"></script>
-
-<script th:src="@{/gitbook/gitbook-plugin-splitter/splitter.js}"></script>
 <script th:src="@{/gitbook/gitbook-plugin-sharing/buttons.js}"></script>
 
 <script th:src="@{/gitbook/gitbook-plugin-fontsettings/fontsettings.js}"></script>

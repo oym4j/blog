@@ -2,9 +2,9 @@ package org.bumishi.techblog.api.domain.service;
 
 import org.bumishi.techblog.api.domain.model.Blog;
 import org.bumishi.techblog.api.domain.model.BlogId;
+import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.UUID;
 
 /**
  * Created by xieqiang on 2016/12/4.
@@ -12,8 +12,11 @@ import java.util.UUID;
 @Component
 public class DefaultBlogId implements BlogId{
 
+    @Autowired
+    protected BlogQueryRepositry blogQueryRepositry;
+
     @Override
     public String id(Blog blog) {
-        return UUID.randomUUID().toString().replaceAll("_","");
+        return (blogQueryRepositry.getCount() + 1) + "";
     }
 }

@@ -16,4 +16,6 @@ public interface BlogQueryRepositry {
     PageModel<Blog> queryByCatalog(int page,int size,String catalog);
 
     PageModel<Blog> queryByTime(int page,int size);
+
+    int getCount();
 }

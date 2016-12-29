@@ -60,4 +60,9 @@ public class BlogQueryJdbcRepositry implements BlogQueryRepositry {
         }
         return pageModel;
     }
+
+    @Override
+    public int getCount() {
+        return jdbcTemplate.queryForObject("select count(*) from blog", Integer.class);
+    }
 }
