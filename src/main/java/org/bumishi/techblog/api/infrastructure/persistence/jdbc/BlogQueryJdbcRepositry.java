@@ -65,4 +65,13 @@ public class BlogQueryJdbcRepositry implements BlogQueryRepositry {
     public int getCount() {
         return jdbcTemplate.queryForObject("select count(*) from blog", Integer.class);
     }
+
+    @Override
+    public int getViews(String blogId) {
+        try {
+            return jdbcTemplate.queryForObject("select views from blog_views WHERE id=?", Integer.class, blogId);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
 }

@@ -32,5 +32,14 @@ public class BlogCommandJdbcRepositry implements BlogCommandRepositry {
           jdbcTemplate.update("DELETE FROM blog WHERE id=?",id);
     }
 
+    @Override
+    public void addViews(String id) {
+        try {
+            jdbcTemplate.queryForObject("select id from blog_views where id=?", String.class, id);
+            jdbcTemplate.update("UPDATE blog_views SET views=views+1 WHERE id=?", id);
+        } catch (Exception e) {
+            jdbcTemplate.update("INSERT blog_views (id,views) VALUES (?,?)", id, 1);
+        }
 
+    }
 }

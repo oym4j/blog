@@ -13,6 +13,8 @@ public interface BlogCommandRepositry {
 
     void remove(String id);
 
+    void addViews(String id);
+
 
 
 

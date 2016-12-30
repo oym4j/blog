@@ -7,6 +7,13 @@
           content="不迷失技术博客'"/>
     <meta name="keywords" content="不迷失技术|不迷失博客"/>
     <div th:replace="head"></div>
+    <style>
+        #pagebar:hover {
+            background-color: #5bc0eb;
+            color: white;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -32,22 +39,13 @@
                 </header>
 
             </article>
+            <div id="pagebar"
+                 style="color:white;line-height: 50px;cursor: pointer;background-color: #5bc0eb;text-align: center;"
+                 th:if="${(not #lists.isEmpty(pageModel.list)) and (pageModel.hasNext)}"><a id="pagelink"
+                                                                                            style="display: block;color:white;"
+                                                                                            th:href="@{/blog/catalog/{catalog}(catalog=${catalog},page=${page+1})}">下一页</a>
+            </div>
 
-            <nav style="float:right" th:if="${not #lists.isEmpty(pageModel.list)}">
-                <ul class='pagination'>
-                    <li class='active'><a th:href="@{/book/catalog/{catalog}/(page=${page},catalog=${catalog})}"
-                                          th:text="${page}">1<span class='sr-only'>(current)</span></a></li>
-                    <li><a th:href="@{/book/catalog/{catalog}/(page=${page+1},catalog=${catalog})}" th:text="${page+1}">2</a>
-                    </li>
-                    <li><a th:href="@{/book/catalog/{catalog}/(page=${page+2},catalog=${catalog})}" th:text="${page+2}">2</a>
-                    </li>
-                    <li><a th:href="@{/book/catalog/{catalog}/(page=${page+3},catalog=${catalog})}" th:text="${page+3}">2</a>
-                    </li>
-                    <li><a th:href="@{/book/catalog/{catalog}/(page=${page+1},catalog=${catalog})}"><i
-                            class='fa fa-angle-right' aria-hidden='true'></i></a></li>
-
-                </ul>
-            </nav>
         </div>
         <div class="col-md-4 hidden-xs hidden-sm">
 

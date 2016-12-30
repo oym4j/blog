@@ -100,7 +100,7 @@
                         <h1 th:text="${blog.title}">第二节</h1>
                         <div style="margin: 20px 0;color: #999;font-size: 13px;">
                             <span>作者: @不迷失</span>
-                            <span>阅读数: <span th:text="0"></span></span>
+                            <span>阅读数: <span th:text="${blog.views}"></span></span>
             <span>分类: <a th:href="@{/blog/catalog/{catalog}(catalog=${blog.catalog})}" rel="category tag"
                          th:text="${blog.catalogDisplay}">catalog</a></span>
 

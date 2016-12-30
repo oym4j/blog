@@ -18,4 +18,6 @@ public interface BlogQueryRepositry {
     PageModel<Blog> queryByTime(int page,int size);
 
     int getCount();
+
+    int getViews(String blogId);
 }

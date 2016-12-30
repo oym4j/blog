@@ -2,6 +2,7 @@ package org.bumishi.techblog.api.interfaces.site.facade;
 
 import org.bumishi.techblog.api.application.BlogService;
 import org.bumishi.techblog.api.domain.model.Blog;
+import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
 import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
 import org.bumishi.techblog.api.interfaces.site.facade.dto.SiteBlogDto;
 import org.bumishi.toolbox.model.PageModel;
@@ -29,6 +30,9 @@ public class SiteBlogFacade {
     private BlogQueryRepositry blogQueryRepositry;
 
     @Autowired
+    private BlogCommandRepositry blogCommandRepositry;
+
+    @Autowired
     @Qualifier("catalogJdbcRepositry")
     protected NavigationNodeRepositry navigationNodeRepositry;
 
@@ -47,6 +51,7 @@ public class SiteBlogFacade {
         dto.setCatalogDisplay(navigationNodeRepositry.get(blog.getCatalog()).getLabel());
         dto.setLink("/blog/" + blog.getId());
         dto.setSummary("");//todo
+        dto.setViews(blogQueryRepositry.getViews(blog.getId()));
         return dto;
     }
 
@@ -76,5 +81,8 @@ public class SiteBlogFacade {
         return pageModel;
     }
 
+    public void addViews(String blogId) {
+        blogCommandRepositry.addViews(blogId);
+    }
 
 }
