@@ -1,11 +1,13 @@
 package org.bumishi.techblog.api.infrastructure.persistence.jdbc;
 
-import org.bumishi.toolbox.model.SiteConfig;
-import org.bumishi.toolbox.model.repositry.SiteConfigRepositry;
+import org.bumishi.techblog.api.domain.repository.SiteConfigRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
+
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * Created by xieqiang on 2016/12/18.
@@ -18,19 +20,18 @@ public class SiteConfigJdbcRepositry implements SiteConfigRepositry {
 
 
     @Override
-    public void update(SiteConfig siteConfig) {
-        if(siteConfig.getId()==null) {
-            String sql = "insert site_config (name,keywords,logo,theme,pageSize,footer) values (?,?,?,?,?,?)";
-            jdbcTemplate.update(sql,siteConfig.getName(),siteConfig.getKeywords(),siteConfig.getLogo(),siteConfig.getTheme(),siteConfig.getPageSize(),siteConfig.getFooter());
-        }else{
-            String sql = "update site_config SET `name`=?,keywords=?,logo=?,theme=?,pageSize=?,footer=? WHERE id=?";
-            jdbcTemplate.update(sql,siteConfig.getName(),siteConfig.getKeywords(),siteConfig.getLogo(),siteConfig.getTheme(),siteConfig.getPageSize(),siteConfig.getFooter(),siteConfig.getId());
-
-        }
+    public void update(Map<String,String> config) {
+        if(CollectionUtils.isEmpty(config))return;
+       jdbcTemplate.update("DELETE FROM site_config");
+        jdbcTemplate.update("INSERT site_config (`k`,`v`) VALUES (?,?)",config);
     }
 
     @Override
-    public SiteConfig get(String id) {
-        return jdbcTemplate.queryForObject("select * from site_config where id=?", BeanPropertyRowMapper.newInstance(SiteConfig.class),id);
+    public Map<String,Object> getConfig() {
+        try {
+            return jdbcTemplate.queryForMap("select * from site_config");
+        }catch (Exception e){
+            return Collections.emptyMap();
+        }
     }
 }

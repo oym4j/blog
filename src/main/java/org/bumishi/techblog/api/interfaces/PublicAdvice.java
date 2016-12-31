@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.StringUtils;
 import org.bumishi.techblog.api.application.CatalogService;
 import org.bumishi.techblog.api.application.NavService;
+import org.bumishi.techblog.api.application.SiteConfigService;
 import org.bumishi.toolbox.model.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -29,13 +30,17 @@ public class PublicAdvice {
     private CatalogService catalogService;
 
 
+    @Autowired
+    private SiteConfigService siteConfigService;
+
+
     @ExceptionHandler
     public void handleControllerException(HttpServletRequest request, HttpServletResponse response, Throwable ex) throws IOException {
         ex.printStackTrace();
         String ajax = request.getHeader("X-Requested-With");
         response.setCharacterEncoding("utf-8");
         if (StringUtils.isBlank(ajax)) {
-            response.sendRedirect("/error");
+            response.sendRedirect("404");
         } else {
             response.setContentType("application/json");
 
@@ -48,6 +53,7 @@ public class PublicAdvice {
     public void addCommonModel(Model model, HttpServletRequest request) {
         model.addAttribute("navs", navService.listWithTree(false));
         model.addAttribute("catalogs", catalogService.listWithTree(false));
+        model.addAttribute("siteconfig",siteConfigService.siteConfig());
     }
 
 

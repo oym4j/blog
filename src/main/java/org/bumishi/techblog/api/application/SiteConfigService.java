@@ -1,9 +1,11 @@
 package org.bumishi.techblog.api.application;
 
-import org.bumishi.toolbox.model.SiteConfig;
-import org.bumishi.toolbox.model.repositry.SiteConfigRepositry;
+
+import org.bumishi.techblog.api.domain.repository.SiteConfigRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 /**
  * @author qiang.xie
@@ -15,16 +17,15 @@ public class SiteConfigService {
     @Autowired
     private SiteConfigRepositry siteConfigRepositry;
 
-    public SiteConfig siteConfig() {
-        return siteConfigRepositry.get("blog");
+    public Map<String,Object> siteConfig() {
+        return siteConfigRepositry.getConfig();
     }
 
-    public void update(SiteConfig siteConfig) {
-        siteConfig.setId("blog");
+    public void update( Map<String,String> siteConfig) {
         siteConfigRepositry.update(siteConfig);
     }
 
     public int pageSize() {
-        return siteConfig().getPageSize();
+        return Integer.valueOf(siteConfig().getOrDefault("pageSize","10").toString());
     }
 }
