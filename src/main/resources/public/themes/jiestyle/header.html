@@ -1,6 +1,6 @@
 <header id="header">
-    <div class="avatar" style="color:white;">专注技术研究</div>
-    <h3 id="name">@不迷失</h3>
+    <div class="avatar" style="color:white;" th:text="${siteconfig[logo]}?:专注技术研究">专注技术研究</div>
+    <h3 id="name" th:text="${siteconfig[name]}?:'不迷失博客'">@不迷失</h3>
     <div class="sns">
 
         <!--<a href="http://shang.qq.com/wpa/qunwpa?idkey=d1d7f068205e1ff5dbcc1ecda23d5195d2ce61254c0f7188741c758111e1c2f2" target="_blank" rel="nofollow" title="Java技术群">技术交流群</a>-->

@@ -2,10 +2,10 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <title th:text="${blog.title}+'@不迷失'">标题</title>
+    <title th:text="${blog.title}+'-'+${siteconfig.name}?:'不迷失博客'">标题</title>
     <meta name="description"
-          th:content="${blog.title}+'| 不迷失技术博客'"/>
-    <meta name="keywords" content="不迷失技术" th:content="${blog.title}"/>
+          th:content="${siteconfig.description}?:'不迷失博客'"/>
+    <meta name="keywords" th:content="${siteconfig.keywords}?:'不迷失博客'"/>
     <div th:replace="head"></div>
 
 </head>

@@ -2,10 +2,10 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <title>不迷失-专注Java技术的研究，关注程序员的发展</title>
+    <title th:text="${siteconfig.name}?:'不迷失博客'+'-书籍分类-'+${catalog}">不迷失-专注Java技术的研究，关注程序员的发展</title>
     <meta name="description"
-          content="不迷失技术博客'"/>
-    <meta name="keywords" content="不迷失技术|不迷失博客"/>
+          th:content="${siteconfig.description}?:'不迷失博客'"/>
+    <meta name="keywords" th:content="${siteconfig.keywords}?:'不迷失博客'"/>
     <div th:replace="head"></div>
     <style>
         #pagebar:hover {
