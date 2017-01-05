@@ -40,7 +40,7 @@ public class PublicAdvice {
         String ajax = request.getHeader("X-Requested-With");
         response.setCharacterEncoding("utf-8");
         if (StringUtils.isBlank(ajax)) {
-            response.sendRedirect("404");
+            response.sendRedirect("/error");
         } else {
             response.setContentType("application/json");
 
