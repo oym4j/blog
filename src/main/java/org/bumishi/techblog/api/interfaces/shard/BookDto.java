@@ -1,4 +1,4 @@
-package org.bumishi.techblog.api.interfaces.manage.facade.dto;
+package org.bumishi.techblog.api.interfaces.shard;
 
 import java.util.Date;
 

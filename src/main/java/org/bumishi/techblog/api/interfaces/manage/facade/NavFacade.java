@@ -50,7 +50,7 @@ public class NavFacade {
     }
 
     public NavigationNode get(String id) {
-        return navigationNodeRepositry.get(id);
+        return navService.getNav(id);
     }
 
     public List<NavigationNode> listByOrder() {

@@ -30,4 +30,8 @@ public class NavService {
         TreeModel.sortByTree(list);
         return list;
     }
+
+    public NavigationNode getNav(String id){
+        return navigationNodeRepositry.get(id);
+    }
 }

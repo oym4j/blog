@@ -1,13 +1,11 @@
 package org.bumishi.techblog.api.interfaces.site.facade;
 
+import org.bumishi.techblog.api.application.BookService;
+import org.bumishi.techblog.api.application.CatalogService;
 import org.bumishi.techblog.api.domain.model.Book;
-import org.bumishi.techblog.api.domain.repository.BookIndexRepositry;
-import org.bumishi.techblog.api.domain.repository.BookQueryRepositry;
 import org.bumishi.techblog.api.interfaces.site.facade.dto.GitBookDto;
-import org.bumishi.toolbox.model.repositry.NavigationNodeRepositry;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,25 +16,20 @@ import org.springframework.stereotype.Service;
 public class GitBookFacade {
 
     @Autowired
-    private BookQueryRepositry bookQueryRepositry;
+    private CatalogService catalogService;
 
     @Autowired
-    @Qualifier("catalogJdbcRepositry")
-    protected NavigationNodeRepositry navigationNodeRepositry;
-
-    @Autowired
-    protected BookIndexRepositry bookIndexRepositry;
+    private BookService bookService;
 
     public GitBookDto getGitBook(String bookId) {
-        Book book = bookQueryRepositry.get(bookId);
+        Book book = bookService.getBook(bookId);
         if (book == null) {
             return null;
         }
         GitBookDto gitBookDto = new GitBookDto();
         BeanUtils.copyProperties(book, gitBookDto);
-        gitBookDto.setCatalogDisplay(navigationNodeRepositry.get(book.getCatalog()).getLabel());
-        gitBookDto.setIndexs(bookIndexRepositry.getByBook(bookId));
+        gitBookDto.setCatalogDisplay(catalogService.getCatalog(book.getCatalog()).getLabel());
+        gitBookDto.setIndexs(bookService.listIndexsByBookId(bookId));
         return gitBookDto;
     }
-
 }

@@ -3,7 +3,7 @@ package org.bumishi.techblog.api.interfaces.site;
 import org.bumishi.techblog.api.application.SiteConfigService;
 import org.bumishi.techblog.api.domain.model.BookIndex;
 import org.bumishi.techblog.api.domain.model.GitBookCurrentIndex;
-import org.bumishi.techblog.api.interfaces.manage.facade.BookFacade;
+import org.bumishi.techblog.api.interfaces.shard.BookQueryFacade;
 import org.bumishi.techblog.api.interfaces.site.facade.GitBookFacade;
 import org.bumishi.techblog.api.interfaces.site.facade.SiteBlogFacade;
 import org.bumishi.techblog.api.interfaces.site.facade.dto.GitBookDto;
@@ -29,7 +29,7 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    private BookFacade bookFacade;
+    private BookQueryFacade bookFacade;
 
     @Autowired
     private GitBookFacade gitBookFacade;
@@ -74,7 +74,7 @@ public class BookController {
 
     @GetMapping("/catalog/{catalog}")
     public String catalog(@PathVariable("catalog") String catalog, @RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
-        model.addAttribute("pageModel", bookFacade.pageQueryByCatalog(page, siteConfigService.pageSize(), catalog));
+        model.addAttribute("pageModel", bookFacade.queryByCatalog(page, siteConfigService.pageSize(), catalog));
         model.addAttribute("catalog", catalog);
         model.addAttribute("page", page);
         return "book-catalog";

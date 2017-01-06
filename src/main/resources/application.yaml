@@ -36,7 +36,8 @@ spring:
           test-on-return: false
   cache:
     guava:
-      spec: maximumSize=500,expireAfterAccess=3600s
+      #spec: maximumSize=500,expireAfterAccess=3600s
+      spec: maximumSize=500
 
  #spring-boot-admin config
 

@@ -49,7 +49,7 @@ public class CatalogFacade {
     }
 
     public NavigationNode get(String id) {
-        return navigationNodeRepositry.get(id);
+        return catalogService.getCatalog(id);
     }
 
     public List<NavigationNode> listByOrder() {

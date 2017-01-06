@@ -30,4 +30,8 @@ public class CatalogService {
         TreeModel.sortByTree(list);
         return list;
     }
+
+    public NavigationNode getCatalog(String id){
+        return navigationNodeRepositry.get(id);
+    }
 }

@@ -3,6 +3,7 @@ package org.bumishi.techblog.api.application;
 import org.bumishi.techblog.api.domain.model.Blog;
 import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
 import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
+import org.bumishi.toolbox.model.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,16 @@ public class BlogService {
         blogCommandRepositry.remove(id);
     }
 
+    public Blog getBlog(String id){
+        return blogQueryRepositry.get(id);
+    }
+
+    public PageModel<Blog> queryByTime(int page,int size){
+        return blogQueryRepositry.queryByTime(page, size);
+    }
+
+    public PageModel<Blog> queryByCatalog(int page,int size,String catalog){
+        return blogQueryRepositry.queryByCatalog(page, size, catalog);
+    }
 
 }

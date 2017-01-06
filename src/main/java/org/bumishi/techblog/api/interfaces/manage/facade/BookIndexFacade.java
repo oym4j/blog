@@ -46,7 +46,7 @@ public class BookIndexFacade {
     }
 
     public BookIndex get(String id) {
-        return bookIndexRepositry.get(id);
+        return bookService.getBookIndex(id);
     }
 
 }
