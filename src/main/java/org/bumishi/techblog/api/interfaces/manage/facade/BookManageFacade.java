@@ -1,7 +1,10 @@
 package org.bumishi.techblog.api.interfaces.manage.facade;
 
+import com.google.common.eventbus.EventBus;
 import org.bumishi.techblog.api.application.BookService;
+import org.bumishi.techblog.api.domain.model.Book;
 import org.bumishi.techblog.api.domain.model.BookIndex;
+import org.bumishi.techblog.api.domain.model.event.BookUpdateEvent;
 import org.bumishi.techblog.api.domain.repository.BookCommandRepositry;
 import org.bumishi.techblog.api.interfaces.manage.facade.assembler.BookAssembler;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.BookUpdateCommand;
@@ -29,14 +32,21 @@ public class BookManageFacade {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private EventBus eventBus;
     
 
     public void createBook(BookUpdateCommand bookCommand){
-        bookCommandRepositry.save(bookAssembler.createComandToDomain(bookCommand));
+        Book book = bookAssembler.createComandToDomain(bookCommand);
+        bookCommandRepositry.save(book);
+        eventBus.post(new BookUpdateEvent(book));
     }
 
     public void updateBook(String id,BookUpdateCommand bookCommand){
-        bookCommandRepositry.update(bookAssembler.updateCommandToDomain(id,bookCommand));
+        Book book = bookAssembler.updateCommandToDomain(id, bookCommand);
+        bookCommandRepositry.update(book);
+        eventBus.post(new BookUpdateEvent(book));
     }
 
     public void delete(String id) {

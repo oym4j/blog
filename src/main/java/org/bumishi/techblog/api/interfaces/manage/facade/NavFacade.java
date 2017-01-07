@@ -1,7 +1,10 @@
 package org.bumishi.techblog.api.interfaces.manage.facade;
 
 
+import com.google.common.eventbus.EventBus;
 import org.bumishi.techblog.api.application.NavService;
+import org.bumishi.techblog.api.domain.model.event.CatalogDeleteEvent;
+import org.bumishi.techblog.api.domain.model.event.CatalogUpdateEvent;
 import org.bumishi.techblog.api.interfaces.manage.facade.assembler.NavigationAssembler;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationCreateCommand;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.NavigationUpdateCommond;
@@ -26,16 +29,21 @@ public class NavFacade {
     @Autowired
     protected NavService navService;
 
-
+    @Autowired
+    protected EventBus eventBus;
 
     public void add(NavigationCreateCommand createCommand){
-        navigationNodeRepositry.add(NavigationAssembler.createCommendToDomain(createCommand));
+        NavigationNode catalog = NavigationAssembler.createCommendToDomain(createCommand);
+        navigationNodeRepositry.add(catalog);
+        eventBus.post(new CatalogUpdateEvent(catalog));
     }
 
     public void update(String id,NavigationUpdateCommond updateCommond){
-        navigationNodeRepositry.update(NavigationAssembler.updateCommendToDomain(id, updateCommond));
-
+        NavigationNode catalog = NavigationAssembler.updateCommendToDomain(id, updateCommond);
+        navigationNodeRepositry.update(catalog);
+        eventBus.post(new CatalogUpdateEvent(catalog));
     }
+
 
     public void switchStatus(String id,boolean disable){
         if(disable){
@@ -43,10 +51,12 @@ public class NavFacade {
         }else {
             navigationNodeRepositry.enable(id);
         }
+        eventBus.post(new CatalogDeleteEvent(id));
     }
 
     public void delete(String id) {
         navigationNodeRepositry.remove(id);
+        eventBus.post(new CatalogDeleteEvent(id));
     }
 
     public NavigationNode get(String id) {
