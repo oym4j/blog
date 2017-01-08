@@ -40,9 +40,18 @@ spring:
       spec: maximumSize=500
 
  #spring-boot-admin config
+  boot:
+      admin:
+        #这里是admin-manage的地址，/admin是admin-manage中配置的spring.spring.boot.admin.context-path
+        url: http://localhost:10000/admin
+        context-path: /admin
 
   thymeleaf:
       cache: false
 
       prefix: classpath:/public/themes/jiestyle/
 
+blog:
+  manage:
+    ##允许访问博客管理api的机器
+    allow: localhost,127.0.0.1,bumishi.tech

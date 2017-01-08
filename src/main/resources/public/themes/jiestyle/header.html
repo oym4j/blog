@@ -1,12 +1,6 @@
 <header id="header">
-    <div class="avatar" style="color:white;" th:text="${siteconfig[logo]}?:专注技术研究">专注技术研究</div>
-    <h3 id="name" th:text="${siteconfig[name]}?:'不迷失博客'">@不迷失</h3>
-    <div class="sns">
+    <div style="margin-top: 15px"><a href="/"><img th:src="@{${siteconfig[logo]}?:'/themes/jiestyle/images/logo.png'}"/></a></div>
 
-        <!--<a href="http://shang.qq.com/wpa/qunwpa?idkey=d1d7f068205e1ff5dbcc1ecda23d5195d2ce61254c0f7188741c758111e1c2f2" target="_blank" rel="nofollow" title="Java技术群">技术交流群</a>-->
-        <!--<a href="http://user.qzone.qq.com/1060420897/main" target="_blank" rel="nofollow" title="QQ空间">QQ空间</a>-->
-
-    </div>
     <div class="nav">
         <ul>
 
@@ -22,6 +16,19 @@
 
         </ul>
     </div>
-    <div class="weixin"><img th:src="@{/themes/jiestyle/images/weixin.jpg}" alt="不迷失微信" width="80%"/>
-    </div>
+    <br/>
+    <aside class="widget clearfix" style="padding: 10px;">
+        <form id="searchform" action="/blog/search">
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="搜索…" value="" name="keyword">
+                <span class="input-group-btn">
+      <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+      </span></div>
+        </form>
+    </aside>
+
+        <div style="margin-top: 80px;margin-bottom: 20px;text-align: center">
+            <img th:src="@{/themes/jiestyle/images/weixin.jpg}" alt="不迷失微信" width="80%"/>
+        </div>
+
 </header>

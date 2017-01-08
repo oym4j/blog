@@ -1,6 +1,7 @@
-package org.bumishi.techblog.api.domain.model.event;
+package org.bumishi.techblog.api.application;
 
 import com.google.common.eventbus.Subscribe;
+import org.bumishi.techblog.api.domain.model.event.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Component;

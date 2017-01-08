@@ -4,7 +4,7 @@ package org.bumishi.techblog.api.application;
 import org.bumishi.techblog.api.domain.repository.SiteConfigRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.Map;
  * @date 2016/12/27
  */
 @Service
-@CacheConfig(cacheNames = "config")
+@CacheConfig(cacheNames = "siteconfig")
 public class SiteConfigService {
 
     @Autowired
@@ -26,7 +26,7 @@ public class SiteConfigService {
         return siteConfigRepositry.getConfig();
     }
 
-    @CachePut(key = "'siteconfig'")
+    @CacheEvict(key = "'siteconfig'")
     public void update(Map<String, String> siteConfig) {
         siteConfigRepositry.update(siteConfig);
     }

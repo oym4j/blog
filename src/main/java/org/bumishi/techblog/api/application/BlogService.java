@@ -4,7 +4,6 @@ import com.google.common.eventbus.EventBus;
 import org.bumishi.techblog.api.domain.model.Blog;
 import org.bumishi.techblog.api.domain.model.event.BlogDeleteEvent;
 import org.bumishi.techblog.api.domain.model.event.BlogUpdateEvent;
-import org.bumishi.techblog.api.domain.model.event.EventHandler;
 import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
 import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
 import org.bumishi.toolbox.model.PageModel;

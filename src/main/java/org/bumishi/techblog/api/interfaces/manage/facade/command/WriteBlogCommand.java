@@ -32,7 +32,7 @@ public class WriteBlogCommand {
     @NotBlank
     private String display;
 
-//    @NotBlank
+    @NotBlank
     /**封面图片，主要迎合微信公众号*/
     private String img;
 

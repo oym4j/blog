@@ -18,7 +18,7 @@ public class NavigationCreateCommand {
 
     private String url;
 
-    private int type = 1;//扩展字段。菜单类型，供不同业务区分
+    private int type = 1;//扩展字段。菜单类型，供不同业务区分,目前1表示在本窗口打开，2表示新开窗口打开链接
 
     private String style;//样式，方便ui展现
 

@@ -4,7 +4,6 @@ import com.google.common.eventbus.EventBus;
 import org.bumishi.techblog.api.domain.model.Book;
 import org.bumishi.techblog.api.domain.model.BookIndex;
 import org.bumishi.techblog.api.domain.model.event.BookDeleteEvent;
-import org.bumishi.techblog.api.domain.model.event.EventHandler;
 import org.bumishi.techblog.api.domain.repository.BookCommandRepositry;
 import org.bumishi.techblog.api.domain.repository.BookIndexRepositry;
 import org.bumishi.techblog.api.domain.repository.BookQueryRepositry;

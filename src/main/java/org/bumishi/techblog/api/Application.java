@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2016/10/24
  */
 @SpringBootApplication
+
 public class Application {
 
     public static void main(String[] arg){

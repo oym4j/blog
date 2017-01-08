@@ -5,7 +5,6 @@ import org.bumishi.toolbox.model.TreeModel;
 import org.bumishi.toolbox.model.repositry.NavigationNodeRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,6 @@ import java.util.List;
  * @date 2016/12/26
  */
 @Service
-@CacheConfig(cacheNames = "nav")
 public class NavService {
 
     @Autowired
@@ -24,19 +22,19 @@ public class NavService {
     protected NavigationNodeRepositry navigationNodeRepositry;
 
 
-    @Cacheable("nav")
+    @Cacheable(value = EventHandler.NAV_PAGE_CACHE)
     public List<NavigationNode> listWithTree(boolean includeDisable) {
         return (List<NavigationNode>) new TreeModel(navigationNodeRepositry.list()).buildTree(includeDisable);
     }
 
-    @Cacheable("nav")
+    @Cacheable(value = EventHandler.NAV_PAGE_CACHE)
     public List<NavigationNode> listByOrder() {
         List<NavigationNode> list = navigationNodeRepositry.list();
         TreeModel.sortByTree(list);
         return list;
     }
 
-    @Cacheable("nav")
+    @Cacheable(value = EventHandler.NAV_CACHE)
     public NavigationNode getNav(String id){
         return navigationNodeRepositry.get(id);
     }

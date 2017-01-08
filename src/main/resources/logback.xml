@@ -35,7 +35,7 @@
         <appender-ref ref="SQL"/>
     </logger>
     <logger name="org.springframework.web.servlet.mvc" level="info"/>
-    <root level="WARN">
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
