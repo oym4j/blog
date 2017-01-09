@@ -50,6 +50,9 @@ spring:
       cache: false
 
       prefix: classpath:/public/themes/jiestyle/
+  data:
+    elasticsearch:
+      cluster-nodes: localhost:9300
 
 blog:
   manage:
