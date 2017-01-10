@@ -3,8 +3,6 @@ package org.bumishi.techblog.api.interfaces.site.facade;
 import org.bumishi.techblog.api.application.BlogService;
 import org.bumishi.techblog.api.application.CatalogService;
 import org.bumishi.techblog.api.domain.model.Blog;
-import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
-import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
 import org.bumishi.techblog.api.domain.repository.BlogViewsRepostiry;
 import org.bumishi.techblog.api.interfaces.site.facade.dto.SiteBlogDto;
 import org.bumishi.toolbox.model.PageModel;
@@ -25,13 +23,6 @@ public class SiteBlogFacade {
 
     @Autowired
     private BlogService blogService;
-
-
-    @Autowired
-    private BlogQueryRepositry blogQueryRepositry;
-
-    @Autowired
-    private BlogCommandRepositry blogCommandRepositry;
 
     @Autowired
     private BlogViewsRepostiry blogViewsRepostiry;
