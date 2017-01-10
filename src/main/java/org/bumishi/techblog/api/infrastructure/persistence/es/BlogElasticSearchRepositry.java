@@ -50,7 +50,7 @@ public class BlogElasticSearchRepositry implements BlogCommandRepositry, BlogQue
 
     @Override
     public Blog get(String id) {
-        return JSON.parseObject(client.prepareGet("blog", "blog", "1").get().getSourceAsString(), Blog.class);
+        return JSON.parseObject(client.prepareGet("blog", "blog", id).get().getSourceAsString(), Blog.class);
     }
 
     @Override
