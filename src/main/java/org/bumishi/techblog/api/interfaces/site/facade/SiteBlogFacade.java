@@ -59,21 +59,26 @@ public class SiteBlogFacade {
     }
 
     public PageModel<SiteBlogDto> pageQuery(int page, int size) {
-        PageModel<SiteBlogDto> pageModel = new PageModel();
         PageModel<Blog> blogPageModel = blogService.queryByTime(page, size);
-        pageModel.setHasNext(blogPageModel.isHasNext());
-        pageModel.setPage(blogPageModel.getPage());
-        pageModel.setSize(blogPageModel.getSize());
-        if (!CollectionUtils.isEmpty(blogPageModel.getList())) {
-            List<SiteBlogDto> blogDtos = blogPageModel.getList().stream().map(blog -> toDto(blog)).collect(Collectors.toList());
-            pageModel.setList(blogDtos);
-        }
-        return pageModel;
+        return getSiteBlogDtoPageModel(blogPageModel);
     }
 
+
     public PageModel<SiteBlogDto> queryByCatalog(int page, int size, String catalog) {
-        PageModel<SiteBlogDto> pageModel = new PageModel();
         PageModel<Blog> blogPageModel = blogService.queryByCatalog(page, size, catalog);
+        return getSiteBlogDtoPageModel(blogPageModel);
+    }
+
+    public PageModel<SiteBlogDto> search(int page, int size, String keywords) {
+        PageModel<Blog> blogPageModel = blogService.search(page, size, keywords);
+        return getSiteBlogDtoPageModel(blogPageModel);
+    }
+
+    private PageModel<SiteBlogDto> getSiteBlogDtoPageModel(PageModel<Blog> blogPageModel) {
+        if (blogPageModel == null) {
+            return null;
+        }
+        PageModel<SiteBlogDto> pageModel = new PageModel();
         pageModel.setHasNext(blogPageModel.isHasNext());
         pageModel.setPage(blogPageModel.getPage());
         pageModel.setSize(blogPageModel.getSize());

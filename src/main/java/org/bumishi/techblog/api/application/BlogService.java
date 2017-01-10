@@ -57,4 +57,8 @@ public class BlogService {
         return blogQueryRepositry.queryByCatalog(page, size, catalog);
     }
 
+    public PageModel<Blog> search(int page, int size, String keywords) {
+        return blogQueryRepositry.queryByKeyword(page, size, keywords);
+    }
+
 }
