@@ -4,12 +4,11 @@ import org.bumishi.techblog.api.domain.model.Blog;
 import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 
 /**
  * Created by xieqiang on 2016/11/26.
  */
-@Repository
+//@Repository
 public class BlogCommandJdbcRepositry implements BlogCommandRepositry {
 
     @Autowired
