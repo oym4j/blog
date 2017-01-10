@@ -1,5 +1,7 @@
 package org.bumishi.techblog.api.interfaces.site.facade.dto;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Date;
 
 /**
@@ -75,7 +77,10 @@ public class SiteBlogDto {
     }
 
     public String getTitle() {
-        return title;
+        if (StringUtils.isBlank(secondTitle)) {
+            return title;
+        }
+        return title + " " + secondTitle;
     }
 
     public void setTitle(String title) {

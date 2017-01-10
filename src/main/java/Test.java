@@ -111,6 +111,7 @@ public class Test {
         blog.setId("1");
         blog.setTitle("java2");
         blog.setDisplay("Java2，时间");
+        blog.setSecondTitle("wefafa");
         blog.setPublishTime(new Date());
         blog.setCatalog("java");
         System.out.println(client.prepareIndex("blog", "blog").setId(blog.getId())
