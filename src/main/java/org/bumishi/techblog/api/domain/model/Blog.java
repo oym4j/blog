@@ -115,15 +115,9 @@ public class Blog implements Serializable{
 		this.secondTitle = secondTitle;
 	}
 
-	public static String convertCatalog(String catalog){
-		if(catalog.equals("java"))return "Java世界";
-		if(catalog.equals("web"))return "web前端";
-		if(catalog.equals("code"))return "代码脚本";
-		if(catalog.equals("dosite"))return "建站运营";
-		if(catalog.equals("book"))return "图书";
-		if(catalog.equals("carrer"))return "职业生涯";
-		if(catalog.equals("expr"))return "技术经验";
-		return "其它";
+	public String getLink(){
+		return "/blog/"+id;
 	}
+
     
 }

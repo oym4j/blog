@@ -3,7 +3,7 @@ package org.bumishi.techblog.api.interfaces.site;
 import org.apache.commons.lang3.StringUtils;
 import org.bumishi.techblog.api.application.SiteConfigService;
 import org.bumishi.techblog.api.interfaces.site.facade.SiteBlogFacade;
-import org.bumishi.techblog.api.interfaces.site.facade.dto.SiteBlogDto;
+import org.bumishi.techblog.api.interfaces.site.facade.dto.BlogDetailDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,11 +35,12 @@ public class BlogController {
 
     @GetMapping("/blog/{id}")
     public String get(@PathVariable("id") String id, Model model, @CookieValue(name = "viewd", required = false) String viewd, HttpServletResponse response) {
-        SiteBlogDto blog = blogFacade.getBlog(id);
+        BlogDetailDto blog = blogFacade.getBlog(id);
         if(blog==null){
             return "404";
         }
         model.addAttribute("blog",blog);
+        model.addAttribute("similars",blogFacade.getSimilarBlog(blog.getTitle()));
         if (StringUtils.isBlank(viewd) || !viewd.equals("1")) {
             blogFacade.addViews(id);
             response.addCookie(new Cookie("viewd", "1"));

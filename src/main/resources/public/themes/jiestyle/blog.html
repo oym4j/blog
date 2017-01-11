@@ -80,48 +80,21 @@
             })(); </script>
 
     </article>
-    <!--<section class="col-md-8 col-md-offset-2 clearfix">-->
-    <!--<div class="read">-->
-    <!--<div class="read-head"><i class="fa fa-book"></i> 为你推荐</div>-->
-    <!--<div class="read-list row">-->
-    <!--<div class="col-md-6">-->
-    <!--<ul>-->
+    <section class="col-md-8 col-md-offset-2 clearfix" th:if="${not(#lists.isEmpty(similars))}">
+    <div class="read">
+    <div class="read-head"><i class="fa fa-book"></i> 相关文章</div>
+    <div class="read-list row">
+    <div class="col-md-12">
+    <ul th:each="item:${similars}">
 
-    <!--<li><a href="http://tangjie.me/blog/196.html" target="_blank">【博客改版】极简风格，全新JieStyle</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/199.html" target="_blank">有营养的5条知识观点分享</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/205.html" target="_blank">如何招聘产品经理</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/192.html" target="_blank">产品经理不能错过的一本书</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/195.html" target="_blank">产品经理的野蛮生长</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/202.html" target="_blank">做产品，创意不是最重要的</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/203.html" target="_blank">iMessage App Store体验观察与商业机会</a>-->
-    <!--</li>-->
-    <!--<li><a href="http://tangjie.me/blog/207.html" target="_blank">1024程序员节，写给年轻程序员的建议</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/210.html" target="_blank">杰出PM专班改版了，并且启动商业实战项目</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/193.html" target="_blank">轻松应对产品经理面试问题</a></li>-->
-    <!--</ul>-->
-    <!--</div>-->
-    <!--<div class="col-md-6">-->
-    <!--<ul>-->
-    <!--<li><a href="http://tangjie.me/blog/66.html" title="博客总结，文章汇总：产品经理的成长之路">博客总结，文章汇总：产品经理的成长之路</a>-->
-    <!--</li>-->
-    <!--<li><a href="http://tangjie.me/blog/22.html" title="从产品思维讲《iOS人机界面指导手册》读后感（跑题文章）">从产品思维讲《iOS人机界面指导手册》读后感（跑题文章）</a>-->
-    <!--</li>-->
-    <!--<li><a href="http://tangjie.me/blog/104.html" title="第三章：产品规划(1) &#8211; 产品规划介绍">第三章：产品规划(1)-->
-    <!--&#8211; 产品规划介绍</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/28.html" title="招聘产品经理，这三点真的不重要">招聘产品经理，这三点真的不重要</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/122.html" title="学员课后总结：产品唐杰之用户体验">学员课后总结：产品唐杰之用户体验</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/98.html" title="第一章：产品介绍(5) – 产品经理入门前的心理准备">第一章：产品介绍(5) –-->
-    <!--产品经理入门前的心理准备</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/163.html" title="产品经理如何更精准的细分人群">产品经理如何更精准的细分人群</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/180.html" title="1.2 产品团队和产品经理">1.2 产品团队和产品经理</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/27.html" title="《职场交谈，这样说就对了》读后感">《职场交谈，这样说就对了》读后感</a></li>-->
-    <!--<li><a href="http://tangjie.me/blog/46.html" title="如何提高工作效率？一些思考！">如何提高工作效率？一些思考！</a></li>-->
-    <!--</ul>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
+    <li><a th:href="@{${item.link}" th:utext="${item.title}">【博客改版】极简风格，全新JieStyle</a></li>
+       </ul>
+    </div>
 
-    <!--</section>-->
+    </div>
+    </div>
+
+    </section>
 </div>
 <!--modal-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

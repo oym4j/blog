@@ -7,7 +7,7 @@ import org.bumishi.techblog.api.interfaces.shard.BookQueryFacade;
 import org.bumishi.techblog.api.interfaces.site.facade.GitBookFacade;
 import org.bumishi.techblog.api.interfaces.site.facade.SiteBlogFacade;
 import org.bumishi.techblog.api.interfaces.site.facade.dto.GitBookDto;
-import org.bumishi.techblog.api.interfaces.site.facade.dto.SiteBlogDto;
+import org.bumishi.techblog.api.interfaces.site.facade.dto.BlogDetailDto;
 import org.bumishi.toolbox.model.TreeModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,7 +61,7 @@ public class BookController {
         model.addAttribute("book", book);
         BookIndex first = book.getIndexs().get(0);
         String blogId = first.getUrl().substring(first.getUrl().lastIndexOf("/") + 1);
-        SiteBlogDto blog = blogFacade.getBlog(blogId);
+        BlogDetailDto blog = blogFacade.getBlog(blogId);
         if (blog == null) {
             return "404";
         }
@@ -88,7 +88,7 @@ public class BookController {
             return "404";
         }
         model.addAttribute("book", book);
-        SiteBlogDto blog = blogFacade.getBlog(blogId);
+        BlogDetailDto blog = blogFacade.getBlog(blogId);
         if (blog == null) {
             return "404";
         }

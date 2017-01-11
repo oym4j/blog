@@ -8,7 +8,7 @@ import java.util.Date;
  * @author qiang.xie
  * @date 2016/12/27
  */
-public class SiteBlogDto {
+public class  BlogDetailDto {
 
     private String id;
 
@@ -33,11 +33,6 @@ public class SiteBlogDto {
     private String catalogDisplay;
 
     /**
-     * 作者
-     */
-    private String auther;
-
-    /**
      * 发布时间
      */
     private Date publishTime;
@@ -52,11 +47,6 @@ public class SiteBlogDto {
      * 内容
      */
     private String display;
-
-    /**
-     * 文章概要
-     */
-    private String summary;
 
     /**
      * 文章链接
@@ -111,13 +101,6 @@ public class SiteBlogDto {
         this.catalogDisplay = catalogDisplay;
     }
 
-    public String getAuther() {
-        return auther;
-    }
-
-    public void setAuther(String auther) {
-        this.auther = auther;
-    }
 
     public Date getPublishTime() {
         return publishTime;
@@ -133,14 +116,6 @@ public class SiteBlogDto {
 
     public void setImg(String img) {
         this.img = img;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
     }
 
     public String getLink() {
