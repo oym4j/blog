@@ -60,7 +60,7 @@ public class BlogElasticSearchRepositry implements BlogCommandRepositry, BlogQue
         if (StringUtils.isNotBlank(keyword)) {
             queryBuilder = QueryBuilders.multiMatchQuery(keyword, "title", "secondTitle", "md");
         }
-        SearchResponse searchResponse = client.prepareSearch("blog").setTypes("blog").setFrom((page - 1) * size).setSize(size).setQuery(queryBuilder).addSort("publishTime", SortOrder.DESC).highlighter(new HighlightBuilder().field("title").field("md").preTags("<span class='kw'>").postTags("</span>").fragmentSize(50)).get();
+        SearchResponse searchResponse = client.prepareSearch("blog").setTypes("blog").setFrom((page - 1) * size).setSize(size).setQuery(queryBuilder).highlighter(new HighlightBuilder().field("title").field("md").preTags("<span class='kw'>").postTags("</span>").fragmentSize(50)).get();
         return getBlogPageModel(page, size, searchResponse);
     }
 
