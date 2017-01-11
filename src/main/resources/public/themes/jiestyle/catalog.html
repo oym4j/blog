@@ -7,7 +7,9 @@
           th:content="${siteconfig[description]}?:'不迷失博客'"/>
     <meta name="keywords" th:content="${siteconfig[keywords]}?:'不迷失博客'"/>
     <div th:replace="head"></div>
-
+    <style type="text/css">
+        .kw{color:#dd4b39;}
+    </style>
 </head>
 
 <body>
@@ -21,16 +23,17 @@
             <h2 th:if="${#lists.isEmpty(pageModel.list)}">暂无文章</h2>
             <article class="article-list-1 clearfix" th:each="item:${pageModel.list}">
                 <header class="clearfix">
-                    <h1 class="post-title"><a th:href="@{/blog/{id}(id=${item.id})}" th:text="${item.title}">三套极简风格的WordPress主题模板</a>
+                    <h1 class="post-title"><a th:href="@{${item.link}}" th:utext="${item.title}">三套极简风格的WordPress主题模板</a>
                     </h1>
                     <div class="post-meta">
                         <span class="meta-span"><i class="fa fa-calendar"></i> <span
                                 th:text="${#dates.format(item.publishTime,'yyyy/MM/dd')}"></span></span>
                         <span class="meta-span"><i class="fa fa-folder-open-o"></i> <a
                                 th:href="@{/blog/catalog/{catalog}(catalog=${item.catalog})}" rel="category tag"
-                                th:text="${item.catalogDisplay}">一些分享</a></span>
+                                th:utext="${item.catalogDisplay}">一些分享</a></span>
 
                     </div>
+                    <div th:if="${isSearch} and ${item.summary!=null}" th:utext="${item.summary}+'...'"></div>
                 </header>
 
             </article>

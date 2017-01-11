@@ -44,7 +44,7 @@ public class SiteBlogFacade {
         BeanUtils.copyProperties(blog, dto);
         dto.setCatalogDisplay(catalogService.getCatalog(blog.getCatalog()).getLabel());
         dto.setLink("/blog/" + blog.getId());
-        dto.setSummary("");//todo
+        dto.setSummary(blog.getDisplay());
         dto.setViews(blogViewsRepostiry.getViews(blog.getId()));
         return dto;
     }

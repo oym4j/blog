@@ -75,34 +75,53 @@ public class Test {
         TransportClient client = new PreBuiltTransportClient(Settings.EMPTY)
                 .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
 
-        if (!client.admin().indices().prepareExists("blog").get().isExists()) {
+      //  if (!client.admin().indices().prepareExists("blog").get().isExists()) {
+
+        String mapping="{\n" +
+                "      \"properties\": { \n" +
+                "        \"title\":    { \"type\": \"text\"  }, \n" +
+                "        \"secondTitle\":    { \"type\": \"text\"  }, \n" +
+                "        \"catalog\":    { \"type\": \"keyword\"  },\n" +
+                "        \"auther\":    { \"type\": \"keyword\", \"index\":\"no\"  },  \n" +
+                "        \"img\":    { \"type\": \"text\", \"index\":\"no\"  },  \n" +
+                "        \"md\":     { \"type\": \"text\",\"index\":\"not_analyzed\"}, \n" +
+                "        \"display\":  {\n" +
+                "          \"type\":   \"text\",\n" +
+                "          \"index\":\"no\"\n" +
+                "          \n" +
+                "        },\n" +
+                "        \"publishTime\":  {\n" +
+                "          \"type\":   \"date\", \n" +
+                "          \"format\": \"strict_date_optional_time||epoch_millis\"\n" +
+                "        }\n" +
+                "      }\n" +
+                "}\n";
+        client.admin().indices().preparePutMapping("blog").setType("blog").setSource(mapping);
+//            client.admin().indices().prepareCreate("blog").setSettings(Settings.builder()
+//                    .put("index.number_of_shards", 2)
+//                    .put("index.number_of_replicas", 0)
+//            ).addMapping("blog", "{\n" +
+//                    "      \"properties\": { \n" +
+//                    "        \"title\":    { \"type\": \"text\"  }, \n" +
+//                    "        \"secondTitle\":    { \"type\": \"text\"  }, \n" +
+//                    "        \"catalog\":    { \"type\": \"keyword\"  },\n" +
+//                    "        \"auther\":    { \"type\": \"keyword\", \"index\":\"no\"  },  \n" +
+//                    "        \"img\":    { \"type\": \"text\", \"index\":\"no\"  },  \n" +
+//                    "        \"md\":     { \"type\": \"text\",\"index\":\"not_analyzed\"}, \n" +
+//                    "        \"display\":  {\n" +
+//                    "          \"type\":   \"text\",\n" +
+//                    "          \"index\":\"no\"\n" +
+//                    "          \n" +
+//                    "        },\n" +
+//                    "        \"publishTime\":  {\n" +
+//                    "          \"type\":   \"date\", \n" +
+//                    "          \"format\": \"strict_date_optional_time||epoch_millis\"\n" +
+//                    "        }\n" +
+//                    "      }\n" +
+//                    "}\n").get();
 
 
-            client.admin().indices().prepareCreate("blog").setSettings(Settings.builder()
-                    .put("index.number_of_shards", 2)
-                    .put("index.number_of_replicas", 0)
-            ).addMapping("blog", "{\n" +
-                    "      \"properties\": { \n" +
-                    "        \"title\":    { \"type\": \"text\"  }, \n" +
-                    "        \"secondTitle\":    { \"type\": \"text\"  }, \n" +
-                    "        \"catalog\":    { \"type\": \"keyword\"  },\n" +
-                    "        \"auther\":    { \"type\": \"keyword\", \"index\":\"no\"  },  \n" +
-                    "        \"img\":    { \"type\": \"text\", \"index\":\"no\"  },  \n" +
-                    "        \"md\":     { \"type\": \"text\",\"index\":\"not_analyzed\"}, \n" +
-                    "        \"display\":  {\n" +
-                    "          \"type\":   \"text\",\n" +
-                    "          \"index\":\"no\"\n" +
-                    "          \n" +
-                    "        },\n" +
-                    "        \"publishTime\":  {\n" +
-                    "          \"type\":   \"date\", \n" +
-                    "          \"format\": \"strict_date_optional_time||epoch_millis\"\n" +
-                    "        }\n" +
-                    "      }\n" +
-                    "}\n").get();
-
-
-        }
+      //  }
 
 
         System.out.println(client.prepareDelete("blog", "blog", "1").get());

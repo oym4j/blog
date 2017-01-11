@@ -60,6 +60,7 @@ public class BlogController {
     public String search(@RequestParam("s") String s, @RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
         model.addAttribute("pageModel", blogFacade.search(page, siteConfigService.pageSize(), s));
         model.addAttribute("catalog", "all");
+        model.addAttribute("isSearch",true);
         model.addAttribute("page", page);
         return "catalog";
     }

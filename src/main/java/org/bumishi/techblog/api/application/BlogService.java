@@ -8,6 +8,7 @@ import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
 import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
 import org.bumishi.toolbox.model.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +19,14 @@ import org.springframework.stereotype.Service;
 public class BlogService {
 
     @Autowired
+    @Qualifier("blogElasticSearchRepositry")
     protected BlogCommandRepositry blogCommandRepositry;
 
     @Autowired
+    @Qualifier("blogElasticSearchRepositry")
     protected BlogQueryRepositry blogQueryRepositry;
+
+
 
     @Autowired
     protected EventBus eventBus;

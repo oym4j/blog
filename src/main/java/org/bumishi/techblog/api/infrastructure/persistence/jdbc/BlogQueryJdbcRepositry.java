@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Created by xieqiang on 2016/11/27.
  */
-//@Repository
+@Repository("blogQueryJdbcRepositry")
 public class BlogQueryJdbcRepositry implements BlogQueryRepositry {
 
     @Autowired

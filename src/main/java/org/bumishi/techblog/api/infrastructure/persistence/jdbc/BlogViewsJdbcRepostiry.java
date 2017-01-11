@@ -2,6 +2,7 @@ package org.bumishi.techblog.api.infrastructure.persistence.jdbc;
 
 import org.bumishi.techblog.api.domain.repository.BlogViewsRepostiry;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -17,9 +18,11 @@ public class BlogViewsJdbcRepostiry implements BlogViewsRepostiry {
     @Override
     public void addViews(String id) {
         try {
-            jdbcTemplate.queryForObject("select id from blog_views where id=?", String.class, id);
-            jdbcTemplate.update("UPDATE blog_views SET views=views+1 WHERE id=?", id);
-        } catch (Exception e) {
+            String row=jdbcTemplate.queryForObject("select id from blog_views where id=?", String.class, id);
+            if(id.equals(row)) {
+                jdbcTemplate.update("UPDATE blog_views SET views=views+1 WHERE id=?", id);
+            }
+        } catch (EmptyResultDataAccessException e) {
             jdbcTemplate.update("INSERT blog_views (id,views) VALUES (?,?)", id, 1);
         }
 

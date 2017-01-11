@@ -8,15 +8,16 @@ import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
 import org.bumishi.toolbox.model.PageModel;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.text.Text;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ import java.util.List;
 /**
  * Created by xieqiang on 2017/1/9.
  */
-@Repository
+@Repository("blogElasticSearchRepositry")
 public class BlogElasticSearchRepositry implements BlogCommandRepositry, BlogQueryRepositry {
 
     @Autowired
@@ -59,7 +60,7 @@ public class BlogElasticSearchRepositry implements BlogCommandRepositry, BlogQue
         if (StringUtils.isNotBlank(keyword)) {
             queryBuilder = QueryBuilders.multiMatchQuery(keyword, "title", "secondTitle", "md");
         }
-        SearchResponse searchResponse = client.prepareSearch("blog").setTypes("blog").setFrom((page - 1) * size).setSize(size).setQuery(queryBuilder).addSort("publishTime", SortOrder.DESC).get();
+        SearchResponse searchResponse = client.prepareSearch("blog").setTypes("blog").setFrom((page - 1) * size).setSize(size).setQuery(queryBuilder).addSort("publishTime", SortOrder.DESC).highlighter(new HighlightBuilder().field("title").field("md").preTags("<span class='kw'>").postTags("</span>").fragmentSize(50)).get();
         return getBlogPageModel(page, size, searchResponse);
     }
 
@@ -81,10 +82,37 @@ public class BlogElasticSearchRepositry implements BlogCommandRepositry, BlogQue
         pageModel.setHasNext(hits.length >= size);
         List<Blog> blogs = new ArrayList<>();
         for (SearchHit searchHit : hits) {
-            blogs.add(JSON.parseObject(searchHit.getSourceAsString(), Blog.class));
+            Blog blog=JSON.parseObject(searchHit.getSourceAsString(), Blog.class);
+            processHighlight(blog,searchHit);
+            blogs.add(blog);
         }
         pageModel.setList(blogs);
         return pageModel;
+    }
+
+    private void processHighlight(Blog blog,SearchHit searchHit){
+        if(!CollectionUtils.isEmpty(searchHit.getHighlightFields())){
+            if(searchHit.getHighlightFields().containsKey("title")) {
+                blog.setTitle(getText(searchHit.getHighlightFields().get("title").getFragments()));
+            }
+            if(searchHit.getHighlightFields().containsKey("md")) {
+                blog.setDisplay(getText(searchHit.getHighlightFields().get("md").getFragments()));
+            }
+        }
+    }
+
+    private String getText(Text[] texts){
+        if(texts==null){
+            return null;
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i=0;i<texts.length;i++){
+            stringBuilder.append(texts[i].string());
+            if(i<texts.length-1) {
+                stringBuilder.append("...");
+            }
+        }
+        return stringBuilder.toString();
     }
     @Override
     public PageModel<Blog> queryByTime(int page, int size) {
@@ -94,36 +122,6 @@ public class BlogElasticSearchRepositry implements BlogCommandRepositry, BlogQue
     @Override
     public int getCount() {
         return Long.valueOf(client.prepareSearch("blog").setTypes("blog").setQuery(QueryBuilders.matchAllQuery()).get().getHits().getTotalHits()).intValue();
-    }
-
-    @PostConstruct
-    protected void initIndex() {
-        if (!client.admin().indices().prepareExists("blog").get().isExists()) {
-            client.admin().indices().prepareCreate("blog").setSettings(Settings.builder()
-                    .put("index.number_of_shards", 2)
-                    .put("index.number_of_replicas", 0)
-            ).addMapping("blog", "{\n" +
-                    "      \"properties\": { \n" +
-                    "        \"title\":    { \"type\": \"text\"  }, \n" +
-                    "        \"secondTitle\":    { \"type\": \"text\"  }, \n" +
-                    "        \"catalog\":    { \"type\": \"keyword\"  },\n" +
-                    "        \"auther\":    { \"type\": \"keyword\", \"index\":\"no\"  },  \n" +
-                    "        \"img\":    { \"type\": \"text\", \"index\":\"no\"  },  \n" +
-                    "        \"md\":     { \"type\": \"text\",\"index\":\"not_analyzed\"}, \n" +
-                    "        \"display\":  {\n" +
-                    "          \"type\":   \"text\",\n" +
-                    "          \"index\":\"no\"\n" +
-                    "          \n" +
-                    "        },\n" +
-                    "        \"publishTime\":  {\n" +
-                    "          \"type\":   \"date\", \n" +
-                    "          \"format\": \"strict_date_optional_time||epoch_millis\"\n" +
-                    "        }\n" +
-                    "      }\n" +
-                    "}\n").get();
-
-
-        }
     }
 
     @PreDestroy

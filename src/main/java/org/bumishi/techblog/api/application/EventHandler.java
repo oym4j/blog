@@ -2,7 +2,9 @@ package org.bumishi.techblog.api.application;
 
 import com.google.common.eventbus.Subscribe;
 import org.bumishi.techblog.api.domain.model.event.*;
+import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Component;
 
@@ -37,22 +39,29 @@ public class EventHandler {
     @Autowired
     protected CacheManager cacheManager;
 
+    @Autowired
+    @Qualifier("blogCommandJdbcRepositry")
+    protected BlogCommandRepositry blogCommandJdbcRepositry;
+
     @Subscribe
     public void onBlogUpdate(BlogUpdateEvent blogUpdateEvent) {
         cacheManager.getCache(BLOG_CACHE).put(blogUpdateEvent.getBlog().getId(), blogUpdateEvent.getBlog());
         cacheManager.getCache(BLOG_PAGE_CACHE).clear();
+        blogCommandJdbcRepositry.save(blogUpdateEvent.getBlog());
     }
 
     @Subscribe
     public void onBlogDelete(BlogDeleteEvent blogUpdateEvent) {
         cacheManager.getCache(BLOG_CACHE).evict(blogUpdateEvent.getBlogId());
         cacheManager.getCache(BLOG_PAGE_CACHE).clear();
+        blogCommandJdbcRepositry.remove(blogUpdateEvent.getBlogId());
     }
 
     @Subscribe
     public void onBookUpdate(BookUpdateEvent blogUpdateEvent) {
         cacheManager.getCache(BOOK_CACHE).put(blogUpdateEvent.getBook().getId(), blogUpdateEvent.getBook());
         cacheManager.getCache(BOOK_PAGE_CACHE).clear();
+
     }
 
     @Subscribe

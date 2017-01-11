@@ -4,11 +4,12 @@ import org.bumishi.techblog.api.domain.model.Blog;
 import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by xieqiang on 2016/11/26.
  */
-//@Repository
+@Repository("blogCommandJdbcRepositry")
 public class BlogCommandJdbcRepositry implements BlogCommandRepositry {
 
     @Autowired
@@ -16,7 +17,12 @@ public class BlogCommandJdbcRepositry implements BlogCommandRepositry {
 
     @Override
     public void save(Blog blog) {
-        jdbcTemplate.update("INSERT blog (id,title,secondTitle,`catalog`,display,md,auther,publishTime,img) VALUE (?,?,?,?,?,?,?,?,?)",blog.getId(),blog.getTitle(),blog.getSecondTitle(),blog.getCatalog(),blog.getDisplay(),blog.getMd(),blog.getAuther(),blog.getPublishTime(),blog.getImg());
+        int count=jdbcTemplate.queryForObject("select count(*) from blog where id=?",Integer.class,blog.getId());
+        if(count==0) {
+            jdbcTemplate.update("INSERT blog (id,title,secondTitle,`catalog`,display,md,auther,publishTime,img) VALUE (?,?,?,?,?,?,?,?,?)", blog.getId(), blog.getTitle(), blog.getSecondTitle(), blog.getCatalog(), blog.getDisplay(), blog.getMd(), blog.getAuther(), blog.getPublishTime(), blog.getImg());
+        }else{
+            update(blog);
+        }
     }
 
     @Override
