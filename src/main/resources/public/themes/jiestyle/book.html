@@ -9,7 +9,7 @@
           th:content="${siteconfig.description}?:'不迷失博客'"/>
     <meta name="keywords" th:content="${siteconfig.keywords}?:'不迷失博客'"/>
     <meta name="generator" content="GitBook 3.2.2"/>
-
+    <link rel="stylesheet" th:href="@{/themes/jiestyle/style.css}"/>
     <link rel="stylesheet" th:href="@{/gitbook/style.css}"/>
 
     <link rel="stylesheet" th:href="@{/gitbook/gitbook-plugin-fontsettings/website.css}"/>
@@ -100,9 +100,10 @@
 
                     <section class="normal markdown-section">
                         <h1 th:utext="${blog.secondTitle}">第二节</h1>
-                        <div style="margin: 20px 0;color: #999;font-size: 13px;">
-                            <span>作者: @不迷失</span>
-                            <span>阅读数: <span th:text="${blog.views}"></span></span>
+                        <div class="view-meta">
+                            <span>作者: @不迷失    </span>
+                            <span>微信公众号:Java技术    </span>
+                            <span>阅读数: <span th:text="${blog.views}">    </span></span>
             <span>分类: <a th:href="@{/blog/catalog/{catalog}(catalog=${blog.catalog})}" rel="category tag"
                          th:text="${blog.catalogDisplay}">catalog</a></span>
 
