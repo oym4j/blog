@@ -42,6 +42,21 @@
             </button>
         </section>
 
+    </article>
+    <section class="col-md-8 col-md-offset-2 clearfix" th:if="${not(#lists.isEmpty(similars))}">
+    <div class="read">
+    <div class="read-head"><i class="fa fa-book"></i> 相关文章</div>
+    <div class="read-list row">
+    <div class="col-md-12">
+    <ul th:each="item:${similars}">
+
+    <li><a th:href="@{${item.link}}" th:utext="${item.title}">【博客改版】极简风格，全新JieStyle</a></li>
+       </ul>
+    </div>
+
+    </div>
+    </div>
+
         <br/>
         <div id="SOHUCS" th:sid="${blog.id}"></div>
         <script type="text/javascript">
@@ -79,22 +94,8 @@
                 }
             })(); </script>
 
-    </article>
-    <section class="col-md-8 col-md-offset-2 clearfix" th:if="${not(#lists.isEmpty(similars))}">
-    <div class="read">
-    <div class="read-head"><i class="fa fa-book"></i> 相关文章</div>
-    <div class="read-list row">
-    <div class="col-md-12">
-    <ul th:each="item:${similars}">
-
-    <li><a th:href="@{${item.link}}" th:utext="${item.title}">【博客改版】极简风格，全新JieStyle</a></li>
-       </ul>
-    </div>
-
-    </div>
-    </div>
-
     </section>
+
 </div>
 <!--modal-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
