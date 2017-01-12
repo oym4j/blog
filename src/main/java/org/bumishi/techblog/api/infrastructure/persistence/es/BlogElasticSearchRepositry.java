@@ -97,6 +97,8 @@ public class BlogElasticSearchRepositry implements BlogCommandRepositry, BlogQue
             }
             if(searchHit.getHighlightFields().containsKey("md")) {
                 blog.setDisplay(getText(searchHit.getHighlightFields().get("md").getFragments()));
+            }else{
+                blog.setDisplay(null);//todo 暂未找到这样过滤返回字段的方法,暂时这样处理
             }
         }
     }
