@@ -40,10 +40,10 @@
 
             <ul class="summary">
                 <li>
-                    <a href="http://bumishi.cn" target="blank" class="gitbook-link">
-                        专注技术研究-@不迷失
-                    </a>
+                    <div style="margin-top: 15px"><a href="/"><img th:src="@{${siteconfig[logo]}?:'/themes/jiestyle/images/logo.png'}"/></a></div>
                 </li>
+                <li class="divider"></li>
+                <li><h3 th:text="${book.name}"></h3></li>
                 <li class="divider"></li>
                 <li th:if="${not #lists.isEmpty(book.indexs)}" th:each="nav:${book.indexs}">
                     <a th:href="@{${nav.url}?:'#'}" th:text="${nav.label}" th:target="${nav.type==2}?'_blank'">label</a>
@@ -90,7 +90,7 @@
                 <!-- Title -->
                 <h1>
                     <i class="fa fa-circle-o-notch fa-spin"></i>
-                    <a href=".." th:text="${blog.title}">第一节</a>
+                    <a th:href="@{${blog.link}}" th:text="${blog.title}">第一节</a>
                 </h1>
             </div>
 
@@ -99,7 +99,7 @@
                 <div class="page-inner">
 
                     <section class="normal markdown-section">
-                        <h1 th:text="${blog.title}">第二节</h1>
+                        <h1 th:utext="${blog.secondTitle}">第二节</h1>
                         <div style="margin: 20px 0;color: #999;font-size: 13px;">
                             <span>作者: @不迷失</span>
                             <span>阅读数: <span th:text="${blog.views}"></span></span>
@@ -111,7 +111,7 @@
                         <div class="editormd-preview">
                             <div th:utext="${blog.display}" class="markdown-body editormd-preview-container"
                                  previewcontainer="true"
-                                 style="padding: 20px;">
+                                 style="padding: 20px;font-size: 16px;line-height: 30px;">
 
                             </div>
 
