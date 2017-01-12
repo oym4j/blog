@@ -11,15 +11,15 @@ curl -X POST http://localhost:9200/blog/blog/_mapping -d '
 {
       "properties": {
         "id":    { "type": "text", "index":"no"  },
-        "title":    { "type": "text","analyzer": "ik_smart",
-                "search_analyzer": "ik_max_word"  },
+      "title":    { "type": "text","analyzer": "ik_smart",
+                "search_analyzer": "ik_smart"  },
         "secondTitle":    { "type": "text","analyzer": "ik_smart",
-                "search_analyzer": "ik_max_word"  },
+                "search_analyzer": "ik_smart"  },
         "catalog":    { "type": "keyword"  },
         "auther":    { "type": "keyword", "index":"no"  },
         "img":    { "type": "text", "index":"no"  },
         "md":     { "type": "text","analyzer": "ik_smart",
-                "search_analyzer": "ik_max_word"},
+                "search_analyzer": "ik_smart"},
         "display":  {
           "type":   "text",
           "index":"no"
@@ -31,5 +31,4 @@ curl -X POST http://localhost:9200/blog/blog/_mapping -d '
         }
       }
 }
-
 '
