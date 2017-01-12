@@ -40,10 +40,10 @@
 
             <ul class="summary">
                 <li>
-                    <div style="margin-top: 15px"><a href="/"><img th:src="@{${siteconfig[logo]}?:'/themes/jiestyle/images/logo.png'}"/></a></div>
+                    <div><a href="/"><img th:src="@{${siteconfig[logo]}?:'/themes/jiestyle/images/logo.png'}"/></a></div>
                 </li>
                 <li class="divider"></li>
-                <li><h3 th:text="${book.name}"></h3></li>
+                <li><h3 style="padding: 10px;" th:text="${book.name}"></h3></li>
                 <li class="divider"></li>
                 <li th:if="${not #lists.isEmpty(book.indexs)}" th:each="nav:${book.indexs}">
                     <a th:href="@{${nav.url}?:'#'}" th:text="${nav.label}" th:target="${nav.type==2}?'_blank'">label</a>
