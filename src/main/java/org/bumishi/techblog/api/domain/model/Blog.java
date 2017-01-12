@@ -1,5 +1,7 @@
 package org.bumishi.techblog.api.domain.model;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.Serializable;
 import java.util.Date;
 /**
@@ -117,6 +119,13 @@ public class Blog implements Serializable{
 
 	public String getLink(){
 		return "/blog/"+id;
+	}
+
+	public String getFullTitle() {
+		if (StringUtils.isBlank(secondTitle)) {
+			return title;
+		}
+		return title + " " + secondTitle;
 	}
 
     

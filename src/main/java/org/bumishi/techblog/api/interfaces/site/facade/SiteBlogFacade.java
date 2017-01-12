@@ -57,7 +57,7 @@ public class SiteBlogFacade {
         dto.setLink(blog.getLink());
         dto.setSummary(blog.getDisplay());
         dto.setCatalog(blog.getCatalog());
-        dto.setTitle(blog.getTitle());
+        dto.setTitle(blog.getFullTitle());
         return dto;
     }
 
@@ -98,11 +98,11 @@ public class SiteBlogFacade {
     }
 
 
-    public List<LinkBlog> getSimilarBlog(String title){
+    public List<LinkBlog> getSimilarBlog(String id,String title){
         List<Blog> list = blogService.getSimilarBlogs(title);
-        return list.stream().map(item->{
+        return list.stream().filter(blog->!blog.getId().equals(id)).map(item->{
                      LinkBlog linkBlog=new LinkBlog();
-            linkBlog.setTitle(item.getTitle());
+            linkBlog.setTitle(item.getFullTitle());
             linkBlog.setLink(item.getLink());
             return linkBlog;
         }).collect(Collectors.toList());

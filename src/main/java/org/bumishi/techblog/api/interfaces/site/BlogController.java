@@ -40,7 +40,7 @@ public class BlogController {
             return "404";
         }
         model.addAttribute("blog",blog);
-        model.addAttribute("similars",blogFacade.getSimilarBlog(blog.getTitle()));
+        model.addAttribute("similars",blogFacade.getSimilarBlog(blog.getId(),blog.getTitle()));
         if (StringUtils.isBlank(viewd) || !viewd.equals("1")) {
             blogFacade.addViews(id);
             response.addCookie(new Cookie("viewd", "1"));
