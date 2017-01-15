@@ -19,6 +19,6 @@ public class DefaultBlogId implements BlogId{
 
     @Override
     public String id(Blog blog) {
-        return (blogQueryRepositry.getCount() + 1) + "";
+        return Long.valueOf(System.currentTimeMillis()).toString();
     }
 }

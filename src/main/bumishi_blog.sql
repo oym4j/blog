@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: bumishi_blog
 Target Host: localhost
 Target Database: bumishi_blog
-Date: 2017/1/9 0:23:44
+Date: 2017/1/15 11:23:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -16,8 +16,8 @@ CREATE TABLE `blog` (
   `title` varchar(50) NOT NULL,
   `secondTitle` varchar(30) DEFAULT NULL,
   `catalog` varchar(20) NOT NULL,
-  `md` text NOT NULL,
-  `display` text,
+  `md` longtext NOT NULL,
+  `display` longtext,
   `auther` varchar(30) DEFAULT NULL,
   `publishTime` date DEFAULT NULL,
   `img` varchar(255) DEFAULT NULL,

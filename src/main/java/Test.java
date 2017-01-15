@@ -1,15 +1,5 @@
-import com.alibaba.fastjson.JSON;
-import org.bumishi.techblog.api.domain.model.Blog;
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.sort.SortOrder;
-import org.elasticsearch.transport.client.PreBuiltTransportClient;
-
-import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * @author qiang.xie
@@ -72,12 +62,12 @@ public class Test {
 //        System.out.println(gitBookIndex.getCurrent() + ";" + gitBookIndex.getPrev() + ";" + gitBookIndex.getNext());
 //        System.out.println(gitBookIndex.getBookJson());
 
-        TransportClient client = new PreBuiltTransportClient(Settings.EMPTY)
-                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
+//        TransportClient client = new PreBuiltTransportClient(Settings.EMPTY)
+//                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
+//
+//        //  if (!client.admin().indices().prepareExists("blog").get().isExists()) {
 
-      //  if (!client.admin().indices().prepareExists("blog").get().isExists()) {
-
-        String mapping="{\n" +
+        String mapping = "{\n" +
                 "      \"properties\": { \n" +
                 "        \"title\":    { \"type\": \"text\"  }, \n" +
                 "        \"secondTitle\":    { \"type\": \"text\"  }, \n" +
@@ -96,7 +86,7 @@ public class Test {
                 "        }\n" +
                 "      }\n" +
                 "}\n";
-        client.admin().indices().preparePutMapping("blog").setType("blog").setSource(mapping);
+      //  client.admin().indices().preparePutMapping("blog").setType("blog").setSource(mapping);
 //            client.admin().indices().prepareCreate("blog").setSettings(Settings.builder()
 //                    .put("index.number_of_shards", 2)
 //                    .put("index.number_of_replicas", 0)
@@ -121,44 +111,56 @@ public class Test {
 //                    "}\n").get();
 
 
-      //  }
+        //  }
 
 
-        System.out.println(client.prepareDelete("blog", "blog", "1").get());
+//        System.out.println(client.prepareDelete("blog", "blog", "1").get());
+//
+//        Blog blog = new Blog();
+//        blog.setId("1");
+//        blog.setTitle("java2");
+//        blog.setDisplay("Java2，时间");
+//        blog.setSecondTitle("wefafa");
+//        blog.setPublishTime(new Date());
+//        blog.setCatalog("java");
+//        System.out.println(client.prepareIndex("blog", "blog").setId(blog.getId())
+//                .setSource(JSON.toJSONString(blog))
+//                .get());
+//
+//        blog.setId("2");
+//        blog.setPublishTime(new Date());
+//        blog.setCatalog("spring");
+//        client.prepareIndex("blog", "blog").setId(blog.getId())
+//                .setSource(JSON.toJSONString(blog))
+//                .get();
+//
+//        System.out.println(client.prepareGet("blog", "blog", "1").get());
+//
+//        blog.setDisplay("hello世界");
+//        blog.setMd("md");
+//        System.out.println(client.prepareUpdate("blog", "blog", "2").setDoc(JSON.toJSONString(blog))
+//                .get());
+//
+//
+//        int page = 1;
+//        int size = 2;
+//        System.out.println(client.prepareSearch("blog").setTypes("blog").setFrom((page - 1) * size).setSize(size).setQuery(QueryBuilders.matchAllQuery()).addSort("publishTime", SortOrder.DESC).get());
+//
+//        System.out.println(client.prepareSearch("blog").setTypes("blog").setFrom((page - 1) * size).setSize(size).setQuery(QueryBuilders.matchQuery("catalog", "java")).addSort("publishTime", SortOrder.DESC).get());
+//
+//        client.close();
+//    }
 
-        Blog blog = new Blog();
-        blog.setId("1");
-        blog.setTitle("java2");
-        blog.setDisplay("Java2，时间");
-        blog.setSecondTitle("wefafa");
-        blog.setPublishTime(new Date());
-        blog.setCatalog("java");
-        System.out.println(client.prepareIndex("blog", "blog").setId(blog.getId())
-                .setSource(JSON.toJSONString(blog))
-                .get());
-
-        blog.setId("2");
-        blog.setPublishTime(new Date());
-        blog.setCatalog("spring");
-        client.prepareIndex("blog", "blog").setId(blog.getId())
-                .setSource(JSON.toJSONString(blog))
-                .get();
-
-        System.out.println(client.prepareGet("blog", "blog", "1").get());
-
-        blog.setDisplay("hello世界");
-        blog.setMd("md");
-        System.out.println(client.prepareUpdate("blog", "blog", "2").setDoc(JSON.toJSONString(blog))
-                .get());
-
-
-        int page = 1;
-        int size = 2;
-        System.out.println(client.prepareSearch("blog").setTypes("blog").setFrom((page - 1) * size).setSize(size).setQuery(QueryBuilders.matchAllQuery()).addSort("publishTime", SortOrder.DESC).get());
-
-        System.out.println(client.prepareSearch("blog").setTypes("blog").setFrom((page - 1) * size).setSize(size).setQuery(QueryBuilders.matchQuery("catalog", "java")).addSort("publishTime", SortOrder.DESC).get());
-
-        client.close();
+        Calendar calendar=Calendar.getInstance();
+        int year=calendar.get(Calendar.YEAR);
+        int month=calendar.get(Calendar.MONTH)+1;
+        int day=calendar.get(Calendar.DATE);
+        int hour=calendar.get(Calendar.HOUR_OF_DAY);
+        int minute=calendar.get(Calendar.MINUTE);
+        int second=calendar.get(Calendar.SECOND);
+        String id= new StringBuilder().append(year).append(month).append(day).append(hour).append(minute).append(second).toString();
+                  System.out.println(id);
+        System.out.println(System.currentTimeMillis());
     }
 
 }
