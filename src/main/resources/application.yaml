@@ -4,6 +4,8 @@ server:
   compression:
     enabled: true
   connection-timeout: 3000
+  tomcat:
+    uri-encoding: utf-8
 
 debug: false
 
@@ -55,3 +57,13 @@ blog:
   manage:
     ##允许访问博客管理api的机器
     allow: localhost,127.0.0.1,bumishi.tech
+
+weixin:
+  token: weiqiang
+  aesKey:
+  subscribe: '我是不迷失，极度热爱技术的资深IT男。我将持续分享Java的各项技术研究和职业经验，尽最大的努力解答你的各种疑问，一起进步，一起成长!
+            任何相关的技术支持都可以尝试联系我，个人微信: bumishi_com ,或许可以帮到你。现在向公众号发送文本和语言消息，可以直接搜索不迷失博客文章哦，试试吧'
+
+tulin:
+  key:
+  secret:

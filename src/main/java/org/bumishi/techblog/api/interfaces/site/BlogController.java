@@ -63,6 +63,7 @@ public class BlogController {
         model.addAttribute("catalog", "all");
         model.addAttribute("isSearch",true);
         model.addAttribute("page", page);
+        model.addAttribute("s",s);
         return "catalog";
     }
 

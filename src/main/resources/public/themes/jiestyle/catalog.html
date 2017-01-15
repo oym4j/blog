@@ -40,9 +40,10 @@
             <br/>
             <div id="pagebar"
                  style="color:white;line-height: 50px;cursor: pointer;background-color: #5bc0eb;text-align: center;"
-                 th:if="${(not #lists.isEmpty(pageModel.list)) and (pageModel.hasNext)}"><a id="pagelink"
-                                                                                            style="display: block;color:white;"
-                                                                                            th:href="@{/blog/catalog/{catalog}(catalog=${catalog},page=${page+1})}">下一页</a>
+                 th:if="${(not #lists.isEmpty(pageModel.list)) and (pageModel.hasNext)}">
+                <a id="pagelink" style="display: block;color:white;" th:if="${not isSearch}" th:href="@{/blog/catalog/{catalog}(catalog=${catalog},page=${page+1})}">下一页</a>
+                <a id="pagelink" style="display: block;color:white;" th:if="${isSearch}" th:href="@{/search(s=${s},page=${page+1})}">下一页</a>
+
             </div>
 
         </div>

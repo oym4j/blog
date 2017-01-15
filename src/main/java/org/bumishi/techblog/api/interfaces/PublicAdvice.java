@@ -21,7 +21,7 @@ import java.io.IOException;
  * @author qiang.xie
  * @date 2016/9/27
  */
-@ControllerAdvice
+@ControllerAdvice(basePackages = {"org.bumishi.techblog.api.interfaces.manage","org.bumishi.techblog.api.interfaces.site"})
 public class PublicAdvice {
 
     protected Logger logger= org.slf4j.LoggerFactory.getLogger("bumishi_blog_error_logger");

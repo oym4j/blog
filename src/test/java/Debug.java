@@ -1,5 +1,5 @@
 import com.alibaba.fastjson.JSON;
-import org.bumishi.techblog.api.Application;
+import org.bumishi.techblog.api.BlogApplication;
 import org.bumishi.techblog.api.domain.model.Blog;
 import org.bumishi.techblog.api.infrastructure.persistence.es.BlogElasticSearchRepositry;
 import org.bumishi.techblog.api.infrastructure.persistence.jdbc.BlogQueryJdbcRepositry;
@@ -15,7 +15,7 @@ import java.util.List;
  * @date 2017/1/10
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = BlogApplication.class)
 public class Debug {
 
     @Autowired

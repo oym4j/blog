@@ -1,5 +1,6 @@
+import org.springframework.web.client.RestTemplate;
+
 import java.net.UnknownHostException;
-import java.util.Calendar;
 
 /**
  * @author qiang.xie
@@ -151,16 +152,15 @@ public class Test {
 //        client.close();
 //    }
 
-        Calendar calendar=Calendar.getInstance();
-        int year=calendar.get(Calendar.YEAR);
-        int month=calendar.get(Calendar.MONTH)+1;
-        int day=calendar.get(Calendar.DATE);
-        int hour=calendar.get(Calendar.HOUR_OF_DAY);
-        int minute=calendar.get(Calendar.MINUTE);
-        int second=calendar.get(Calendar.SECOND);
-        String id= new StringBuilder().append(year).append(month).append(day).append(hour).append(minute).append(second).toString();
-                  System.out.println(id);
-        System.out.println(System.currentTimeMillis());
+       String apikey="816b94416fed48daa3dfd469465f0241";
+
+      new RestTemplate().postForEntity("http://localhost:8686/weixin","<xml><ToUserName><![CDATA[gh_94c58645c7e8]]></ToUserName>\n" +
+              "<FromUserName><![CDATA[opCwft3GcE-4V0DYchdA9Q7Fc0nQ]]></FromUserName>\n" +
+              "<CreateTime>1484466041</CreateTime>\n" +
+              "<MsgType><![CDATA[text]]></MsgType>\n" +
+              "<Content><![CDATA[spring ]]></Content>\n" +
+              "<MsgId>6375733098526275644</MsgId>\n" +
+              "</xml>\n",String.class);
     }
 
 }
