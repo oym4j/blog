@@ -159,7 +159,7 @@ public class WeixinController extends WeixinSupport implements InitializingBean{
 
         pageModel.getList().stream().forEach(blog -> {
 
-            Article article=new Article(blog.getFullTitle(),"http://bumishi.cn"+blog.getLink());
+            Article article=new Article(blog.getFullTitle().replaceAll("<span class='kw'>","").replaceAll("</span>",""),"http://bumishi.cn"+blog.getLink());
             article.setPicUrl(blog.getImg());
             articles.add(article);
         });
