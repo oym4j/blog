@@ -146,7 +146,8 @@ public class WeixinController extends WeixinSupport implements InitializingBean{
             newsMsg.setArticles(articles);
             return newsMsg;
         }
-        PageModel<Blog> pageModel= blogService.search(1,siteConfigService.pageSize(),content);
+        //微信图文信息不能超过8条，否则用户会收不到信息
+        PageModel<Blog> pageModel= blogService.search(1,8,content);
         if(pageModel==null || CollectionUtils.isEmpty(pageModel.getList())){
             BaseMsg tulinMsg=searchByTulin(content,userid);
             if(tulinMsg==null) {
