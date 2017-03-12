@@ -30,6 +30,7 @@ public class BlogController {
         model.addAttribute("pageModel", blogFacade.pageQuery(1, siteConfigService.pageSize()));
         model.addAttribute("catalog", "java");
         model.addAttribute("page", 1);
+        model.addAttribute("isSearch",false);
         return "catalog";
     }
 
@@ -53,6 +54,7 @@ public class BlogController {
         model.addAttribute("pageModel", blogFacade.queryByCatalog(page, siteConfigService.pageSize(), catalog));
         model.addAttribute("catalog", catalog);
         model.addAttribute("page", page);
+        model.addAttribute("isSearch",false);
         return "catalog";
     }
 
