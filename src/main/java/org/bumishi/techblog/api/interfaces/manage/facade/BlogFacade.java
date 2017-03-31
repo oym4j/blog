@@ -26,8 +26,8 @@ public class BlogFacade {
     private BlogAssember blogAssember;
 
 
-    public void createBlog(WriteBlogCommand blogCommand){
-        blogService.addBlog(blogAssember.addBlogCommandToDomain(blogCommand));
+    public String createBlog(WriteBlogCommand blogCommand){
+        return blogService.addBlog(blogAssember.addBlogCommandToDomain(blogCommand));
     }
 
     public void updateBlog(String id,WriteBlogCommand blogCommand){

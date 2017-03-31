@@ -36,9 +36,10 @@ public class BlogService {
     protected EventBus eventBus;
 
 
-    public void addBlog(Blog blog){
+    public String addBlog(Blog blog){
         blogCommandRepositry.save(blog);
         eventBus.post(new BlogUpdateEvent(blog));
+        return blog.getId();
     }
 
     public void updateBlog(Blog blog){
