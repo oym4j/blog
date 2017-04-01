@@ -34,6 +34,8 @@ public class BlogDto {
     /**阅读量*/
     private long views;
 
+    private String wechatLink;
+
     public String getId() {
         return id;
     }
@@ -107,5 +109,13 @@ public class BlogDto {
 
     public void setViews(long views) {
         this.views = views;
+    }
+
+    public String getWechatLink() {
+        return wechatLink;
+    }
+
+    public void setWechatLink(String wechatLink) {
+        this.wechatLink = wechatLink;
     }
 }

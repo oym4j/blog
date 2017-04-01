@@ -11,6 +11,7 @@ import com.github.sd4324530.fastweixin.message.req.TextReqMsg;
 import com.github.sd4324530.fastweixin.message.req.VoiceReqMsg;
 import com.github.sd4324530.fastweixin.servlet.WeixinSupport;
 import com.google.common.collect.Lists;
+import org.apache.commons.lang3.StringUtils;
 import org.bumishi.techblog.api.application.BlogService;
 import org.bumishi.techblog.api.application.SiteConfigService;
 import org.bumishi.techblog.api.domain.model.Blog;
@@ -159,8 +160,8 @@ public class WeixinController extends WeixinSupport implements InitializingBean{
         }
 
         pageModel.getList().stream().forEach(blog -> {
-
-            Article article=new Article(blog.getFullTitle().replaceAll("<span class='kw'>","").replaceAll("</span>",""),"http://bumishi.cn"+blog.getLink());
+            String link= StringUtils.isBlank(blog.getWechatLink()) ? "http://bumishi.cn"+blog.getLink() : blog.getWechatLink();
+            Article article=new Article(blog.getFullTitle().replaceAll("<span class='kw'>","").replaceAll("</span>",""),link);
             article.setPicUrl(blog.getImg());
             articles.add(article);
         });

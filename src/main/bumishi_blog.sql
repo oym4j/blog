@@ -21,6 +21,7 @@ CREATE TABLE `blog` (
   `auther` varchar(30) DEFAULT NULL,
   `publishTime` date DEFAULT NULL,
   `img` varchar(255) DEFAULT NULL,
+  `wechatLink` varchar(255) DEFAULT NULL
   PRIMARY KEY (`id`),
   KEY `date` (`publishTime`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

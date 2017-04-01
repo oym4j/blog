@@ -19,7 +19,7 @@ public class BlogCommandJdbcRepositry implements BlogCommandRepositry {
     public void save(Blog blog) {
         int count=jdbcTemplate.queryForObject("select count(*) from blog where id=?",Integer.class,blog.getId());
         if(count==0) {
-            jdbcTemplate.update("INSERT blog (id,title,secondTitle,`catalog`,display,md,auther,publishTime,img) VALUE (?,?,?,?,?,?,?,?,?)", blog.getId(), blog.getTitle(), blog.getSecondTitle(), blog.getCatalog(), blog.getDisplay(), blog.getMd(), blog.getAuther(), blog.getPublishTime(), blog.getImg());
+            jdbcTemplate.update("INSERT blog (id,title,secondTitle,`catalog`,display,md,auther,publishTime,img,wechatLink) VALUE (?,?,?,?,?,?,?,?,?,?)", blog.getId(), blog.getTitle(), blog.getSecondTitle(), blog.getCatalog(), blog.getDisplay(), blog.getMd(), blog.getAuther(), blog.getPublishTime(), blog.getImg(),blog.getWechatLink());
         }else{
             update(blog);
         }
@@ -27,7 +27,7 @@ public class BlogCommandJdbcRepositry implements BlogCommandRepositry {
 
     @Override
     public void update(Blog blog) {
-        jdbcTemplate.update("update blog SET title=?,secondTitle=?,`catalog`=?,display=?,md=?,auther=?,publishTime=?,img=? WHERE id =?", blog.getTitle(),blog.getSecondTitle(), blog.getCatalog(), blog.getDisplay(), blog.getMd(), blog.getAuther(), blog.getPublishTime(), blog.getImg(), blog.getId());
+        jdbcTemplate.update("update blog SET title=?,secondTitle=?,`catalog`=?,display=?,md=?,auther=?,publishTime=?,img=?,wechatLink=? WHERE id =?", blog.getTitle(),blog.getSecondTitle(), blog.getCatalog(), blog.getDisplay(), blog.getMd(), blog.getAuther(), blog.getPublishTime(), blog.getImg(),blog.getWechatLink(), blog.getId());
 
     }
 

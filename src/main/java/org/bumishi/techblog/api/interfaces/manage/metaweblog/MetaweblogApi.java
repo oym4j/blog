@@ -67,8 +67,10 @@ public class MetaweblogApi {
         writeBlogCommand.setCatalog(((Object[])struct.get("categories"))[0].toString());
         writeBlogCommand.setTitle(struct.get("title").toString());
         writeBlogCommand.setDisplay(struct.get("description").toString());
-        writeBlogCommand.setMd("==");
-        writeBlogCommand.setImg("==");
+        //自定义网站用于接收微信文章地址
+        writeBlogCommand.setWechatLink(struct.get("wp_slug").toString());
+        //tag用于接收md源码
+        writeBlogCommand.setMd(struct.get("mt_keywords").toString());
         return blogFacade.createBlog(writeBlogCommand);
 
     }
@@ -81,7 +83,6 @@ public class MetaweblogApi {
         writeBlogCommand.setTitle(struct.get("title").toString());
         writeBlogCommand.setDisplay(struct.get("description").toString());
         writeBlogCommand.setMd("==");
-        writeBlogCommand.setImg("==");
         blogFacade.updateBlog(blogid,writeBlogCommand);
         return blogid;
     }

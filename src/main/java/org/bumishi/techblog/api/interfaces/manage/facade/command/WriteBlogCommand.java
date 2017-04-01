@@ -32,9 +32,8 @@ public class WriteBlogCommand {
     @NotBlank
     private String display;
 
-    @NotBlank
-    /**封面图片，主要迎合微信公众号*/
-    private String img;
+
+    private String wechatLink;
 
     public String getTitle() {
         return title;
@@ -68,13 +67,6 @@ public class WriteBlogCommand {
         this.md = md;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
 
     public String getDisplay() {
         return display;
@@ -82,5 +74,13 @@ public class WriteBlogCommand {
 
     public void setDisplay(String display) {
         this.display = display;
+    }
+
+    public String getWechatLink() {
+        return wechatLink;
+    }
+
+    public void setWechatLink(String wechatLink) {
+        this.wechatLink = wechatLink;
     }
 }

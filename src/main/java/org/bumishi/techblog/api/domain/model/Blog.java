@@ -41,6 +41,9 @@ public class Blog implements Serializable{
 	/**封面图片，主要迎合微信公众号*/
 	private String img;
 
+	/**对应的微信公众号文章连接*/
+	private String wechatLink;
+
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
 	}
@@ -128,5 +131,11 @@ public class Blog implements Serializable{
 		return title + " " + secondTitle;
 	}
 
-    
+	public String getWechatLink() {
+		return wechatLink;
+	}
+
+	public void setWechatLink(String wechatLink) {
+		this.wechatLink = wechatLink;
+	}
 }

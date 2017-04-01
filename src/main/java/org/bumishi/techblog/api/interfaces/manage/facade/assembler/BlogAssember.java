@@ -6,6 +6,8 @@ import org.bumishi.techblog.api.domain.model.MarkDownToHtml;
 import org.bumishi.techblog.api.interfaces.manage.facade.command.WriteBlogCommand;
 import org.bumishi.techblog.api.interfaces.manage.facade.dto.BlogDto;
 import org.bumishi.toolbox.model.repositry.NavigationNodeRepositry;
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,6 +38,7 @@ public class BlogAssember {
         blog.setPublishTime(new Date());
         blog.setId(blogId.id(blog));
         blog.setDisplay(markDownToHtml.convert(command));
+        blog.setImg(getImg(blog.getDisplay()));
         return blog;
     }
 
@@ -46,6 +49,7 @@ public class BlogAssember {
         blog.setPublishTime(new Date());
         blog.setId(id);
         blog.setDisplay(markDownToHtml.convert(command));
+        blog.setImg(getImg(blog.getDisplay()));
         return blog;
     }
 
@@ -54,5 +58,13 @@ public class BlogAssember {
         BeanUtils.copyProperties(blog,blogDto);
         blogDto.setCatalogDisplay(navigationNodeRepositry.get(blog.getCatalog()).getLabel());
         return blogDto;
+    }
+
+    private String getImg(String html){
+       Elements elements= Jsoup.parse(html).getElementsByTag("img");
+        if(elements==null || elements.size()==0){
+            return "http://static.bumishi.cn/bumishi_slog.png";
+        }
+        return elements.get(0).attr("src");
     }
 }
