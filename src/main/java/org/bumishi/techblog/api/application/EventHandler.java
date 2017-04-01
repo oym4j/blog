@@ -1,12 +1,18 @@
 package org.bumishi.techblog.api.application;
 
 import com.google.common.eventbus.Subscribe;
+import org.bumishi.techblog.api.application.thirdsync.jianshu.BlogToJianShu;
 import org.bumishi.techblog.api.domain.model.event.*;
 import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author qiang.xie
@@ -35,6 +41,7 @@ public class EventHandler {
 
     public static final String CATALOG_PAGE_CACHE = "catalog_page";
 
+    private Logger logger= LoggerFactory.getLogger(EventHandler.class);
 
     @Autowired
     protected CacheManager cacheManager;
@@ -43,11 +50,23 @@ public class EventHandler {
     @Qualifier("blogCommandJdbcRepositry")
     protected BlogCommandRepositry blogCommandJdbcRepositry;
 
+    @Autowired
+    protected BlogToJianShu blogToJianShu;
+
+    private ExecutorService executorService= Executors.newFixedThreadPool(1);
+
     @Subscribe
     public void onBlogUpdate(BlogUpdateEvent blogUpdateEvent) {
         cacheManager.getCache(BLOG_CACHE).put(blogUpdateEvent.getBlog().getId(), blogUpdateEvent.getBlog());
         cacheManager.getCache(BLOG_PAGE_CACHE).clear();
         blogCommandJdbcRepositry.save(blogUpdateEvent.getBlog());
+        executorService.execute(()->{
+            try {
+                blogToJianShu.sync(blogUpdateEvent.getBlog());
+            }catch (Exception e){
+                logger.warn("sync jianshu error",e);
+            }
+        });
     }
 
     @Subscribe
