@@ -61,4 +61,7 @@ public class BlogFacade {
         return pageModel;
     }
 
+    public void updateIndex(){
+        blogService.updateIndex();
+    }
 }

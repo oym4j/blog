@@ -7,6 +7,7 @@ import org.bumishi.techblog.api.domain.model.event.BlogDeleteEvent;
 import org.bumishi.techblog.api.domain.model.event.BlogUpdateEvent;
 import org.bumishi.techblog.api.domain.repository.BlogCommandRepositry;
 import org.bumishi.techblog.api.domain.repository.BlogQueryRepositry;
+import org.bumishi.techblog.api.infrastructure.persistence.jdbc.BlogQueryJdbcRepositry;
 import org.bumishi.toolbox.model.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,6 +31,9 @@ public class BlogService {
     @Qualifier("blogElasticSearchRepositry")
     protected BlogQueryRepositry blogQueryRepositry;
 
+    @Autowired
+    @Qualifier("blogQueryJdbcRepositry")
+    protected BlogQueryJdbcRepositry blogQueryJdbcRepositry;
 
 
     @Autowired
@@ -83,6 +87,14 @@ public class BlogService {
             return Collections.emptyList();
         }
         return pageModel.getList();
+    }
+
+
+    //更新索引
+    public void updateIndex(){
+        int count=blogQueryJdbcRepositry.getCount();
+        List<Blog> list=blogQueryJdbcRepositry.queryByTime(1,count).getList();
+        list.stream().forEach(blog ->   blogCommandRepositry.save(blog));
     }
 
 }
