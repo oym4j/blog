@@ -71,3 +71,6 @@ tulin:
 metaweblog:
   user: test
   pwd: test
+
+sync:
+  jianshu: true

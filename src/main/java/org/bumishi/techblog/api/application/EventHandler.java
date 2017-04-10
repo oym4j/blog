@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Component;
 
@@ -53,6 +54,9 @@ public class EventHandler {
     @Autowired
     protected BlogToJianShu blogToJianShu;
 
+    @Value("${sync.jianshu}")
+    private boolean sync_jianshu;
+
     private ExecutorService executorService= Executors.newFixedThreadPool(1);
 
     @Subscribe
@@ -60,13 +64,16 @@ public class EventHandler {
         cacheManager.getCache(BLOG_CACHE).put(blogUpdateEvent.getBlog().getId(), blogUpdateEvent.getBlog());
         cacheManager.getCache(BLOG_PAGE_CACHE).clear();
         blogCommandJdbcRepositry.save(blogUpdateEvent.getBlog());
-        executorService.execute(()->{
-            try {
-                blogToJianShu.sync(blogUpdateEvent.getBlog());
-            }catch (Exception e){
-                logger.warn("sync jianshu error",e);
-            }
-        });
+
+        if(sync_jianshu) {
+            executorService.execute(() -> {
+                try {
+                    blogToJianShu.sync(blogUpdateEvent.getBlog());
+                } catch (Exception e) {
+                    logger.warn("sync jianshu error", e);
+                }
+            });
+        }
     }
 
     @Subscribe
